@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Vida Real Brasil - Central de Experiências &amp; Negócios</title>
+<!-- Tailwind CSS v3 CDN with plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+<!-- BEGIN: Custom Styles -->
+<style data-purpose="base-tactile-system">
+    /* Fundo suave em tom pergaminho/creme estilo Studio Ghibli e superfícies plásticas LEGO */
+    body {
+      background-color: #f7f3e8;
+      color: #1e293b;
+      -webkit-font-smoothing: antialiased;
+      -webkit-tap-highlight-color: transparent;
+    }
+    /* Efeito de relevo tátil para blocos e botões */
+    .lego-card {
+      background-color: #ffffff;
+      border: 1.5px solid #e2ded4;
+      box-shadow: 0 4px 0 #ded9cc, 0 10px 18px -4px rgba(45, 55, 72, 0.07);
+      transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .lego-card:active {
+      transform: translateY(2px);
+      box-shadow: 0 2px 0 #ded9cc, 0 4px 8px -2px rgba(45, 55, 72, 0.06);
+    }
+    /* Barra de progresso tridimensional estilo stud LEGO */
+    .stat-track {
+      background-color: #ede8dc;
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.08);
+    }
+    .stat-fill {
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.45);
+    }
+    /* Pulsação do LED do smartphone digital */
+    @keyframes zap-pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(1.15); }
+    }
+    .led-glow {
+      animation: zap-pulse 2s infinite ease-in-out;
+    }
+    /* Estilização da barra de rolagem */
+    ::-webkit-scrollbar {
+      width: 0px;
+      background: transparent;
+    }
+  </style>
+<!-- END: Custom Styles -->
+</head>
+<body class="flex justify-center min-h-screen pb-24 select-none">
+<!-- Container Mobile Principal iOS -->
+<div class="w-full max-w-md flex flex-col relative min-h-screen" style="background-color: #fbf8f0;">
+<!-- BEGIN: TopStatusBarAndProfile -->
+<header class="w-full px-4 pt-3 pb-2 sticky top-0 z-40 backdrop-blur-md" data-purpose="character-profile-header" style="background-color: rgba(251, 248, 240, 0.94); border-bottom: 1px solid #eae5d7;">
+<!-- Linha Superior: Avatar, Info do Personagem e Pontuação -->
+<div class="flex items-center justify-between gap-3">
+<!-- Avatar LEGO Ghibli -->
+<div class="relative flex-shrink-0" data-purpose="minifig-avatar">
+<div class="w-14 h-14 rounded-2xl flex items-center justify-center p-0.5 relative overflow-hidden shadow-sm" style="background-color: #fde047; border: 2.5px solid #ca8a04; box-shadow: 0 3px 0 #b45309;">
+<!-- Minifig Head SVG personalizado com stud de encaixe e bochechas rosadas -->
+<svg class="w-12 h-12" viewbox="0 0 100 100">
+<!-- Stud Topo Minifig -->
+<rect fill="#facc15" height="12" rx="3.5" stroke="#ca8a04" stroke-width="3" width="28" x="36" y="2"></rect>
+<!-- Cabeça Cilíndrica LEGO -->
+<rect fill="#fde047" height="72" rx="19" stroke="#ca8a04" stroke-width="3.5" width="70" x="15" y="14"></rect>
+<!-- Cabelo Castanho Macio Estilo Ghibli -->
+<path d="M15 32 C 16 18, 32 14, 50 14 C 68 14, 84 18, 85 32 C 85 24, 76 20, 60 21 C 45 22, 35 27, 24 23 C 18 25, 15 28, 15 32 Z" fill="#78350f"></path>
+<path d="M15 28 Q 18 42 22 44 Q 23 32 30 25" fill="#78350f"></path>
+<path d="M85 28 Q 82 42 78 44 Q 77 32 70 25" fill="#78350f"></path>
+<!-- Olhos com brilho animado -->
+<circle cx="36" cy="46" fill="#1e293b" r="4.8"></circle>
+<circle cx="37.8" cy="44.2" fill="#ffffff" r="1.5"></circle>
+<circle cx="64" cy="46" fill="#1e293b" r="4.8"></circle>
+<circle cx="65.8" cy="44.2" fill="#ffffff" r="1.5"></circle>
+<!-- Bochechas Rosadas Ghibli -->
+<circle cx="28" cy="54" fill="#f43f5e" opacity="0.32" r="5"></circle>
+<circle cx="72" cy="54" fill="#f43f5e" opacity="0.32" r="5"></circle>
+<!-- Sorriso Simpático -->
+<path d="M41 57 Q 50 67 59 57" fill="none" stroke="#854d0e" stroke-linecap="round" stroke-width="3.2"></path>
+</svg>
+</div>
+<!-- Badge status ativo -->
+<span class="absolute -bottom-1 -right-1 w-4 h-4 rounded-full border-2 border-white flex items-center justify-center" style="background-color: #10b981;"></span>
+</div>
+<!-- Identificação e Carreira -->
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-1.5 flex-wrap">
+<h1 class="text-base font-bold truncate text-slate-800 tracking-tight" style="color: #0f172a;">Fernanda Martins</h1>
+<span class="text-xs font-semibold px-2 py-0.5 rounded-full" style="background-color: #e2e8f0; color: #475569; border: 1px solid #cbd5e1;">22a</span>
+</div>
+<div class="flex items-center gap-2 text-xs font-medium mt-0.5" style="color: #64748b;">
+<span class="flex items-center gap-1 truncate">
+<svg class="w-3.5 h-3.5 flex-shrink-0" fill="currentColor" style="color: #0ca768;" viewbox="0 0 20 20"><path clip-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" fill-rule="evenodd"></path></svg>
+              São Paulo, SP
+            </span>
+<span class="font-bold px-1.5 py-0.2 rounded" style="background-color: #ecfdf5; color: #047857; font-size: 11px;">2048</span>
+</div>
+</div>
+<!-- Score Serasa com Botão de Refresh Tátil -->
+<div class="flex flex-col items-end gap-1 flex-shrink-0">
+<div class="flex items-center gap-1.5 px-2.5 py-1 rounded-xl shadow-xs" style="background-color: #ecfdf5; border: 1.5px solid #a7f3d0; box-shadow: 0 2px 0 #6ee7b7;">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" style="color: #059669;" viewbox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+<span class="text-xs font-bold" style="color: #065f46;">Score: 925</span>
+<button aria-label="Atualizar Score" class="hover:rotate-180 transition-transform duration-300 ml-0.5" style="color: #047857;">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</button>
+</div>
+</div>
+</div>
+<!-- Barra de Cargo & Renda Salarial -->
+<div class="mt-2.5 flex items-center justify-between px-3 py-1.5 rounded-xl" style="background-color: #f0fdf4; border: 1px solid #bbf7d0;">
+<div class="flex items-center gap-1.5 min-w-0">
+<svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" style="color: #0284c7;" viewbox="0 0 24 24"><path d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+<span class="text-xs font-bold truncate tracking-wide" style="color: #0369a1;">SOMMELIER &amp; GESTOR DE ADEGAS</span>
+</div>
+<span class="text-xs font-extrabold whitespace-nowrap ml-2" style="color: #0f172a;">R$ 7.500<span class="font-normal text-slate-500 text-[10px]">/mês</span></span>
+</div>
+<!-- Abas de Navegação Superiores com "Mais" Ativa -->
+<nav aria-label="Navegação de Menus" class="flex items-center justify-between gap-1 mt-2.5 border-b border-slate-200/60 pb-1.5">
+<!-- Ínicio -->
+<button class="flex flex-col items-center py-1 px-1.5 rounded-lg text-slate-500 hover:text-slate-700 transition">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+<span class="text-[10px] font-medium mt-0.5">Início</span>
+</button>
+<!-- Carreira -->
+<button class="flex flex-col items-center py-1 px-1.5 rounded-lg text-slate-500 hover:text-slate-700 transition">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+<span class="text-[10px] font-medium mt-0.5">Carreira</span>
+</button>
+<!-- Banco -->
+<button class="flex flex-col items-center py-1 px-1.5 rounded-lg text-slate-500 hover:text-slate-700 transition">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+<span class="text-[10px] font-medium mt-0.5">Banco</span>
+</button>
+<!-- Bens & Eu -->
+<button class="flex flex-col items-center py-1 px-1.5 rounded-lg text-slate-500 hover:text-slate-700 transition">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+<span class="text-[10px] font-medium mt-0.5">Bens &amp; Eu</span>
+</button>
+<!-- Família -->
+<button class="flex flex-col items-center py-1 px-1.5 rounded-lg text-slate-500 hover:text-slate-700 transition">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+<span class="text-[10px] font-medium mt-0.5">Família</span>
+</button>
+<!-- Atividades -->
+<button class="flex flex-col items-center py-1 px-1.5 rounded-lg text-slate-500 hover:text-slate-700 transition">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+<span class="text-[10px] font-medium mt-0.5">Atividades</span>
+</button>
+<!-- Mais (Ativo com Cor Blindada Esmeralda) -->
+<button class="flex flex-col items-center py-1 px-2 rounded-lg font-bold relative transition" style="color: #0ca768;">
+<svg class="w-4 h-4" fill="currentColor" viewbox="0 0 20 20"><path clip-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" fill-rule="evenodd"></path></svg>
+<span class="text-[10.5px] mt-0.5 font-extrabold tracking-tight">Mais</span>
+<span class="absolute -bottom-1.5 left-1/2 transform -translate-x-1/2 w-4 h-1 rounded-full" style="background-color: #0ca768;"></span>
+</button>
+</nav>
+</header>
+<!-- END: TopStatusBarAndProfile -->
+<main class="flex-1 px-3.5 pt-3 pb-8 flex flex-col gap-3.5">
+<!-- BEGIN: VitalStatsGrid -->
+<!-- 4 Barras de Atributos com Cores Blindadas Sem Laranja Monocromático -->
+<section aria-label="Status Vitais" class="grid grid-cols-2 gap-2.5" data-purpose="vital-stats-section">
+<!-- Card Saúde (Verde Esmeralda) -->
+<div class="lego-card rounded-2xl p-2.5 flex flex-col justify-between" style="border-color: #d1fae5;">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="w-6 h-6 rounded-lg flex items-center justify-center text-xs" style="background-color: #dcfce7; color: #15803d;">💚</span>
+<span class="text-xs font-bold text-slate-700">Saúde</span>
+</div>
+<span class="text-xs font-black" style="color: #10b981;">53%</span>
+</div>
+<div class="stat-track w-full h-2.5 rounded-full overflow-hidden mt-2 p-0.5">
+<div class="stat-fill h-full rounded-full transition-all duration-500" style="width: 53%; background-color: #10b981;"></div>
+</div>
+</div>
+<!-- Card Felicidade (Amarelo Solar / Dourado) -->
+<div class="lego-card rounded-2xl p-2.5 flex flex-col justify-between" style="border-color: #fef08a;">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="w-6 h-6 rounded-lg flex items-center justify-center text-xs" style="background-color: #fef9c3; color: #a16207;">☀️</span>
+<span class="text-xs font-bold text-slate-700">Felicidade</span>
+</div>
+<span class="text-xs font-black" style="color: #ca8a04;">100%</span>
+</div>
+<div class="stat-track w-full h-2.5 rounded-full overflow-hidden mt-2 p-0.5">
+<div class="stat-fill h-full rounded-full transition-all duration-500" style="width: 100%; background-color: #eab308;"></div>
+</div>
+</div>
+<!-- Card Intelecto (Azul Safira) -->
+<div class="lego-card rounded-2xl p-2.5 flex flex-col justify-between" style="border-color: #bfdbfe;">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="w-6 h-6 rounded-lg flex items-center justify-center text-xs" style="background-color: #dbeafe; color: #1d4ed8;">💡</span>
+<span class="text-xs font-bold text-slate-700">Intelecto</span>
+</div>
+<span class="text-xs font-black" style="color: #2563eb;">10%</span>
+</div>
+<div class="stat-track w-full h-2.5 rounded-full overflow-hidden mt-2 p-0.5">
+<div class="stat-fill h-full rounded-full transition-all duration-500" style="width: 10%; background-color: #2563eb;"></div>
+</div>
+</div>
+<!-- Card Energia (Azul Petróleo / Ciano Vibrante Blindado - NÃO LARANJA) -->
+<div class="lego-card rounded-2xl p-2.5 flex flex-col justify-between" style="border-color: #bae6fd;">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="w-6 h-6 rounded-lg flex items-center justify-center text-xs" style="background-color: #e0f2fe; color: #0369a1;">⚡</span>
+<span class="text-xs font-bold text-slate-700">Energia</span>
+</div>
+<span class="text-xs font-black" style="color: #0284c7;">83%</span>
+</div>
+<div class="stat-track w-full h-2.5 rounded-full overflow-hidden mt-2 p-0.5">
+<div class="stat-fill h-full rounded-full transition-all duration-500" style="width: 83%; background-color: #0284c7;"></div>
+</div>
+</div>
+</section>
+<!-- END: VitalStatsGrid -->
+<!-- BEGIN: HeroStageBanner -->
+<!-- Fase Atual e Central de Experiências (Verde Esmeralda Tropical Denso com Botões Táteis) -->
+<section class="rounded-3xl p-4 text-white relative overflow-hidden shadow-md" data-purpose="hub-hero-card" style="background: linear-gradient(135deg, #09794d 0%, #065f3e 60%, #03422a 100%); border: 2px solid #0ca768; box-shadow: 0 5px 0 #033c26, 0 12px 20px -3px rgba(6, 95, 62, 0.35);">
+<!-- Pílula de Fase da Vida -->
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold uppercase tracking-wider mb-2.5" style="background-color: rgba(2, 44, 29, 0.65); border: 1px solid rgba(52, 211, 153, 0.4); color: #6ee7b7;">
+<span>FASE ATUAL: 🎓 JUVENTUDE (18–24A)</span>
+</div>
+<div class="flex items-start justify-between gap-3">
+<div class="flex-1">
+<h2 class="text-xl font-black leading-tight text-white drop-shadow-sm">
+              Central de Experiências &amp; Negócios
+            </h2>
+<p class="text-xs mt-1.5 leading-relaxed font-medium" style="color: #d1fae5;">
+              Empresas, contratações, criador, crimes, fama, viagens e redes sociais
+            </p>
+</div>
+<!-- Tríade de Botões de Ação Táteis (Lápis, Config e Som) -->
+<div class="flex items-center gap-2 flex-shrink-0 pt-1">
+<button aria-label="Editar" class="w-9 h-9 rounded-full flex items-center justify-center transition active:scale-95 shadow-sm" style="background-color: #10b981; border: 1.5px solid #6ee7b7; box-shadow: 0 2px 0 #047857;">
+<span class="text-sm">✏️</span>
+</button>
+<button aria-label="Ajustes" class="w-9 h-9 rounded-full flex items-center justify-center transition active:scale-95 shadow-sm" style="background-color: #0f766e; border: 1.5px solid #2dd4bf; box-shadow: 0 2px 0 #115e59;">
+<span class="text-sm">⚙️</span>
+</button>
+<button aria-label="Áudio" class="w-9 h-9 rounded-full flex items-center justify-center transition active:scale-95 shadow-sm" style="background-color: #0d9488; border: 1.5px solid #5eead4; box-shadow: 0 2px 0 #0f766e;">
+<span class="text-sm">🔊</span>
+</button>
+</div>
+</div>
+</section>
+<!-- END: HeroStageBanner -->
+<!-- BEGIN: SmartphoneDigitalCard -->
+<!-- Card Especial: Smartphone Digital com LED Pulsante -->
+<section class="rounded-2xl p-3.5 relative overflow-hidden transition active:translate-y-0.5" data-purpose="smartphone-digital-module" style="background: linear-gradient(145deg, #093325 0%, #052319 100%); border: 1.5px solid #10b981; box-shadow: 0 4px 0 #021a12, 0 8px 16px rgba(0,0,0,0.2);">
+<div class="flex items-start gap-3">
+<!-- Ícone Smartphone com moldura -->
+<div class="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0" style="background-color: #0e4432; border: 1.5px solid #10b981;">
+<span class="text-2xl">📱</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-2">
+<h3 class="text-sm font-extrabold text-white">Smartphone Digital</h3>
+<!-- LED Notificação Pulsante -->
+<span class="w-2.5 h-2.5 rounded-full led-glow" style="background-color: #34d399; box-shadow: 0 0 8px #10b981;"></span>
+</div>
+<p class="text-[11px] mt-0.5 leading-snug" style="color: #a7f3d0;">
+              Notícias Brasil, Dilemas de Trabalho, Calendário, WhatsApp &amp; Apps
+            </p>
+<div class="mt-2">
+<a class="inline-flex items-center gap-1 text-[11px] font-extrabold tracking-wide uppercase" href="#celular" style="color: #6ee7b7;">
+                ABRIR CELULAR
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24"><path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- END: SmartphoneDigitalCard -->
+<!-- BEGIN: ActivitiesAndBusinessGrid -->
+<!-- Grade Tátil Completa de Módulos (Replicando IMAGE_3, IMAGE_2 e IMAGE_1) -->
+<section aria-label="Módulos de Experiências" class="grid grid-cols-2 gap-3" data-purpose="experiences-grid">
+<!-- 1. Habilitação & CNH -->
+<article class="lego-card rounded-2xl p-3 flex flex-col justify-between" data-purpose="card-cnh">
+<div>
+<div class="w-9 h-9 rounded-xl flex items-center justify-center text-lg mb-2" style="background-color: #eff6ff; border: 1px solid #bfdbfe;">
+              💳
+            </div>
+<h4 class="text-xs font-bold text-slate-800 leading-snug">Habilitação &amp; CNH</h4>
+<p class="text-[11px] text-slate-500 mt-1 leading-tight">Fazer prova do DETRAN (18+)</p>
+</div>
+<a class="inline-flex items-center gap-1 text-[11px] font-bold mt-2.5" href="#cnh" style="color: #0284c7;">
+            Tirar CNH <span class="text-xs">→</span>
+</a>
+</article>
+<!-- 2. Marketplace Online -->
+<article class="lego-card rounded-2xl p-3 flex flex-col justify-between" data-purpose="card-marketplace">
+<div>
+<div class="w-9 h-9 rounded-xl flex items-center justify-center text-lg mb-2" style="background-color: #ecfdf5; border: 1px solid #a7f3d0;">
+              🛍️
+            </div>
+<h4 class="text-xs font-bold text-slate-800 leading-snug">Marketplace Online</h4>
+<p class="text-[11px] text-slate-500 mt-1 leading-tight">Eletrônicos, casa, motos e carros (18+)</p>
+</div>
+<a class="inline-flex items-center gap-1 text-[11px] font-bold mt-2.5" href="#marketplace" style="color: #059669;">
+            Comprar Agora <span class="text-xs">→</span>
+</a>
+</article>
+<!-- 3. Tinder Tropical (Rosa/Pink Seguro - Sem Laranja) -->
+<article class="lego-card rounded-2xl p-3 flex flex-col justify-between" data-purpose="card-tinder">
+<div>
+<div class="w-9 h-9 rounded-xl flex items-center justify-center text-lg mb-2" style="background-color: #fdf2f8; border: 1px solid #fbcfe8;">
+              🔥
+            </div>
+<h4 class="text-xs font-bold text-slate-800 leading-snug">Tinder Tropical</h4>
+<p class="text-[11px] text-slate-500 mt-1 leading-tight">App de namoro para encontrar parceiros(as) (18+)</p>
+</div>
+<a class="inline-flex items-center gap-1 text-[11px] font-bold mt-2.5" href="#tinder" style="color: #db2777;">
+            Dar Match <span class="text-xs">→</span>
+</a>
+</article>
+<!-- 4. Identidade & Transição -->
+<article class="lego-card rounded-2xl p-3 flex flex-col justify-between" data-purpose="card-identidade">
+<div>
+<div class="w-9 h-9 rounded-xl flex items-center justify-center text-lg mb-2" style="background-color: #f5f3ff; border: 1px solid #ddd6fe;">
+              ⚧️
+            </div>
+<h4 class="text-xs font-bold text-slate-800 leading-snug">Identidade &amp; Transição</h4>
+<p class="text-[11px] text-slate-500 mt-1 leading-tight">Cirurgia plástica, transição &amp; orientação</p>
+</div>
+<a class="inline-flex items-center gap-1 text-[11px] font-bold mt-2.5" href="#identidade" style="color: #7c3aed;">
+            Personalizar <span class="text-xs">→</span>
+</a>
+</article>
+<!-- 5. Salão & SPA Tropical -->
+<article class="lego-card rounded-2xl p-3 flex flex-col justify-between" data-purpose="card-salao">
+<div>
+<div class="w-9 h-9 rounded-xl flex items-center justify-center text-lg mb-2" style="background-color: #fff1f2; border: 1px solid #fecdd3;">
+              💇‍♀️
+            </div>
+<h4 class="text-xs font-bold text-slate-800 leading-snug">Salão &amp; SPA Tropical</h4>
+<p class="text-[11px] text-slate-500 mt-1 leading-tight">Cortes, sobrancelhas, unhas &amp; visual</p>
+</div>
+<a class="inline-flex items-center gap-1 text-[11px] font-bold mt-2.5" href="#salao" style="color: #e11d48;">
+            Cuidar do Look <span class="text-xs">→</span>
+</a>
+</article>
+<!-- 6. Negócios & Empresa -->
+<article class="lego-card rounded-2xl p-3 flex flex-col justify-between" data-purpose="card-negocios">
+<div>
+<div class="w-9 h-9 rounded-xl flex items-center justify-center text-lg mb-2" style="background-color: #ecfeff; border: 1px solid #a5f3fc;">
+              🏬
+            </div>
+<h4 class="text-xs font-bold text-slate-800 leading-snug">Negócios &amp; Empresa</h4>
+<p class="text-[11px] text-slate-500 mt-1 leading-tight">Criar empresa, contratar, abrir capital e franquiar</p>
+</div>
+<a class="inline-flex items-center gap-1 text-[11px] font-bold mt-2.5" href="#cnpj" style="color: #0891b2;">
+            Gestão CNPJ <span class="text-xs">→</span>
+</a>
+</article>
+<!-- 7. Agro & Fazenda -->
+<article class="lego-card rounded-2xl p-3 flex flex-col justify-between" data-purpose="card-agro">
+<div>
+<div class="w-9 h-9 rounded-xl flex items-center justify-center text-lg mb-2" style="background-color: #f0fdf4; border: 1px solid #bbf7d0;">
+              🚜
+            </div>
+<h4 class="text-xs font-bold text-slate-800 leading-snug">Agro &amp; Fazenda</h4>
+<p class="text-[11px] text-slate-500 mt-1 leading-tight">Arrendar terra, plantar e colher</p>
+</div>
+<a class="inline-flex items-center gap-1 text-[11px] font-bold mt-2.5" href="#agro" style="color: #16a34a;">
+            Gerir Safra <span class="text-xs">→</span>
+</a>
+</article>
+<!-- 8. Vida no Exterior -->
+<article class="lego-card rounded-2xl p-3 flex flex-col justify-between" data-purpose="card-exterior">
+<div>
+<div class="w-9 h-9 rounded-xl flex items-center justify-center text-lg mb-2" style="background-color: #eff6ff; border: 1px solid #bfdbfe;">
+              ✈️
+            </div>
+<h4 class="text-xs font-bold text-slate-800 leading-snug">Vida no Exterior</h4>
+<p class="text-[11px] text-slate-500 mt-1 leading-tight">Mudar de país, visto &amp; trabalho</p>
+</div>
+<a class="inline-flex items-center gap-1 text-[11px] font-bold mt-2.5" href="#exterior" style="color: #2563eb;">
+            Explorar Mundo <span class="text-xs">→</span>
+</a>
+</article>
+<!-- 9. Posto de Saúde & Planos -->
+<article class="lego-card rounded-2xl p-3 flex flex-col justify-between" data-purpose="card-saude">
+<div>
+<div class="w-9 h-9 rounded-xl flex items-center justify-center text-lg mb-2" style="background-color: #ecfdf5; border: 1px solid #a7f3d0;">
+              🏥
+            </div>
+<h4 class="text-xs font-bold text-slate-800 leading-snug">Posto de Saúde &amp; Planos</h4>
+<p class="text-[11px] text-slate-500 mt-1 leading-tight">SUS, Plano Empresa, Particular &amp; Médicos</p>
+</div>
+<a class="inline-flex items-center gap-1 text-[11px] font-bold mt-2.5" href="#saude" style="color: #059669;">
+            Cuidar da Saúde <span class="text-xs">→</span>
+</a>
+</article>
+<!-- 10. Viagens & Voos -->
+<article class="lego-card rounded-2xl p-3 flex flex-col justify-between" data-purpose="card-viagens">
+<div>
+<div class="w-9 h-9 rounded-xl flex items-center justify-center text-lg mb-2" style="background-color: #f0f9ff; border: 1px solid #bae6fd;">
+              🛫
+            </div>
+<h4 class="text-xs font-bold text-slate-800 leading-snug">Viagens &amp; Voos</h4>
+<p class="text-[11px] text-slate-500 mt-1 leading-tight">Classe Executiva &amp; Acompanhantes</p>
+</div>
+<a class="inline-flex items-center gap-1 text-[11px] font-bold mt-2.5" href="#viagens" style="color: #0284c7;">
+            Agendar Viagem <span class="text-xs">→</span>
+</a>
+</article>
+<!-- 11. Fertilidade & Adoção -->
+<article class="lego-card rounded-2xl p-3 flex flex-col justify-between" data-purpose="card-fertilidade">
+<div>
+<div class="w-9 h-9 rounded-xl flex items-center justify-center text-lg mb-2" style="background-color: #f0fdfa; border: 1px solid #99f6e4;">
+              🍼
+            </div>
+<h4 class="text-xs font-bold text-slate-800 leading-snug">Fertilidade &amp; Adoção</h4>
+<p class="text-[11px] text-slate-500 mt-1 leading-tight">Adoção legal, FIV, Vasectomia &amp; Doação</p>
+</div>
+<a class="inline-flex items-center gap-1 text-[11px] font-bold mt-2.5" href="#fertilidade" style="color: #0d9488;">
+            Planejamento <span class="text-xs">→</span>
+</a>
+</article>
+<!-- 12. Fama & Holofotes -->
+<article class="lego-card rounded-2xl p-3 flex flex-col justify-between" data-purpose="card-fama">
+<div>
+<div class="w-9 h-9 rounded-xl flex items-center justify-center text-lg mb-2" style="background-color: #fefce8; border: 1px solid #fef08a;">
+              ✨
+            </div>
+<h4 class="text-xs font-bold text-slate-800 leading-snug">Fama &amp; Holofotes</h4>
+<p class="text-[11px] text-slate-500 mt-1 leading-tight">Reality Shows, TV &amp; Podcasting</p>
+</div>
+<a class="inline-flex items-center gap-1 text-[11px] font-bold mt-2.5" href="#fama" style="color: #ca8a04;">
+            Brilhar na TV <span class="text-xs">→</span>
+</a>
+</article>
+<!-- 13. Crime & Malandragem -->
+<article class="lego-card rounded-2xl p-3 flex flex-col justify-between" data-purpose="card-crime">
+<div>
+<div class="w-9 h-9 rounded-xl flex items-center justify-center text-lg mb-2" style="background-color: #f1f5f9; border: 1px solid #cbd5e1;">
+              🎲
+            </div>
+<h4 class="text-xs font-bold text-slate-800 leading-snug">Crime &amp; Malandragem</h4>
+<p class="text-[11px] text-slate-500 mt-1 leading-tight">Bilhete premiado, Racha &amp; Golpes</p>
+</div>
+<a class="inline-flex items-center gap-1 text-[11px] font-bold mt-2.5" href="#crime" style="color: #64748b;">
+            Arriscar Vida <span class="text-xs">→</span>
+</a>
+</article>
+<!-- 14. Rescisão Trabalhista -->
+<article class="lego-card rounded-2xl p-3 flex flex-col justify-between" data-purpose="card-rescisao">
+<div>
+<div class="w-9 h-9 rounded-xl flex items-center justify-center text-lg mb-2" style="background-color: #fffbeb; border: 1px solid #fde68a;">
+              📜
+            </div>
+<h4 class="text-xs font-bold text-slate-800 leading-snug">Rescisão Trabalhista</h4>
+<p class="text-[11px] text-slate-500 mt-1 leading-tight">Pedir demissão ou acerto com 40% FGTS</p>
+</div>
+<a class="inline-flex items-center gap-1 text-[11px] font-bold mt-2.5" href="#rescisao" style="color: #d97706;">
+            Calcular Acerto <span class="text-xs">→</span>
+</a>
+</article>
+<!-- 15. Jogo do Bicho -->
+<article class="lego-card rounded-2xl p-3 flex flex-col justify-between" data-purpose="card-bicho">
+<div>
+<div class="w-9 h-9 rounded-xl flex items-center justify-center text-lg mb-2" style="background-color: #fdf2f8; border: 1px solid #fbcfe8;">
+              🦩
+            </div>
+<h4 class="text-xs font-bold text-slate-800 leading-snug">Jogo do Bicho</h4>
+<p class="text-[11px] text-slate-500 mt-1 leading-tight">Aposte no bicho e ganhe 18x</p>
+</div>
+<a class="inline-flex items-center gap-1 text-[11px] font-bold mt-2.5" href="#bicho" style="color: #be185d;">
+            Apostar Bicho <span class="text-xs">→</span>
+</a>
+</article>
+<!-- 16. Tigrinho da Sorte -->
+<article class="lego-card rounded-2xl p-3 flex flex-col justify-between" data-purpose="card-tigrinho">
+<div>
+<div class="w-9 h-9 rounded-xl flex items-center justify-center text-lg mb-2" style="background-color: #fefce8; border: 1px solid #fef08a;">
+              🐯
+            </div>
+<h4 class="text-xs font-bold text-slate-800 leading-snug">Tigrinho da Sorte</h4>
+<p class="text-[11px] text-slate-500 mt-1 leading-tight">Gire a roleta e solte a carta</p>
+</div>
+<a class="inline-flex items-center gap-1 text-[11px] font-bold mt-2.5" href="#tigrinho" style="color: #b45309;">
+            Girar Roleta <span class="text-xs">→</span>
+</a>
+</article>
+<!-- 17. Redes Sociais -->
+<article class="lego-card rounded-2xl p-3 flex flex-col justify-between" data-purpose="card-redes">
+<div>
+<div class="w-9 h-9 rounded-xl flex items-center justify-center text-lg mb-2" style="background-color: #e0f2fe; border: 1px solid #bae6fd;">
+              📸
+            </div>
+<h4 class="text-xs font-bold text-slate-800 leading-snug">Redes Sociais</h4>
+<p class="text-[11px] text-slate-500 mt-1 leading-tight">Influenciador (120 seg.)</p>
+</div>
+<a class="inline-flex items-center gap-1 text-[11px] font-bold mt-2.5" href="#redes" style="color: #0284c7;">
+            Ver Perfil <span class="text-xs">→</span>
+</a>
+</article>
+<!-- 18. Testamento & Tempo -->
+<article class="lego-card rounded-2xl p-3 flex flex-col justify-between" data-purpose="card-tempo">
+<div>
+<div class="w-9 h-9 rounded-xl flex items-center justify-center text-lg mb-2" style="background-color: #f0fdf4; border: 1px solid #bbf7d0;">
+              ⏳
+            </div>
+<h4 class="text-xs font-bold text-slate-800 leading-snug">Testamento &amp; Tempo</h4>
+<p class="text-[11px] text-slate-500 mt-1 leading-tight">Herança e Voltar no Tempo</p>
+</div>
+<a class="inline-flex items-center gap-1 text-[11px] font-bold mt-2.5" href="#tempo" style="color: #15803d;">
+            Configurar <span class="text-xs">→</span>
+</a>
+</article>
+<!-- 19. Opções & Saves (Card Largo / Ocupando 2 colunas para fechar harmoniosamente) -->
+<article class="lego-card col-span-2 rounded-2xl p-3.5 flex items-center justify-between" data-purpose="card-saves">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl flex items-center justify-center text-xl flex-shrink-0" style="background-color: #f1f5f9; border: 1px solid #cbd5e1;">
+              ⚙️
+            </div>
+<div>
+<h4 class="text-xs font-bold text-slate-800">Opções &amp; Saves</h4>
+<p class="text-[11px] text-slate-500 mt-0.5">Salvar Progresso, Tela Inicial &amp; Som</p>
+</div>
+</div>
+<a class="inline-flex items-center gap-1 text-xs font-bold px-3 py-1.5 rounded-xl text-slate-700" href="#saves" style="background-color: #f1f5f9; border: 1px solid #cbd5e1;">
+            Acessar <span class="text-xs">→</span>
+</a>
+</article>
+</section>
+<!-- END: ActivitiesAndBusinessGrid -->
+</main>
+<!-- BEGIN: BottomTactileNavBar -->
+<!-- Barra de Navegação Inferior Estilo App Mobile iOS -->
+<footer class="fixed bottom-0 max-w-md w-full px-3 py-2 z-50 backdrop-blur-lg flex items-center justify-around" data-purpose="bottom-navigation-bar" style="background-color: rgba(255, 255, 255, 0.96); border-top: 1.5px solid #e2ded4; box-shadow: 0 -4px 12px rgba(0,0,0,0.04);">
+<!-- Home / Início -->
+<button class="flex flex-col items-center justify-center py-1 px-2 text-slate-400 hover:text-slate-600 transition">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+<span class="text-[10px] font-semibold mt-1">Início</span>
+</button>
+<!-- Carreira -->
+<button class="flex flex-col items-center justify-center py-1 px-2 text-slate-400 hover:text-slate-600 transition">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+<span class="text-[10px] font-semibold mt-1">Carreira</span>
+</button>
+<!-- Banco -->
+<button class="flex flex-col items-center justify-center py-1 px-2 text-slate-400 hover:text-slate-600 transition">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+<span class="text-[10px] font-semibold mt-1">Banco</span>
+</button>
+<!-- Bens & Eu -->
+<button class="flex flex-col items-center justify-center py-1 px-2 text-slate-400 hover:text-slate-600 transition">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+<span class="text-[10px] font-semibold mt-1">Bens</span>
+</button>
+<!-- Mais (Aba Ativa com Esmeralda Blindado) -->
+<button class="flex flex-col items-center justify-center py-1 px-2 transition font-bold" style="color: #0ca768;">
+<div class="relative">
+<svg class="w-5 h-5" fill="currentColor" viewbox="0 0 20 20"><path clip-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" fill-rule="evenodd"></path></svg>
+<span class="absolute -top-1 -right-1 w-2 h-2 rounded-full" style="background-color: #10b981;"></span>
+</div>
+<span class="text-[10px] font-black mt-1">Mais</span>
+</button>
+</footer>
+<!-- END: BottomTactileNavBar -->
+</div>
+<!-- BEGIN: InteractiveScripts -->
+<script data-purpose="interaction-feedback">
+    // Feedback tátil simples para os cartões e botões
+    document.querySelectorAll('.lego-card, button').forEach(el => {
+      el.addEventListener('touchstart', () => {}, {passive: true});
+    });
+  </script>
+<!-- END: InteractiveScripts -->
+</body></html>

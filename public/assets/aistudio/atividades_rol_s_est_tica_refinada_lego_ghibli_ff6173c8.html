@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+<title>Vida Real Brasil - Atividades &amp; Rolês</title>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Plus Jakarta Sans & Fredoka -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Configuration -->
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            display: ['"Fredoka"', 'sans-serif']
+          },
+          colors: {
+            cream: {
+              50: '#FDFBF7',
+              100: '#F7F4EB',
+              200: '#EFE9DA',
+            },
+            toy: {
+              yellow: '#FFC837',
+              amber: '#FF8008',
+              emerald: '#059669',
+              emeraldDark: '#047857',
+              blue: '#2563EB',
+              coral: '#FF5E62',
+              card: '#FFFFFF',
+              dark: '#1E293B',
+              muted: '#64748B'
+            }
+          },
+          boxShadow: {
+            'clay': '0 8px 16px -4px rgba(148, 163, 184, 0.18), 0 2px 4px -1px rgba(148, 163, 184, 0.1)',
+            'clay-btn': '0 4px 0px 0px #CBD5E1, 0 6px 10px rgba(0,0,0,0.06)',
+            'clay-active': '0 1px 0px 0px #CBD5E1, 0 2px 4px rgba(0,0,0,0.04)',
+            'status': 'inset 0 2px 4px rgba(0,0,0,0.06)'
+          }
+        }
+      }
+    }
+  </script>
+<!-- BEGIN: Custom Visual Effects Styles -->
+<style data-purpose="custom-theme-styles">
+    /* Native Mobile App Touch & Scroll Defaults */
+    body {
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+      background-color: #F8F5EE;
+    }
+    
+    /* Custom Tactile Button Depress Effect */
+    .btn-tactile {
+      transition: all 0.12s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .btn-tactile:active {
+      transform: translateY(3px);
+      box-shadow: 0 1px 0px 0px #CBD5E1, 0 2px 4px rgba(0,0,0,0.04) !important;
+    }
+
+    /* Hide standard scrollbars for sleek chip filters */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    /* Subtle embossed badge feel */
+    .toy-badge {
+      box-shadow: inset 0 1px 1px rgba(255,255,255,0.7), 0 1px 2px rgba(0,0,0,0.03);
+    }
+  </style>
+<!-- END: Custom Visual Effects Styles -->
+</head>
+<body class="text-toy-dark antialiased font-sans flex justify-center min-h-screen pb-24 selection:bg-emerald-100">
+<!-- Mobile Screen Container (Emulating iOS Modern Canvas) -->
+<div class="w-full max-w-[440px] flex flex-col min-h-screen bg-[#F8F5EE] relative shadow-2xl overflow-x-hidden">
+<!-- BEGIN: TopBar Profile & Stats Header -->
+<header class="bg-white/90 backdrop-blur-md px-4 pt-4 pb-3 border-b border-[#EFE9DC] sticky top-0 z-30 shadow-sm" data-purpose="user-header">
+<!-- User Info Row -->
+<div class="flex items-center justify-between mb-3">
+<div class="flex items-center space-x-3">
+<!-- LEGO Style Avatar -->
+<div class="relative w-12 h-12 rounded-2xl bg-amber-300 border-2 border-amber-400 p-0.5 shadow-sm flex items-center justify-center shrink-0">
+<!-- SVG Lego Face -->
+<svg class="w-10 h-10 drop-shadow-sm" viewbox="0 0 100 100">
+<rect fill="#EAB308" height="15" rx="5" width="30" x="35" y="10"></rect>
+<circle cx="50" cy="55" fill="#FACC15" r="40" stroke="#CA8A04" stroke-width="3"></circle>
+<!-- Hair block -->
+<path d="M18 45 Q50 15 82 45 Q70 25 50 25 Q30 25 18 45 Z" fill="#78350F"></path>
+<!-- Eyes -->
+<circle cx="38" cy="52" fill="#1E293B" r="4.5"></circle>
+<circle cx="62" cy="52" fill="#1E293B" r="4.5"></circle>
+<circle cx="39.5" cy="50.5" fill="#FFFFFF" r="1.5"></circle>
+<circle cx="63.5" cy="50.5" fill="#FFFFFF" r="1.5"></circle>
+<!-- Rosy Cheeks -->
+<circle cx="32" cy="62" fill="#F87171" opacity="0.5" r="4"></circle>
+<circle cx="68" cy="62" fill="#F87171" opacity="0.5" r="4"></circle>
+<!-- Lego Smirk -->
+<path d="M42 63 Q50 72 58 63" fill="none" stroke="#1E293B" stroke-linecap="round" stroke-width="3"></path>
+</svg>
+<div class="absolute -bottom-1 -right-1 bg-emerald-500 w-4 h-4 rounded-full border-2 border-white flex items-center justify-center">
+<span class="w-1.5 h-1.5 rounded-full bg-white"></span>
+</div>
+</div>
+<!-- Name, Age, Location -->
+<div>
+<div class="flex items-center space-x-1.5">
+<h1 class="font-display font-bold text-base text-slate-800 leading-tight">Lucas Silva</h1>
+<span class="text-xs px-1.5 py-0.5 rounded-full bg-amber-100 text-amber-800 font-semibold">29a</span>
+</div>
+<p class="text-[11px] text-slate-500 font-medium flex items-center space-x-1 mt-0.5">
+<svg class="w-3 h-3 text-slate-400 inline" fill="currentColor" viewbox="0 0 20 20">
+<path clip-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" fill-rule="evenodd"></path>
+</svg>
+<span>São Paulo, SP</span>
+<span class="text-slate-300">•</span>
+<span class="font-bold text-slate-600">2055</span>
+</p>
+</div>
+</div>
+<!-- Serasa Score Tag & Refresh -->
+<div class="flex items-center space-x-1.5">
+<div class="bg-emerald-50 border border-emerald-200/80 px-2.5 py-1 rounded-full flex items-center space-x-1.5 shadow-sm">
+<svg class="w-3.5 h-3.5 text-emerald-600" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24">
+<path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-xs font-bold text-emerald-700">Score: 1000</span>
+</div>
+<button aria-label="Atualizar dados" class="w-7 h-7 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 hover:bg-slate-200 active:scale-95 transition">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+</div>
+</div>
+<!-- Career & Salary Mini Banner -->
+<div class="bg-gradient-to-r from-blue-50 to-indigo-50/70 border border-blue-100 rounded-xl px-3 py-1.5 flex items-center justify-between">
+<div class="flex items-center space-x-1.5">
+<span class="text-xs">💼</span>
+<span class="text-[11px] font-bold tracking-wider uppercase text-blue-700 truncate max-w-[190px]">Sommelier &amp; Gestor de Adeg...</span>
+</div>
+<div class="text-[12px] font-bold text-slate-800">
+          R$ 22.394<span class="text-[10px] font-medium text-slate-500">/mês</span>
+</div>
+</div>
+<!-- Quick Nav Strip -->
+<nav class="flex items-center justify-between mt-3 pt-2 border-t border-slate-100 text-[10px] font-medium text-slate-500">
+<button class="flex flex-col items-center hover:text-emerald-700">
+<span class="text-xs mb-0.5">👤</span>Início
+        </button>
+<button class="flex flex-col items-center hover:text-emerald-700">
+<span class="text-xs mb-0.5">💼</span>Carreira
+        </button>
+<button class="flex flex-col items-center hover:text-emerald-700">
+<span class="text-xs mb-0.5">💳</span>Banco
+        </button>
+<button class="flex flex-col items-center hover:text-emerald-700">
+<span class="text-xs mb-0.5">🏠</span>Bens &amp; Eu
+        </button>
+<button class="flex flex-col items-center hover:text-emerald-700">
+<span class="text-xs mb-0.5">👥</span>Família
+        </button>
+<button class="flex flex-col items-center text-emerald-800 font-bold relative">
+<span class="text-xs mb-0.5">🌴</span>Atividades
+          <div class="w-5 h-0.5 bg-emerald-600 rounded-full mt-0.5"></div>
+</button>
+<button class="flex flex-col items-center hover:text-emerald-700">
+<span class="text-xs mb-0.5">⚡</span>Mais
+        </button>
+</nav>
+</header>
+<!-- END: TopBar Profile & Stats Header -->
+<!-- BEGIN: Character Core Attributes (Vitals) -->
+<section class="px-4 py-3 grid grid-cols-2 gap-2.5" data-purpose="vitals-dashboard">
+<!-- Saúde (Health) -->
+<div class="bg-white rounded-2xl p-2.5 border border-[#E9E4D6] shadow-clay flex flex-col justify-between">
+<div class="flex items-center justify-between mb-1.5">
+<div class="flex items-center space-x-1.5">
+<div class="w-6 h-6 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center text-xs">
+              💚
+            </div>
+<span class="font-display font-semibold text-xs text-slate-700">Saúde</span>
+</div>
+<span class="font-bold text-xs text-emerald-700">93%</span>
+</div>
+<!-- Progress Bar -->
+<div class="w-full h-2.5 bg-slate-100 rounded-full overflow-hidden p-0.5 border border-slate-200/50">
+<div class="h-full bg-gradient-to-r from-emerald-400 to-emerald-600 rounded-full" style="width: 93%;"></div>
+</div>
+</div>
+<!-- Felicidade (Happiness) -->
+<div class="bg-white rounded-2xl p-2.5 border border-[#E9E4D6] shadow-clay flex flex-col justify-between">
+<div class="flex items-center justify-between mb-1.5">
+<div class="flex items-center space-x-1.5">
+<div class="w-6 h-6 rounded-lg bg-amber-100 text-amber-600 flex items-center justify-center text-xs">
+              ☀️
+            </div>
+<span class="font-display font-semibold text-xs text-slate-700">Felicidade</span>
+</div>
+<span class="font-bold text-xs text-amber-700">100%</span>
+</div>
+<!-- Progress Bar -->
+<div class="w-full h-2.5 bg-slate-100 rounded-full overflow-hidden p-0.5 border border-slate-200/50">
+<div class="h-full bg-gradient-to-r from-amber-400 to-amber-500 rounded-full" style="width: 100%;"></div>
+</div>
+</div>
+<!-- Intelecto (Intellect) -->
+<div class="bg-white rounded-2xl p-2.5 border border-[#E9E4D6] shadow-clay flex flex-col justify-between">
+<div class="flex items-center justify-between mb-1.5">
+<div class="flex items-center space-x-1.5">
+<div class="w-6 h-6 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center text-xs">
+              💡
+            </div>
+<span class="font-display font-semibold text-xs text-slate-700">Intelecto</span>
+</div>
+<span class="font-bold text-xs text-blue-700">100%</span>
+</div>
+<!-- Progress Bar -->
+<div class="w-full h-2.5 bg-slate-100 rounded-full overflow-hidden p-0.5 border border-slate-200/50">
+<div class="h-full bg-gradient-to-r from-blue-400 to-blue-600 rounded-full" style="width: 100%;"></div>
+</div>
+</div>
+<!-- Energia (Energy) -->
+<div class="bg-white rounded-2xl p-2.5 border border-[#E9E4D6] shadow-clay flex flex-col justify-between">
+<div class="flex items-center justify-between mb-1.5">
+<div class="flex items-center space-x-1.5">
+<div class="w-6 h-6 rounded-lg bg-rose-100 text-rose-600 flex items-center justify-center text-xs">
+              ⚡
+            </div>
+<span class="font-display font-semibold text-xs text-slate-700">Energia</span>
+</div>
+<span class="font-bold text-xs text-rose-600">0%</span>
+</div>
+<!-- Progress Bar -->
+<div class="w-full h-2.5 bg-slate-100 rounded-full overflow-hidden p-0.5 border border-slate-200/50">
+<div class="h-full bg-rose-500 rounded-full" style="width: 4%;"></div>
+</div>
+</div>
+</section>
+<!-- END: Character Core Attributes -->
+<!-- BEGIN: Activity Filter Tabs -->
+<section class="px-4 pt-1 pb-2">
+<div class="flex items-center space-x-2 overflow-x-auto no-scrollbar py-1 text-xs">
+<button class="shrink-0 px-4 py-1.5 rounded-full font-bold bg-white text-emerald-900 border-2 border-emerald-600 shadow-sm transition">
+          Todos os Rolês
+        </button>
+<button class="shrink-0 px-3.5 py-1.5 rounded-full font-medium bg-white/70 text-slate-600 border border-slate-200/80 hover:bg-white transition">
+          Lazer &amp; Cultura
+        </button>
+<button class="shrink-0 px-3.5 py-1.5 rounded-full font-medium bg-white/70 text-slate-600 border border-slate-200/80 hover:bg-white transition">
+          Saúde &amp; Mente
+        </button>
+<button class="shrink-0 px-3.5 py-1.5 rounded-full font-medium bg-white/70 text-slate-600 border border-slate-200/80 hover:bg-white transition">
+          Amigos &amp; Farra
+        </button>
+</div>
+</section>
+<!-- END: Activity Filter Tabs -->
+<!-- BEGIN: Activities Card List -->
+<main class="flex-1 px-4 py-2 space-y-3" data-purpose="activities-catalog">
+<!-- ITEM 1: Churrasco de Domingo -->
+<article class="bg-white rounded-3xl p-3.5 border border-[#EAE4D7] shadow-clay flex flex-col justify-between">
+<div class="flex items-start justify-between gap-3">
+<div class="flex items-start space-x-3">
+<!-- Toy Icon Container: Churrasco -->
+<div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-rose-50 to-orange-50 border border-rose-200 flex items-center justify-center shrink-0 shadow-sm">
+<svg class="w-7 h-7 drop-shadow-sm" viewbox="0 0 36 36">
+<!-- Steak SVG -->
+<path d="M26 10 C21 5 13 8 9 13 C4 18 5 27 12 30 C19 33 30 30 32 23 C34 17 31 15 26 10 Z" fill="#EF4444"></path>
+<path d="M24 13 C21 9 15 11 12 15 C8 19 9 25 14 27 C19 29 27 27 28 22 C29 18 27 16 24 13 Z" fill="#DC2626"></path>
+<circle cx="16" cy="18" fill="#FFFFFF" opacity="0.9" r="4"></circle>
+<ellipse cx="23" cy="20" fill="#FCA5A5" opacity="0.6" rx="3" ry="1.5" transform="rotate(-20 23 20)"></ellipse>
+</svg>
+</div>
+<div>
+<h2 class="font-display font-bold text-sm text-slate-900 leading-snug">Churrasco de Domingo com Pagode</h2>
+<p class="text-[11.5px] text-slate-500 mt-0.5 leading-tight font-normal">
+                Picanha fatiada, vinagrete da mãe, pão de alho crocante e roda de pagode na laje.
+              </p>
+</div>
+</div>
+<div class="text-right shrink-0">
+<span class="font-display font-bold text-sm text-slate-900">R$ 85</span>
+<span class="block text-[9.5px] text-slate-400 font-medium">por atividade</span>
+</div>
+</div>
+<!-- Badges & Action CTA -->
+<div class="mt-3 pt-2 border-t border-slate-100 flex items-center justify-between">
+<div class="flex flex-wrap items-center gap-1.5">
+<span class="toy-badge bg-amber-50 text-amber-700 border border-amber-200/70 text-[10px] font-bold px-2 py-0.5 rounded-lg">+15% Felicidade</span>
+<span class="toy-badge bg-rose-50 text-rose-600 border border-rose-200/70 text-[10px] font-bold px-2 py-0.5 rounded-lg">-2% Saúde</span>
+<span class="toy-badge bg-rose-50 text-rose-600 border border-rose-200/70 text-[10px] font-bold px-2 py-0.5 rounded-lg">-5% Energia</span>
+</div>
+<button class="btn-tactile shrink-0 px-3.5 py-1.5 rounded-xl bg-white border border-slate-300 font-display font-bold text-xs text-slate-800 shadow-clay-btn hover:bg-slate-50">
+            Fazer Rolê
+          </button>
+</div>
+</article>
+<!-- ITEM 2: Praia & Biscoito Globo -->
+<article class="bg-white rounded-3xl p-3.5 border border-[#EAE4D7] shadow-clay flex flex-col justify-between">
+<div class="flex items-start justify-between gap-3">
+<div class="flex items-start space-x-3">
+<!-- Toy Icon Container: Praia -->
+<div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-sky-50 to-teal-50 border border-sky-200 flex items-center justify-center shrink-0 shadow-sm">
+<svg class="w-7 h-7 drop-shadow-sm" viewbox="0 0 36 36">
+<!-- Umbrella & Coconut Beach -->
+<path d="M18 19 L18 31" stroke="#94A3B8" stroke-linecap="round" stroke-width="2"></path>
+<path d="M7 19 C7 11 29 11 29 19 Z" fill="#F43F5E"></path>
+<path d="M12 19 C12 13 24 13 24 19 Z" fill="#FFFFFF"></path>
+<path d="M16 19 C16 15 20 15 20 19 Z" fill="#0EA5E9"></path>
+<circle cx="28" cy="8" fill="#FBBF24" r="4.5"></circle>
+<path d="M4 31 Q18 29 32 31" stroke="#FDE047" stroke-linecap="round" stroke-width="3"></path>
+</svg>
+</div>
+<div>
+<h2 class="font-display font-bold text-sm text-slate-900 leading-snug">Dia de Praia com Água de Coco &amp; Biscoito Globo</h2>
+<p class="text-[11.5px] text-slate-500 mt-0.5 leading-tight font-normal">
+                Mergulho no mar, brisa litorânea, mate bem gelado e sol para renovar o bronze.
+              </p>
+</div>
+</div>
+<div class="text-right shrink-0">
+<span class="font-display font-bold text-sm text-slate-900">R$ 50</span>
+<span class="block text-[9.5px] text-slate-400 font-medium">por atividade</span>
+</div>
+</div>
+<div class="mt-3 pt-2 border-t border-slate-100 flex items-center justify-between">
+<div class="flex flex-wrap items-center gap-1.5">
+<span class="toy-badge bg-amber-50 text-amber-700 border border-amber-200/70 text-[10px] font-bold px-2 py-0.5 rounded-lg">+18% Felicidade</span>
+<span class="toy-badge bg-emerald-50 text-emerald-700 border border-emerald-200/70 text-[10px] font-bold px-2 py-0.5 rounded-lg">+8% Saúde</span>
+<span class="toy-badge bg-emerald-50 text-emerald-700 border border-emerald-200/70 text-[10px] font-bold px-2 py-0.5 rounded-lg">+10% Energia</span>
+</div>
+<button class="btn-tactile shrink-0 px-3.5 py-1.5 rounded-xl bg-white border border-slate-300 font-display font-bold text-xs text-slate-800 shadow-clay-btn hover:bg-slate-50">
+            Fazer Rolê
+          </button>
+</div>
+</article>
+<!-- ITEM 3: Rodízio de Pizza -->
+<article class="bg-white rounded-3xl p-3.5 border border-[#EAE4D7] shadow-clay flex flex-col justify-between">
+<div class="flex items-start justify-between gap-3">
+<div class="flex items-start space-x-3">
+<!-- Toy Icon Container: Pizza -->
+<div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-amber-50 to-yellow-50 border border-amber-200 flex items-center justify-center shrink-0 shadow-sm">
+<svg class="w-7 h-7 drop-shadow-sm" viewbox="0 0 36 36">
+<!-- Pizza Slice -->
+<path d="M7 8 C15 5 21 5 29 8 L18 31 Z" fill="#F59E0B"></path>
+<path d="M8 8 C15 5.5 21 5.5 28 8" stroke="#D97706" stroke-linecap="round" stroke-width="3"></path>
+<circle cx="17" cy="13" fill="#DC2626" r="2.5"></circle>
+<circle cx="21" cy="20" fill="#DC2626" r="2"></circle>
+<circle cx="15" cy="22" fill="#16A34A" r="1.5"></circle>
+</svg>
+</div>
+<div>
+<h2 class="font-display font-bold text-sm text-slate-900 leading-snug">Rodízio de Pizza com Amigos do Bairro</h2>
+<p class="text-[11.5px] text-slate-500 mt-0.5 leading-tight font-normal">
+                Pizza de calabresa, quatro queijos, frango com catupiry e rodízio doce de brigadeiro.
+              </p>
+</div>
+</div>
+<div class="text-right shrink-0">
+<span class="font-display font-bold text-sm text-slate-900">R$ 75</span>
+<span class="block text-[9.5px] text-slate-400 font-medium">por atividade</span>
+</div>
+</div>
+<div class="mt-3 pt-2 border-t border-slate-100 flex items-center justify-between">
+<div class="flex flex-wrap items-center gap-1.5">
+<span class="toy-badge bg-amber-50 text-amber-700 border border-amber-200/70 text-[10px] font-bold px-2 py-0.5 rounded-lg">+16% Felicidade</span>
+<span class="toy-badge bg-rose-50 text-rose-600 border border-rose-200/70 text-[10px] font-bold px-2 py-0.5 rounded-lg">-3% Saúde</span>
+<span class="toy-badge bg-emerald-50 text-emerald-700 border border-emerald-200/70 text-[10px] font-bold px-2 py-0.5 rounded-lg">+5% Energia</span>
+</div>
+<button class="btn-tactile shrink-0 px-3.5 py-1.5 rounded-xl bg-white border border-slate-300 font-display font-bold text-xs text-slate-800 shadow-clay-btn hover:bg-slate-50">
+            Fazer Rolê
+          </button>
+</div>
+</article>
+<!-- ITEM 4: Festival de Música / Lollapalooza -->
+<article class="bg-white rounded-3xl p-3.5 border border-[#EAE4D7] shadow-clay flex flex-col justify-between">
+<div class="flex items-start justify-between gap-3">
+<div class="flex items-start space-x-3">
+<!-- Toy Icon Container: Guitar / Festival -->
+<div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-purple-50 to-pink-50 border border-purple-200 flex items-center justify-center shrink-0 shadow-sm">
+<svg class="w-7 h-7 drop-shadow-sm" viewbox="0 0 36 36">
+<!-- Red Guitar -->
+<path d="M12 28 C9 26 8 21 11 18 C13 16 16 16 18 19 L27 8 L29 10 L20 21 C22 24 21 27 19 29 C16 31 13 30 12 28 Z" fill="#EF4444"></path>
+<line stroke="#94A3B8" stroke-linecap="round" stroke-width="2" x1="17" x2="28" y1="18" y2="7"></line>
+<circle cx="15" cy="23" fill="#FFFFFF" r="2"></circle>
+</svg>
+</div>
+<div>
+<h2 class="font-display font-bold text-sm text-slate-900 leading-snug">Festival de Música / Lollapalooza</h2>
+<p class="text-[11.5px] text-slate-500 mt-0.5 leading-tight font-normal">
+                Shows das bandas favoritas ao vivo, luzes de LED, food trucks e energia lá no alto.
+              </p>
+</div>
+</div>
+<div class="text-right shrink-0">
+<span class="font-display font-bold text-sm text-slate-900">R$ 450</span>
+<span class="block text-[9.5px] text-slate-400 font-medium">por atividade</span>
+</div>
+</div>
+<div class="mt-3 pt-2 border-t border-slate-100 flex items-center justify-between">
+<div class="flex flex-wrap items-center gap-1.5">
+<span class="toy-badge bg-amber-50 text-amber-700 border border-amber-200/70 text-[10px] font-bold px-2 py-0.5 rounded-lg">+35% Felicidade</span>
+<span class="toy-badge bg-rose-50 text-rose-600 border border-rose-200/70 text-[10px] font-bold px-2 py-0.5 rounded-lg">-5% Saúde</span>
+<span class="toy-badge bg-rose-50 text-rose-600 border border-rose-200/70 text-[10px] font-bold px-2 py-0.5 rounded-lg">-25% Energia</span>
+</div>
+<button class="btn-tactile shrink-0 px-3.5 py-1.5 rounded-xl bg-white border border-slate-300 font-display font-bold text-xs text-slate-800 shadow-clay-btn hover:bg-slate-50">
+            Fazer Rolê
+          </button>
+</div>
+</article>
+<!-- ITEM 5: Cinema 3D com Pipoca -->
+<article class="bg-white rounded-3xl p-3.5 border border-[#EAE4D7] shadow-clay flex flex-col justify-between">
+<div class="flex items-start justify-between gap-3">
+<div class="flex items-start space-x-3">
+<!-- Toy Icon Container: Popcorn -->
+<div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-yellow-50 to-red-50 border border-yellow-200 flex items-center justify-center shrink-0 shadow-sm">
+<svg class="w-7 h-7 drop-shadow-sm" viewbox="0 0 36 36">
+<!-- Popcorn Box -->
+<path d="M11 17 L13 31 L23 31 L25 17 Z" fill="#EF4444"></path>
+<line stroke="#FFFFFF" stroke-width="2" x1="15" x2="16" y1="17" y2="31"></line>
+<line stroke="#FFFFFF" stroke-width="2" x1="21" x2="20" y1="17" y2="31"></line>
+<circle cx="14" cy="14" fill="#FDE047" r="3.5"></circle>
+<circle cx="18" cy="12" fill="#FBBF24" r="4"></circle>
+<circle cx="22" cy="14" fill="#FDE047" r="3.5"></circle>
+</svg>
+</div>
+<div>
+<h2 class="font-display font-bold text-sm text-slate-900 leading-snug">Sessão de Cinema 3D com Pipoca Grande</h2>
+<p class="text-[11.5px] text-slate-500 mt-0.5 leading-tight font-normal">
+                Filme lançamento na tela gigante com pipoca na manteiga e refrigerante gelado.
+              </p>
+</div>
+</div>
+<div class="text-right shrink-0">
+<span class="font-display font-bold text-sm text-slate-900">R$ 60</span>
+<span class="block text-[9.5px] text-slate-400 font-medium">por atividade</span>
+</div>
+</div>
+<div class="mt-3 pt-2 border-t border-slate-100 flex items-center justify-between">
+<div class="flex flex-wrap items-center gap-1.5">
+<span class="toy-badge bg-amber-50 text-amber-700 border border-amber-200/70 text-[10px] font-bold px-2 py-0.5 rounded-lg">+12% Felicidade</span>
+<span class="toy-badge bg-emerald-50 text-emerald-700 border border-emerald-200/70 text-[10px] font-bold px-2 py-0.5 rounded-lg">+5% Energia</span>
+</div>
+<button class="btn-tactile shrink-0 px-3.5 py-1.5 rounded-xl bg-white border border-slate-300 font-display font-bold text-xs text-slate-800 shadow-clay-btn hover:bg-slate-50">
+            Fazer Rolê
+          </button>
+</div>
+</article>
+<!-- ITEM 6: Viagem Ilhabela -->
+<article class="bg-white rounded-3xl p-3.5 border border-[#EAE4D7] shadow-clay flex flex-col justify-between">
+<div class="flex items-start justify-between gap-3">
+<div class="flex items-start space-x-3">
+<!-- Toy Icon Container: Roadtrip / Car -->
+<div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-rose-50 to-orange-50 border border-rose-200 flex items-center justify-center shrink-0 shadow-sm">
+<svg class="w-7 h-7 drop-shadow-sm" viewbox="0 0 36 36">
+<!-- Red Vintage Car -->
+<path d="M8 21 C8 17 12 14 18 14 C24 14 28 17 28 21 L29 25 L7 25 Z" fill="#EF4444"></path>
+<path d="M12 17 Q18 15 24 17" stroke="#BAE6FD" stroke-linecap="round" stroke-width="3"></path>
+<circle cx="11" cy="26" fill="#334155" r="3"></circle>
+<circle cx="25" cy="26" fill="#334155" r="3"></circle>
+<circle cx="11" cy="26" fill="#E2E8F0" r="1.2"></circle>
+<circle cx="25" cy="26" fill="#E2E8F0" r="1.2"></circle>
+</svg>
+</div>
+<div>
+<h2 class="font-display font-bold text-sm text-slate-900 leading-snug">Viagem de Fim de Semana para Ilhabela</h2>
+<p class="text-[11.5px] text-slate-500 mt-0.5 leading-tight font-normal">
+                Estrada com os amigos, pousada charmosa no litoral, cachoeiras e pôr do sol inesquecível.
+              </p>
+</div>
+</div>
+<div class="text-right shrink-0">
+<span class="font-display font-bold text-sm text-slate-900">R$ 380</span>
+<span class="block text-[9.5px] text-slate-400 font-medium">por atividade</span>
+</div>
+</div>
+<div class="mt-3 pt-2 border-t border-slate-100 flex items-center justify-between">
+<div class="flex flex-wrap items-center gap-1.5">
+<span class="toy-badge bg-amber-50 text-amber-700 border border-amber-200/70 text-[10px] font-bold px-2 py-0.5 rounded-lg">+30% Felicidade</span>
+<span class="toy-badge bg-emerald-50 text-emerald-700 border border-emerald-200/70 text-[10px] font-bold px-2 py-0.5 rounded-lg">+12% Saúde</span>
+<span class="toy-badge bg-emerald-50 text-emerald-700 border border-emerald-200/70 text-[10px] font-bold px-2 py-0.5 rounded-lg">+15% Energia</span>
+</div>
+<button class="btn-tactile shrink-0 px-3.5 py-1.5 rounded-xl bg-white border border-slate-300 font-display font-bold text-xs text-slate-800 shadow-clay-btn hover:bg-slate-50">
+            Fazer Rolê
+          </button>
+</div>
+</article>
+<!-- ITEM 7: Noite de Videogame -->
+<article class="bg-white rounded-3xl p-3.5 border border-[#EAE4D7] shadow-clay flex flex-col justify-between">
+<div class="flex items-start justify-between gap-3">
+<div class="flex items-start space-x-3">
+<!-- Toy Icon Container: Controller -->
+<div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-slate-100 to-indigo-50 border border-slate-200 flex items-center justify-center shrink-0 shadow-sm">
+<svg class="w-7 h-7 drop-shadow-sm" viewbox="0 0 36 36">
+<!-- Gamepad -->
+<path d="M9 13 C12 12 24 12 27 13 C29 14 31 22 28 25 C26 27 23 23 21 21 L15 21 C13 23 10 27 8 25 C5 22 7 14 9 13 Z" fill="#64748B"></path>
+<circle cx="12" cy="18" fill="#38BDF8" r="1.5"></circle>
+<circle cx="24" cy="17" fill="#F43F5E" r="1.2"></circle>
+<circle cx="26" cy="19" fill="#10B981" r="1.2"></circle>
+</svg>
+</div>
+<div>
+<h2 class="font-display font-bold text-sm text-slate-900 leading-snug">Noite de Videogame &amp; Campeonato de Futebol</h2>
+<p class="text-[11.5px] text-slate-500 mt-0.5 leading-tight font-normal">
+                Partida disputada no PS5 com salgadinho e refrigerante, zombando do amigo que perdeu.
+              </p>
+</div>
+</div>
+<div class="text-right shrink-0">
+<span class="font-display font-bold text-sm text-slate-900">R$ 30</span>
+<span class="block text-[9.5px] text-slate-400 font-medium">por atividade</span>
+</div>
+</div>
+<div class="mt-3 pt-2 border-t border-slate-100 flex items-center justify-between">
+<div class="flex flex-wrap items-center gap-1.5">
+<span class="toy-badge bg-amber-50 text-amber-700 border border-amber-200/70 text-[10px] font-bold px-2 py-0.5 rounded-lg">+14% Felicidade</span>
+<span class="toy-badge bg-emerald-50 text-emerald-700 border border-emerald-200/70 text-[10px] font-bold px-2 py-0.5 rounded-lg">+5% Energia</span>
+</div>
+<button class="btn-tactile shrink-0 px-3.5 py-1.5 rounded-xl bg-white border border-slate-300 font-display font-bold text-xs text-slate-800 shadow-clay-btn hover:bg-slate-50">
+            Fazer Rolê
+          </button>
+</div>
+</article>
+<!-- ITEM 8: Treino Intenso Academia -->
+<article class="bg-white rounded-3xl p-3.5 border border-[#EAE4D7] shadow-clay flex flex-col justify-between">
+<div class="flex items-start justify-between gap-3">
+<div class="flex items-start space-x-3">
+<!-- Toy Icon Container: Gym / Weights -->
+<div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-amber-50 to-emerald-50 border border-emerald-200 flex items-center justify-center shrink-0 shadow-sm">
+<svg class="w-7 h-7 drop-shadow-sm" viewbox="0 0 36 36">
+<!-- Gym Figure / Dumbbell -->
+<circle cx="18" cy="11" fill="#FBBF24" r="3.5"></circle>
+<path d="M18 15 L18 25" stroke="#F59E0B" stroke-width="2"></path>
+<path d="M9 16 L27 16" stroke="#475569" stroke-linecap="round" stroke-width="3"></path>
+<rect fill="#1E293B" height="6" rx="1" width="3" x="7" y="13"></rect>
+<rect fill="#1E293B" height="6" rx="1" width="3" x="26" y="13"></rect>
+<path d="M13 29 L18 24 L23 29" stroke="#059669" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path>
+</svg>
+</div>
+<div>
+<h2 class="font-display font-bold text-sm text-slate-900 leading-snug">Treino Intenso na Academia</h2>
+<p class="text-[11.5px] text-slate-500 mt-0.5 leading-tight font-normal">
+                Sessão de musculação e esteira para fortalecer o coração e liberar endorfina pura.
+              </p>
+</div>
+</div>
+<div class="text-right shrink-0">
+<span class="font-display font-bold text-sm text-slate-900">R$ 90</span>
+<span class="block text-[9.5px] text-slate-400 font-medium">por atividade</span>
+</div>
+</div>
+<div class="mt-3 pt-2 border-t border-slate-100 flex items-center justify-between">
+<div class="flex flex-wrap items-center gap-1.5">
+<span class="toy-badge bg-amber-50 text-amber-700 border border-amber-200/70 text-[10px] font-bold px-2 py-0.5 rounded-lg">+6% Felicidade</span>
+<span class="toy-badge bg-emerald-50 text-emerald-700 border border-emerald-200/70 text-[10px] font-bold px-2 py-0.5 rounded-lg">+14% Saúde</span>
+<span class="toy-badge bg-emerald-50 text-emerald-700 border border-emerald-200/70 text-[10px] font-bold px-2 py-0.5 rounded-lg">+8% Energia</span>
+</div>
+<button class="btn-tactile shrink-0 px-3.5 py-1.5 rounded-xl bg-white border border-slate-300 font-display font-bold text-xs text-slate-800 shadow-clay-btn hover:bg-slate-50">
+            Fazer Rolê
+          </button>
+</div>
+</article>
+</main>
+<!-- END: Activities Card List -->
+<!-- BEGIN: Persistent Bottom Navigation Bar -->
+<footer class="fixed bottom-0 left-0 right-0 z-40 flex justify-center pointer-events-none" data-purpose="bottom-navigation">
+<div class="w-full max-w-[440px] bg-white/95 backdrop-blur-md border-t border-[#EAE3D2] px-3 pt-2 pb-5 flex items-center justify-around shadow-2xl pointer-events-auto">
+<!-- Tab: Início -->
+<button aria-label="Início" class="flex flex-col items-center text-slate-400 hover:text-slate-600 transition">
+<svg class="w-5 h-5 mb-0.5" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24">
+<path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-[10px] font-medium">Início</span>
+</button>
+<!-- Tab: Carreira -->
+<button aria-label="Carreira" class="flex flex-col items-center text-slate-400 hover:text-slate-600 transition">
+<svg class="w-5 h-5 mb-0.5" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24">
+<path d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-[10px] font-medium">Carreira</span>
+</button>
+<!-- Tab: Banco -->
+<button aria-label="Banco" class="flex flex-col items-center text-slate-400 hover:text-slate-600 transition">
+<svg class="w-5 h-5 mb-0.5" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24">
+<path d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-[10px] font-medium">Banco</span>
+</button>
+<!-- Tab: Atividades (Selected Spotlight) -->
+<button aria-label="Atividades" class="flex flex-col items-center -top-2 relative text-emerald-800">
+<div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-emerald-500 to-teal-400 border-2 border-white shadow-lg flex items-center justify-center text-white mb-0.5">
+<svg class="w-6 h-6" fill="currentColor" viewbox="0 0 24 24">
+<path d="M12 2C12.5 5 15 8 18 8C16 10 14 11 13 13C12 15 12 19 12 22C11 19 11 15 10 13C9 11 7 10 5 8C8 8 10.5 5 12 2Z"></path>
+<path d="M18 10C20 9 22 7 23 5C21 6 19 6 18 7" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+</svg>
+</div>
+<span class="text-[10.5px] font-bold text-emerald-900">Atividades</span>
+</button>
+<!-- Tab: Bens & Eu -->
+<button aria-label="Bens e Eu" class="flex flex-col items-center text-slate-400 hover:text-slate-600 transition">
+<svg class="w-5 h-5 mb-0.5" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24">
+<path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-[10px] font-medium">Bens &amp; Eu</span>
+</button>
+<!-- Tab: Família -->
+<button aria-label="Família" class="flex flex-col items-center text-slate-400 hover:text-slate-600 transition">
+<svg class="w-5 h-5 mb-0.5" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24">
+<path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-[10px] font-medium">Família</span>
+</button>
+</div>
+</footer>
+<!-- END: Persistent Bottom Navigation Bar -->
+</div>
+<!-- BEGIN: Interactive Feedback Script -->
+<script data-purpose="button-tactile-feedback">
+    document.addEventListener('DOMContentLoaded', () => {
+      const buttons = document.querySelectorAll('.btn-tactile');
+      buttons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const card = e.target.closest('article');
+          const title = card ? card.querySelector('h2').innerText : 'Rolê';
+          
+          // Temporary tactile micro-animation
+          btn.classList.add('bg-emerald-500', 'text-white', 'border-emerald-600');
+          btn.innerText = 'Curtiu! ✨';
+          
+          setTimeout(() => {
+            btn.classList.remove('bg-emerald-500', 'text-white', 'border-emerald-600');
+            btn.innerText = 'Fazer Rolê';
+          }, 1200);
+        });
+      });
+    });
+  </script>
+<!-- END: Interactive Feedback Script -->
+</body></html>

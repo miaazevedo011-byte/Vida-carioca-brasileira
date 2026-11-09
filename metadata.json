@@ -1,0 +1,8 @@
+{
+  "name": "Vida Real - Simulador Tropical",
+  "description": "Simulador de vida brasileira interativo no estilo Tropic Modernism com gestão de carreira, Serasa Score, finanças, dilemas culturais e status vitais.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;600;700&amp;family=Outfit:wght@600;700;800&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base { html, body { width: 100vw; margin: 0; padding: 0; min-height: 100%; } body { overscroll-behavior-y: none; } .pb-safe { padding-bottom: env(safe-area-inset-bottom, 0px); } .pt-safe { padding-top: env(safe-area-inset-top, 0px); } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "primary-container": "#0d8253", "on-background": "#161d18", "on-tertiary-fixed-variant": "#004a74", "primary": "#006740", "secondary": "#7c5800", "surface-container-high": "#e3eae1", "on-tertiary-container": "#f4f8ff", "on-secondary": "#ffffff", "inverse-surface": "#2b322c", "on-primary": "#ffffff", "surface-container-highest": "#dde4db", "on-secondary-fixed-variant": "#5e4200", "tertiary-container": "#0077b6", "on-secondary-fixed": "#271900", "surface-bright": "#f4fbf2", "error": "#ba1a1a", "primary-fixed": "#93f7be", "on-surface-variant": "#3e4941", "outline": "#6e7a71", "on-secondary-container": "#6d4d00", "secondary-fixed": "#ffdea8", "on-error": "#ffffff", "tertiary-fixed": "#cde5ff", "on-primary-fixed-variant": "#005232", "surface-tint": "#006d44", "surface-container-low": "#eef6ec", "surface-container": "#e9f0e7", "surface-dim": "#d5dcd3", "on-tertiary-fixed": "#001d32", "on-primary-fixed": "#002111", "on-surface": "#161d18", "error-container": "#ffdad6", "tertiary": "#005e91", "tertiary-fixed-dim": "#94ccff", "on-tertiary": "#ffffff", "surface-container-lowest": "#ffffff", "inverse-on-surface": "#ecf3ea", "on-primary-container": "#e2ffe9", "secondary-container": "#fdbb2d", "secondary-fixed-dim": "#fdbb2d", "on-error-container": "#93000a", "surface-variant": "#dde4db", "outline-variant": "#bdcabf", "inverse-primary": "#76daa3", "background": "#f4fbf2", "surface": "#f4fbf2", "primary-fixed-dim": "#76daa3" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "gutter-mobile": "0.75rem", "space-md": "1rem", "space-sm": "0.5rem", "space-xl": "2.25rem", "gutter": "1rem", "space-xs": "0.25rem", "margin-mobile": "1rem", "space-lg": "1.5rem", "margin": "1.5rem" }, fontFamily: { "headline-lg-mobile": ["Plus Jakarta Sans"], "headline-md": ["Plus Jakarta Sans"], "headline-lg": ["Plus Jakarta Sans"], "label-lg": ["Outfit"], "label-md": ["Outfit"], "headline-xl-mobile": ["Plus Jakarta Sans"], "body-sm": ["Nunito Sans"], "label-sm": ["Outfit"], "body-md": ["Nunito Sans"], "body-lg": ["Nunito Sans"], "headline-xl": ["Plus Jakarta Sans"] }, fontSize: { "headline-lg-mobile": ["22px", { "lineHeight": "28px", "fontWeight": "700" }], "headline-md": ["20px", { "lineHeight": "26px", "fontWeight": "700" }], "headline-lg": ["28px", { "lineHeight": "36px", "fontWeight": "700" }], "label-lg": ["14px", { "lineHeight": "18px", "fontWeight": "700" }], "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "700" }], "headline-xl-mobile": ["28px", { "lineHeight": "34px", "fontWeight": "800" }], "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "500" }], "label-sm": ["10px", { "lineHeight": "14px", "fontWeight": "800" }], "body-md": ["15px", { "lineHeight": "22px", "fontWeight": "500" }], "body-lg": ["17px", { "lineHeight": "24px", "fontWeight": "600" }], "headline-xl": ["38px", { "lineHeight": "46px", "fontWeight": "800" }] } } } };</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-md text-body-md text-on-surface flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(30,40,24,0.05)]"><div class="h-16 px-margin-mobile flex items-center justify-between"><div class="flex items-center gap-space-sm"><div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center shadow-[0_3px_0_0_#005232]"><span class="material-symbols-outlined text-on-primary text-[20px]">potted_plant</span></div><div class="flex flex-col"><h1 class="font-headline-md text-headline-md text-on-surface tracking-tight leading-none">Vida</h1><span class="font-label-sm text-label-sm text-on-surface-variant">Vida Real Brasil</span></div></div><div class="flex items-center gap-space-sm"><div class="flex items-center bg-surface-container-high rounded-full px-space-sm py-1 shadow-[inset_0_1px_2px_rgba(0,0,0,0.06)]"><span class="material-symbols-outlined text-secondary text-[16px] mr-1">payments</span><span class="font-label-md text-label-md text-on-surface">R$ 2.450</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex-1 flex flex-col relative w-full pt-16 pb-24 bg-surface"><div class="flex flex-col w-full px-margin-mobile gap-space-md">
+<!-- Mini Status Pill de Mesada e Idade -->
+<div class="flex items-center justify-between bg-surface-container-low px-space-md py-space-sm rounded-xl shadow-[0_2px_0_0_#dde4db]">
+<div class="flex items-center gap-space-xs">
+<span class="w-3 h-3 rounded-full bg-primary animate-pulse"></span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Fase: Criança Ativa</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<div class="flex items-center gap-1 bg-surface-container-highest px-space-sm py-0.5 rounded-full text-secondary font-label-md text-label-md">
+<span class="material-symbols-outlined text-[16px]">savings</span>
+<span>Cofrinho: R$ 85,00</span>
+</div>
+</div>
+</div>
+<!-- Header do Personagem: Bloco LEGO Style -->
+<div class="relative bg-surface-container-lowest rounded-xl p-space-md shadow-[0_4px_0_0_#dde4db] flex flex-col gap-space-sm">
+<!-- Efeito de Pin/Stud de Lego sutil no canto do card -->
+<div class="absolute -top-2 right-6 flex gap-1.5 opacity-60">
+<div class="w-4 h-2.5 rounded-t-sm bg-surface-variant shadow-[inset_0_1px_1px_rgba(255,255,255,0.8)]"></div>
+<div class="w-4 h-2.5 rounded-t-sm bg-surface-variant shadow-[inset_0_1px_1px_rgba(255,255,255,0.8)]"></div>
+</div>
+<div class="flex items-center gap-space-md">
+<!-- Avatar de Bloco / LEGO Boy 7 Anos -->
+<div class="relative flex-shrink-0">
+<!-- Pino do Topo da Cabeça -->
+<div class="w-5 h-2 mx-auto bg-secondary-fixed-dim rounded-t shadow-[inset_0_1px_1px_rgba(255,255,255,0.6)]"></div>
+<!-- Cabeça Cilíndrica Macia -->
+<div class="w-16 h-16 rounded-xl bg-secondary-fixed-dim shadow-[inset_0_2px_4px_rgba(255,255,255,0.6),0_3px_0_0_#c48b00] flex flex-col items-center justify-center relative overflow-hidden">
+<!-- Cabelinho plástico com franja modelada -->
+<div class="absolute top-0 w-full h-5 bg-[#5e3818] rounded-b-lg shadow-[0_2px_0_0_#3f230b]"></div>
+<!-- Sardinhas e Sorriso Alegre -->
+<div class="mt-3 flex flex-col items-center">
+<div class="flex justify-between w-9 px-1">
+<span class="w-1.5 h-2 bg-[#271900] rounded-full inline-block"></span>
+<span class="w-1.5 h-2 bg-[#271900] rounded-full inline-block"></span>
+</div>
+<!-- Sardinhas fofas -->
+<div class="flex justify-between w-10 px-0.5 my-0.5 opacity-40">
+<span class="w-1 h-0.5 bg-[#8b4f17] rounded-full inline-block"></span>
+<span class="w-1 h-0.5 bg-[#8b4f17] rounded-full inline-block"></span>
+</div>
+<!-- Sorriso com covinhas -->
+<div class="w-5 h-2.5 border-b-2 border-[#271900] rounded-b-full"></div>
+</div>
+</div>
+<!-- Distintivo Nível 2º Ano -->
+<div class="absolute -bottom-1 -right-1 bg-tertiary text-on-tertiary font-label-sm text-label-sm w-5 h-5 rounded-full flex items-center justify-center shadow-[0_1px_0_0_#003c5d]">
+          7
+        </div>
+</div>
+<!-- Informações Principais -->
+<div class="flex flex-col min-w-0 flex-1">
+<div class="flex items-center gap-space-xs flex-wrap">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface truncate">Lucas Silva</h2>
+<span class="bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm px-2 py-0.5 rounded-full">2º Ano</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-[15px] text-tertiary">school</span>
+          E.M. Monteiro Lobato • SP
+        </p>
+<div class="mt-1 flex items-center gap-space-xs">
+<span class="bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm px-2 py-0.5 rounded-md shadow-[0_1px_0_0_#ddad64]">
+            ⭐ Focado &amp; Determinado (+10 INT)
+          </span>
+</div>
+</div>
+</div>
+<!-- Barra de Finanças da Infância -->
+<div class="grid grid-cols-2 gap-space-sm pt-space-xs">
+<div class="bg-surface-container-low p-2 rounded-lg flex items-center justify-between">
+<span class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-primary">calendar_month</span> Mesada
+        </span>
+<span class="font-label-md text-label-md text-primary">R$ 25/mês</span>
+</div>
+<div class="bg-surface-container-low p-2 rounded-lg flex items-center justify-between">
+<span class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-secondary">paid</span> Cofrinho
+        </span>
+<span class="font-label-md text-label-md text-secondary">R$ 85,00</span>
+</div>
+</div>
+</div>
+<!-- Termômetro da Criança (Status Vitais Táteis) -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-[0_4px_0_0_#dde4db] flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface flex items-center gap-1">
+<span class="material-symbols-outlined text-primary text-[18px]">favorite</span>
+        Desenvolvimento &amp; Bem-estar
+      </span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Fase 7 Anos</span>
+</div>
+<!-- Gauge: Saúde e Imunidade -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface-variant">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px] text-primary">potted_plant</span> Imunidade &amp; Físico</span>
+<span class="text-on-surface font-label-md text-label-md">92%</span>
+</div>
+<div class="h-3.5 w-full bg-surface-container-highest rounded-full p-0.5 shadow-[inset_0_1px_2px_rgba(0,0,0,0.1)]">
+<div class="h-full bg-primary rounded-full relative shadow-[0_1px_0_0_#005232]" style="width: 92%;">
+<div class="absolute inset-x-1 top-0.5 h-[1.5px] bg-white/40 rounded-full"></div>
+</div>
+</div>
+</div>
+<!-- Gauge: Felicidade & Brincadeira -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface-variant">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px] text-secondary">wb_sunny</span> Felicidade &amp; Brincadeiras</span>
+<span class="text-on-surface font-label-md text-label-md">88%</span>
+</div>
+<div class="h-3.5 w-full bg-surface-container-highest rounded-full p-0.5 shadow-[inset_0_1px_2px_rgba(0,0,0,0.1)]">
+<div class="h-full bg-secondary-container rounded-full relative shadow-[0_1px_0_0_#b57f12]" style="width: 88%;">
+<div class="absolute inset-x-1 top-0.5 h-[1.5px] bg-white/50 rounded-full"></div>
+</div>
+</div>
+</div>
+<!-- Gauge: Desempenho Escolar -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface-variant">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px] text-tertiary">menu_book</span> Boletim (2º Ano)</span>
+<span class="text-on-surface font-label-md text-label-md">84%</span>
+</div>
+<div class="h-3.5 w-full bg-surface-container-highest rounded-full p-0.5 shadow-[inset_0_1px_2px_rgba(0,0,0,0.1)]">
+<div class="h-full bg-tertiary-container rounded-full relative shadow-[0_1px_0_0_#004f7a]" style="width: 84%;">
+<div class="absolute inset-x-1 top-0.5 h-[1.5px] bg-white/40 rounded-full"></div>
+</div>
+</div>
+</div>
+<!-- Grid dupla compacta: Vínculo Familiar & Energia -->
+<div class="grid grid-cols-2 gap-space-sm pt-1">
+<div class="bg-surface-container-low p-2 rounded-lg flex flex-col gap-1">
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface-variant">
+<span>Família</span>
+<span class="text-on-surface">90%</span>
+</div>
+<div class="h-2 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary" style="width: 90%;"></div>
+</div>
+</div>
+<div class="bg-surface-container-low p-2 rounded-lg flex flex-col gap-1">
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface-variant">
+<span>Energia</span>
+<span class="text-on-surface">75%</span>
+</div>
+<div class="h-2 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-secondary-container" style="width: 75%;"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Botão Principal do Loop de Jogo: Avançar Ano -->
+<button class="w-full bg-primary text-on-primary py-space-md px-space-lg rounded-xl font-headline-md text-headline-md tracking-wide shadow-[0_5px_0_0_#00472c,0_8px_16px_rgba(0,103,64,0.25)] active:translate-y-1 active:shadow-[0_1px_0_0_#00472c] transition-all flex items-center justify-center gap-space-sm group" id="btn-advance-year">
+<span class="material-symbols-outlined text-[24px] group-hover:translate-x-1 transition-transform">fast_forward</span>
+<span>Avançar 1 Ano (+1 Idade)</span>
+<span class="material-symbols-outlined text-[24px] group-hover:translate-x-1 transition-transform">fast_forward</span>
+</button>
+<!-- Crônica dos 7 Anos: Evento Anual Estilo Studio Ghibli -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-[0_4px_0_0_#dde4db] flex flex-col">
+<div class="relative w-full h-36 bg-cover bg-center" data-alt="A warm and nostalgic Studio Ghibli inspired watercolor scene of a 7-year-old Brazilian boy with a backpack walking happily inside a sunlit sunny public elementary school courtyard in Sao Paulo. Colorful classroom windows, tropical potted foliage, paper banners, soft morning golden sunlight, tactile warm pastel palette." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCkaxH1ZWn79lHsv9KpiuCpj424WEqD_uwi4vhJcF6VYr25mHKkd2IiPoaklzzvK3roFWRkPqX--aJUpyl3sdAjzPtQWIQbN2nlpgOr7L8WI6Kr2o_k1uGh0FcskroqGqpqXXHhJyQ7mnODpa9kXzw8cDW4s9LZUZ7O4ihnKg4injTJYLTLAUpopEgctiKAsmZaYZdMCReoNA2LMPDNPiGFWGaCzzerBiQrC1pzhPew')">
+<div class="absolute inset-0 bg-gradient-to-t from-inverse-surface/85 via-transparent to-transparent flex items-end p-space-md">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-secondary-fixed uppercase tracking-wider">Crônica Anual</span>
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile text-inverse-on-surface">O Primeiro Dia na Escola Grande</h3>
+</div>
+</div>
+</div>
+<div class="p-space-md flex flex-col gap-space-sm">
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+        Lucas começou o 2º ano do Ensino Fundamental! Entre as aulas de artes com massinha e a febre de colecionar figurinhas no recreio, você foi muito elogiado pela professora por ajudar um colega na lição de matemática.
+      </p>
+<div class="flex items-center gap-space-xs flex-wrap pt-1">
+<div class="inline-flex items-center gap-1 bg-surface-container-high text-on-surface px-space-sm py-1 rounded-md font-label-sm text-label-sm shadow-[0_1px_0_0_#dde4db]">
+<span class="material-symbols-outlined text-tertiary text-[16px]">psychology</span>
+<span>+ Intelecto +12%</span>
+</div>
+<div class="inline-flex items-center gap-1 bg-surface-container-high text-on-surface px-space-sm py-1 rounded-md font-label-sm text-label-sm shadow-[0_1px_0_0_#dde4db]">
+<span class="material-symbols-outlined text-primary text-[16px]">group</span>
+<span>+ Relações +10%</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Dilema Infantil do Recreio -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-[0_4px_0_0_#dde4db] flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="w-8 h-8 rounded-lg bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center shadow-[0_2px_0_0_#dfa234]">
+<span class="material-symbols-outlined text-[20px]">style</span>
+</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-secondary font-bold">HORA DO RECREIO</span>
+<h3 class="font-headline-md text-headline-md text-on-surface leading-tight">A Troca de Figurinhas</h3>
+</div>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+      Um colega da turma ofereceu uma figurinha rara e brilhante da Copa em troca do seu sanduíche de presunto e queijo fresquinho. O que fazer?
+    </p>
+<!-- Opções de Escolha Interativa (Toy-like) -->
+<div class="flex flex-col gap-space-sm mt-1" id="dilemma-options">
+<!-- Opção 1 -->
+<button class="dilemma-btn text-left bg-surface-container-low hover:bg-surface-container p-space-sm rounded-xl shadow-[0_3px_0_0_#dde4db] active:translate-y-0.5 active:shadow-[0_1px_0_0_#dde4db] transition-all flex items-center justify-between group">
+<div class="flex items-start gap-space-sm min-w-0 pr-2">
+<span class="w-6 h-6 rounded-md bg-primary-fixed text-on-primary-fixed flex items-center justify-center font-label-md text-label-md mt-0.5 flex-shrink-0">1</span>
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg text-on-surface">Aceitar a troca na hora</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Fica com fome, mas ganha a figurinha lendária e moral com a turma!</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-primary text-[20px] group-hover:translate-x-1 transition-transform">arrow_forward_ios</span>
+</button>
+<!-- Opção 2 -->
+<button class="dilemma-btn text-left bg-surface-container-low hover:bg-surface-container p-space-sm rounded-xl shadow-[0_3px_0_0_#dde4db] active:translate-y-0.5 active:shadow-[0_1px_0_0_#dde4db] transition-all flex items-center justify-between group">
+<div class="flex items-start gap-space-sm min-w-0 pr-2">
+<span class="w-6 h-6 rounded-md bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center font-label-md text-label-md mt-0.5 flex-shrink-0">2</span>
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg text-on-surface">Negociar outra figurinha</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Oferece duas figurinhas repetidas e guarda o lanche (+Negociação).</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-secondary text-[20px] group-hover:translate-x-1 transition-transform">arrow_forward_ios</span>
+</button>
+<!-- Opção 3 -->
+<button class="dilemma-btn text-left bg-surface-container-low hover:bg-surface-container p-space-sm rounded-xl shadow-[0_3px_0_0_#dde4db] active:translate-y-0.5 active:shadow-[0_1px_0_0_#dde4db] transition-all flex items-center justify-between group">
+<div class="flex items-start gap-space-sm min-w-0 pr-2">
+<span class="w-6 h-6 rounded-md bg-tertiary-fixed text-on-tertiary-fixed flex items-center justify-center font-label-md text-label-md mt-0.5 flex-shrink-0">3</span>
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg text-on-surface">Comer o lanche com calma</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Alimentação saudável em primeiro lugar (+Saúde, +Foco nas aulas).</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-tertiary text-[20px] group-hover:translate-x-1 transition-transform">arrow_forward_ios</span>
+</button>
+</div>
+<!-- Feedback lúdico pós-escolha -->
+<div class="hidden bg-primary-container text-on-primary-container p-space-sm rounded-lg font-body-sm text-body-sm items-center gap-2" id="choice-feedback">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+<span id="choice-feedback-text">Decisão registrada na crônica da vida!</span>
+</div>
+</div>
+<!-- Ações Diárias da Infância (Grade 2x2 com cards táteis) -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-md text-headline-md text-on-surface">Ações da Infância</h3>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Escolha suas rotinas</span>
+</div>
+<div class="grid grid-cols-2 gap-space-sm pt-1">
+<!-- Card Ação 1 -->
+<button class="action-card text-left bg-surface-container-lowest p-space-sm rounded-xl shadow-[0_3px_0_0_#dde4db] active:translate-y-1 active:shadow-[0_1px_0_0_#dde4db] transition-all flex flex-col gap-2 relative overflow-hidden">
+<div class="w-10 h-10 rounded-lg bg-tertiary-fixed text-on-tertiary-fixed flex items-center justify-center shadow-[0_2px_0_0_#a8cbff]">
+<span class="material-symbols-outlined text-[22px]">draw</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg text-on-surface leading-snug">Lição &amp; Desenho</span>
+<span class="font-body-sm text-body-sm text-tertiary font-bold mt-0.5">+Estudo • +Intel.</span>
+</div>
+</button>
+<!-- Card Ação 2 -->
+<button class="action-card text-left bg-surface-container-lowest p-space-sm rounded-xl shadow-[0_3px_0_0_#dde4db] active:translate-y-1 active:shadow-[0_1px_0_0_#dde4db] transition-all flex flex-col gap-2 relative overflow-hidden">
+<div class="w-10 h-10 rounded-lg bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center shadow-[0_2px_0_0_#dfa234]">
+<span class="material-symbols-outlined text-[22px]">extension</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg text-on-surface leading-snug">Blocos &amp; Castelos</span>
+<span class="font-body-sm text-body-sm text-secondary font-bold mt-0.5">+Criatividade</span>
+</div>
+</button>
+<!-- Card Ação 3 -->
+<button class="action-card text-left bg-surface-container-lowest p-space-sm rounded-xl shadow-[0_3px_0_0_#dde4db] active:translate-y-1 active:shadow-[0_1px_0_0_#dde4db] transition-all flex flex-col gap-2 relative overflow-hidden">
+<div class="w-10 h-10 rounded-lg bg-primary-fixed text-on-primary-fixed flex items-center justify-center shadow-[0_2px_0_0_#62d398]">
+<span class="material-symbols-outlined text-[22px]">directions_run</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg text-on-surface leading-snug">Pega-pega na Rua</span>
+<span class="font-body-sm text-body-sm text-primary font-bold mt-0.5">+Saúde • +Felicidade</span>
+</div>
+</button>
+<!-- Card Ação 4 -->
+<button class="action-card text-left bg-surface-container-lowest p-space-sm rounded-xl shadow-[0_3px_0_0_#dde4db] active:translate-y-1 active:shadow-[0_1px_0_0_#dde4db] transition-all flex flex-col gap-2 relative overflow-hidden">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high text-on-surface flex items-center justify-center shadow-[0_2px_0_0_#bdcabf]">
+<span class="material-symbols-outlined text-[22px] text-secondary">cleaning_services</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg text-on-surface leading-snug">Arrumar o Quarto</span>
+<span class="font-body-sm text-body-sm text-primary font-bold mt-0.5">+R$ 5 no Cofrinho</span>
+</div>
+</button>
+</div>
+</div>
+<!-- Toast Notificação Flutuante Modular -->
+<div class="hidden fixed bottom-20 left-4 right-4 bg-inverse-surface text-inverse-on-surface p-space-md rounded-xl shadow-xl flex items-center justify-between z-40 transition-opacity" id="toast-event">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-secondary-fixed text-[24px]">celebration</span>
+<span class="font-label-md text-label-md" id="toast-text">Ação realizada com sucesso!</span>
+</div>
+<span class="material-symbols-outlined text-[18px] opacity-70">close</span>
+</div>
+</div>
+<script>
+  // Micro-interatividade para Dilemas e Ações
+  const dilemmaButtons = document.querySelectorAll('.dilemma-btn');
+  const feedbackBox = document.getElementById('choice-feedback');
+  const feedbackText = document.getElementById('choice-feedback-text');
+  const toast = document.getElementById('toast-event');
+  const toastText = document.getElementById('toast-text');
+  const advanceBtn = document.getElementById('btn-advance-year');
+
+  const showToast = (message) => {
+    if (!toast) return;
+    toastText.textContent = message;
+    toast.classList.remove('hidden');
+    toast.classList.add('flex');
+    setTimeout(() => {
+      toast.classList.add('hidden');
+      toast.classList.remove('flex');
+    }, 2800);
+  };
+
+  dilemmaButtons.forEach((btn, index) => {
+    btn.addEventListener('click', () => {
+      dilemmaButtons.forEach(b => b.classList.remove('bg-primary-fixed', 'shadow-none'));
+      btn.classList.add('bg-primary-fixed');
+      
+      const responses = [
+        "Incrível! Você conseguiu a figurinha brilhante e virou o assunto do recreio!",
+        "Boa lábia! Negociou com inteligência e ainda comeu seu lanche.",
+        "Saúde blindada! O lanche estava uma delícia e você manteve o foco na aula."
+      ];
+
+      if (feedbackBox && feedbackText) {
+        feedbackBox.classList.remove('hidden');
+        feedbackBox.classList.add('flex');
+        feedbackText.textContent = responses[index] || "Decisão confirmada!";
+      }
+      showToast("Decisão do 2º Ano gravada com sucesso!");
+    });
+  });
+
+  const actionCards = document.querySelectorAll('.action-card');
+  actionCards.forEach((card) => {
+    card.addEventListener('click', () => {
+      const title = card.querySelector('span.font-label-lg').textContent;
+      showToast(`Atividade concluída: ${title}!`);
+    });
+  });
+
+  if (advanceBtn) {
+    advanceBtn.addEventListener('click', () => {
+      advanceBtn.classList.add('scale-95');
+      setTimeout(() => advanceBtn.classList.remove('scale-95'), 150);
+      showToast("Ano avançando! Preparando o 3º Ano de Lucas Silva...");
+    });
+  }
+</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_-4px_16px_rgba(30,40,24,0.06)]" data-active-classes="text-primary font-bold scale-105"><div class="flex justify-around items-center h-16 px-space-sm"><a class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] text-on-surface-variant hover:text-on-surface transition-transform" data-path="vida" href="#"><span class="material-symbols-outlined text-[22px]">cottage</span><span class="font-label-sm text-label-sm mt-space-xs">Vida</span></a><a class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] text-on-surface-variant hover:text-on-surface transition-transform" data-path="estudo" href="#"><span class="material-symbols-outlined text-[22px]">school</span><span class="font-label-sm text-label-sm mt-space-xs">Estudo</span></a><a class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] text-on-surface-variant hover:text-on-surface transition-transform" data-path="carreira" href="#"><span class="material-symbols-outlined text-[22px]">work</span><span class="font-label-sm text-label-sm mt-space-xs">Carreira</span></a><a class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] text-on-surface-variant hover:text-on-surface transition-transform" data-path="relacoes" href="#"><span class="material-symbols-outlined text-[22px]">diversity_1</span><span class="font-label-sm text-label-sm mt-space-xs">Relações</span></a><a class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] text-on-surface-variant hover:text-on-surface transition-transform" data-path="mais" href="#"><span class="material-symbols-outlined text-[22px]">apps</span><span class="font-label-sm text-label-sm mt-space-xs">Mais</span></a></div></nav></body></html>

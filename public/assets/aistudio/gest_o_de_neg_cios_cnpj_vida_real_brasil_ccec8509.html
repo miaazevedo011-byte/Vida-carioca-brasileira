@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "on-secondary-fixed": "#00174b", "surface-container": "#e8f0e9", "outline": "#6d7a70", "primary-fixed": "#7bfbb3", "on-surface": "#161d19", "outline-variant": "#bccabe", "on-primary-fixed": "#002110", "on-primary-container": "#00321c", "inverse-primary": "#5cde99", "surface": "#f4fbf5", "tertiary-fixed-dim": "#ffb95f", "error": "#ba1a1a", "surface-container-lowest": "#ffffff", "background": "#f4fbf5", "surface-container-high": "#e3eae4", "surface-container-low": "#eef5ef", "secondary-fixed-dim": "#b4c5ff", "on-error-container": "#93000a", "primary": "#006d41", "on-secondary": "#ffffff", "secondary-fixed": "#dbe1ff", "on-tertiary": "#ffffff", "secondary-container": "#316bf3", "inverse-on-surface": "#ebf3ec", "on-background": "#161d19", "error-container": "#ffdad6", "tertiary-fixed": "#ffddb8", "secondary": "#0051d5", "on-tertiary-container": "#402500", "surface-bright": "#f4fbf5", "on-error": "#ffffff", "on-primary-fixed-variant": "#005230", "surface-tint": "#006d41", "primary-container": "#0ca768", "on-surface-variant": "#3d4a40", "on-tertiary-fixed": "#2a1700", "surface-variant": "#dde4de", "on-secondary-fixed-variant": "#003ea8", "surface-dim": "#d5dcd6", "tertiary": "#855300", "tertiary-container": "#cc8200", "on-primary": "#ffffff", "primary-fixed-dim": "#5cde99", "inverse-surface": "#2b322e", "on-secondary-container": "#fefcff", "surface-container-highest": "#dde4de", "on-tertiary-fixed-variant": "#653e00" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "space-lg": "1rem", "space-xl": "1.5rem", "space-md": "0.75rem", "space-sm": "0.5rem", "margin": "1rem", "space-xs": "0.25rem", "gutter": "0.75rem" }, fontFamily: { "headline-xl": ["Plus Jakarta Sans"], "headline-sm": ["Plus Jakarta Sans"], "body-sm": ["Plus Jakarta Sans"], "headline-xl-mobile": ["Plus Jakarta Sans"], "headline-md": ["Plus Jakarta Sans"], "body-lg": ["Plus Jakarta Sans"], "body-md": ["Plus Jakarta Sans"], "label-sm": ["Plus Jakarta Sans"], "headline-lg": ["Plus Jakarta Sans"], "headline-lg-mobile": ["Plus Jakarta Sans"], "label-lg": ["Plus Jakarta Sans"], "label-md": ["Plus Jakarta Sans"] }, fontSize: { "headline-xl": ["36px", { "lineHeight": "44px", "fontWeight": "800" }], "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "700" }], "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }], "headline-xl-mobile": ["28px", { "lineHeight": "34px", "fontWeight": "800" }], "headline-md": ["20px", { "lineHeight": "26px", "fontWeight": "700" }], "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "600" }], "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "500" }], "label-sm": ["10px", { "lineHeight": "12px", "letterSpacing": "0.5px", "fontWeight": "800" }], "headline-lg": ["28px", { "lineHeight": "36px", "fontWeight": "800" }], "headline-lg-mobile": ["22px", { "lineHeight": "28px", "fontWeight": "800" }], "label-lg": ["14px", { "lineHeight": "18px", "letterSpacing": "0.5px", "fontWeight": "800" }], "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.25px", "fontWeight": "700" }] } } } }</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-md text-on-surface antialiased"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-margin flex items-center justify-between"><div class="flex items-center gap-space-sm"><div class="w-9 h-9 rounded-lg bg-primary flex items-center justify-center shadow-[0_2px_0_0_#055132]"><span class="material-symbols-outlined text-on-primary text-[20px]">apartment</span></div><h1 class="font-headline-sm text-headline-sm text-on-surface">Gestão De Cnpj</h1></div><div class="flex items-center gap-space-sm"><div class="h-9 px-space-sm rounded-lg bg-surface-container flex items-center gap-space-xs"><span class="material-symbols-outlined text-primary text-[18px]">payments</span><span class="font-label-md text-label-md text-on-surface font-bold">R$ 14.850</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex flex-col relative w-full pt-16 bg-surface min-h-screen pb-24"><div class="flex flex-col w-full px-margin pb-10 gap-space-lg">
+<!-- TOY PROFILE HUD -->
+<div class="w-full bg-surface-container-lowest rounded-xl p-space-md shadow-[0_4px_0_0_#dde4de] flex flex-col gap-space-sm relative overflow-hidden">
+<!-- Top Stud Texture Bar -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<!-- Minifig Head Container -->
+<div class="relative w-12 h-12 rounded-xl bg-tertiary-fixed flex items-center justify-center shadow-[0_3px_0_0_#cc8200] shrink-0">
+<!-- Toy Stud on Top -->
+<div class="absolute -top-1.5 w-4 h-2 rounded-t-sm bg-tertiary-container shadow-[inset_0_1px_0_rgba(255,255,255,0.6)]"></div>
+<!-- Ghibli-Lego Styled Face -->
+<div class="relative flex flex-col items-center">
+<div class="flex gap-2">
+<div class="w-1.5 h-2 rounded-full bg-on-tertiary-container"></div>
+<div class="w-1.5 h-2 rounded-full bg-on-tertiary-container"></div>
+</div>
+<!-- Rosy Cheeks -->
+<div class="flex gap-3 -mt-1">
+<div class="w-1.5 h-1 rounded-full bg-error/40"></div>
+<div class="w-1.5 h-1 rounded-full bg-error/40"></div>
+</div>
+<!-- Gentle Smile -->
+<div class="w-3 h-1 border-b-2 border-on-tertiary-container rounded-full mt-0.5"></div>
+</div>
+</div>
+<div class="min-w-0">
+<div class="flex items-center gap-space-xs">
+<span class="font-headline-sm text-headline-sm text-on-surface truncate">Lucas Silva</span>
+<span class="font-label-sm text-label-sm px-1.5 py-0.5 bg-surface-container rounded font-bold text-on-surface-variant">29 anos</span>
+</div>
+<div class="flex items-center gap-space-sm mt-0.5">
+<span class="font-label-sm text-label-sm text-primary flex items-center gap-0.5 font-bold">
+<span class="material-symbols-outlined text-[14px]">verified</span> Score Serasa: 1000
+            </span>
+</div>
+</div>
+</div>
+<!-- Pocket Money Brick Badge -->
+<div class="bg-surface-container-high px-space-sm py-1 rounded-lg shadow-[0_2px_0_0_#bccabe] flex flex-col items-end">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Saldo Pessoal</span>
+<span class="font-headline-sm text-headline-sm text-primary font-bold">R$ 22.394</span>
+</div>
+</div>
+<!-- 4 Tactile Attribute Gauge Modules -->
+<div class="grid grid-cols-2 gap-space-xs mt-space-xs">
+<!-- Saúde -->
+<div class="bg-surface-container-low p-space-xs rounded-lg shadow-[0_2px_0_0_#dde4de] flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1 font-bold">
+<span class="material-symbols-outlined text-primary text-[14px]">favorite</span> Saúde
+          </span>
+<span class="font-label-sm text-label-sm text-primary font-bold">93%</span>
+</div>
+<div class="h-2 w-full bg-surface-container rounded-full overflow-hidden p-0.5">
+<div class="h-full bg-primary rounded-full shadow-[inset_0_1px_0_rgba(255,255,255,0.4)]" style="width: 93%;"></div>
+</div>
+</div>
+<!-- Felicidade -->
+<div class="bg-surface-container-low p-space-xs rounded-lg shadow-[0_2px_0_0_#dde4de] flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1 font-bold">
+<span class="material-symbols-outlined text-tertiary-container text-[14px]">mood</span> Felicidade
+          </span>
+<span class="font-label-sm text-label-sm text-tertiary-container font-bold">100%</span>
+</div>
+<div class="h-2 w-full bg-surface-container rounded-full overflow-hidden p-0.5">
+<div class="h-full bg-tertiary-container rounded-full shadow-[inset_0_1px_0_rgba(255,255,255,0.4)]" style="width: 100%;"></div>
+</div>
+</div>
+<!-- Intelecto -->
+<div class="bg-surface-container-low p-space-xs rounded-lg shadow-[0_2px_0_0_#dde4de] flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1 font-bold">
+<span class="material-symbols-outlined text-secondary text-[14px]">psychology</span> Intelecto
+          </span>
+<span class="font-label-sm text-label-sm text-secondary font-bold">100%</span>
+</div>
+<div class="h-2 w-full bg-surface-container rounded-full overflow-hidden p-0.5">
+<div class="h-full bg-secondary rounded-full shadow-[inset_0_1px_0_rgba(255,255,255,0.4)]" style="width: 100%;"></div>
+</div>
+</div>
+<!-- Energia -->
+<div class="bg-surface-container-low p-space-xs rounded-lg shadow-[0_2px_0_0_#dde4de] flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1 font-bold">
+<span class="material-symbols-outlined text-secondary-container text-[14px]">bolt</span> Energia
+          </span>
+<span class="font-label-sm text-label-sm text-secondary-container font-bold">80%</span>
+</div>
+<div class="h-2 w-full bg-surface-container rounded-full overflow-hidden p-0.5">
+<div class="h-full bg-secondary-container rounded-full shadow-[inset_0_1px_0_rgba(255,255,255,0.4)]" style="width: 80%;"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- COMPANY DIORAMA BANNER -->
+<div class="w-full bg-surface-container-lowest rounded-xl shadow-[0_4px_0_0_#dde4de] overflow-hidden flex flex-col">
+<!-- Visual Diorama Image -->
+<div class="relative w-full h-36">
+<img class="w-full h-full object-cover" data-alt="A whimsical Studio Ghibli and LEGO brick miniature style cozy Brazilian artisanal wine shop in Sao Paulo with warm sunlight streaming through wooden windows, potted monstera plants, tiny wooden barrels, stacked wine crates, and cobblestone patio outside with gentle anime watercolor textures." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCitH-rrS0AhZ3Hxbsb8M_adKsqZ6euUvts2j2pCeUFDTrMSX3byNyabvvT_R3HKGvEzwilH8d9bw6RhfkVi7HIgdadNo-JHg_P1pPyDGFwxyo1shtq1PqKBA4JTz89pgwFmVt3L4VVEdbR-r4D09nSc8sROTwmVBZ7ylThjYg8FwWxBJbNE2YoPQ5elgXGlfKDxYF9Yc6a3dgQh21yj_bt1vTnAZDfs0F3VeoiXsB8"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface/90 via-on-surface/30 to-transparent"></div>
+<!-- Top Level Pill -->
+<div class="absolute top-2 right-2 bg-primary text-on-primary font-label-md text-label-md px-space-sm py-1 rounded-full shadow-[0_2px_0_0_#00321c] flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">trending_up</span> Nível 3 • Em Expansão
+      </div>
+<div class="absolute bottom-2 left-3 right-3 text-surface">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-surface-variant font-bold">MEI / Simples Nacional</span>
+<h2 class="font-headline-md text-headline-md text-surface font-extrabold truncate">Adega &amp; Empório Silva LTDA</h2>
+</div>
+</div>
+<!-- Company Details Bar -->
+<div class="p-space-md flex flex-col gap-space-sm bg-surface-container-low">
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-primary text-[16px]">store</span>
+        Comércio de Bebidas e Vinhos Artesanais Paulistanos
+      </p>
+<!-- KPI Bricks -->
+<div class="grid grid-cols-2 gap-space-sm pt-space-xs">
+<div class="bg-surface-container-lowest p-space-sm rounded-lg shadow-[0_2px_0_0_#dde4de]">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-bold">Faturamento Bruto</span>
+<div class="font-headline-sm text-headline-sm text-on-surface font-black mt-0.5">R$ 38.500 <span class="font-label-sm text-label-sm text-on-surface-variant">/mês</span></div>
+</div>
+<div class="bg-surface-container-lowest p-space-sm rounded-lg shadow-[0_2px_0_0_#dde4de]">
+<span class="font-label-sm text-label-sm text-primary font-bold">Lucro Líquido Real</span>
+<div class="font-headline-sm text-headline-sm text-primary font-black mt-0.5">+R$ 9.800 <span class="font-label-sm text-label-sm text-on-surface-variant">/mês</span></div>
+</div>
+</div>
+</div>
+</div>
+<!-- STRATEGIC ACTIONS LIST -->
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-sm text-headline-sm text-on-surface flex items-center gap-1 font-bold">
+<span class="material-symbols-outlined text-primary text-[20px]">construction</span>
+        Decisões &amp; Gestão Tática
+      </h3>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Rodada 14/24</span>
+</div>
+<!-- Tile 1: Estoque & Fornecedores -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-[0_4px_0_0_#dde4de] flex flex-col gap-space-sm">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-primary shadow-[0_2px_0_0_#bccabe] shrink-0">
+<span class="material-symbols-outlined text-[24px]">inventory_2</span>
+</div>
+<div>
+<h4 class="font-body-lg text-body-lg text-on-surface font-bold">Estoque de Rótulos Finos</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Comprar barris de carvalho &amp; vinhos da Serra Gaúcha</p>
+</div>
+</div>
+<span class="font-label-md text-label-md px-2 py-0.5 bg-primary-fixed text-on-primary-fixed font-black rounded-full shrink-0">+25% Vendas</span>
+</div>
+<div class="flex items-center justify-between pt-space-xs">
+<span class="font-body-md text-body-md text-on-surface font-bold">Custo: R$ 4.500</span>
+<button class="h-9 px-space-md bg-primary text-on-primary rounded-lg font-label-md text-label-md font-bold shadow-[0_3px_0_0_#00321c] active:translate-y-0.5 active:shadow-[0_1px_0_0_#00321c] transition-all flex items-center gap-1" onclick="handleAction(this, 'Estoque abastecido com sucesso!')">
+<span class="material-symbols-outlined text-[16px]">shopping_bag</span> Comprar Lote
+        </button>
+</div>
+</div>
+<!-- Tile 2: Quadro de Funcionários -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-[0_4px_0_0_#dde4de] flex flex-col gap-space-sm">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-secondary-fixed flex items-center justify-center text-secondary shadow-[0_2px_0_0_#b4c5ff] shrink-0">
+<span class="material-symbols-outlined text-[24px]">groups</span>
+</div>
+<div>
+<div class="flex items-center gap-space-xs">
+<h4 class="font-body-lg text-body-lg text-on-surface font-bold">Quadro de Funcionários</h4>
+<span class="font-label-sm text-label-sm px-1.5 py-0.2 rounded bg-surface-container text-on-surface-variant font-bold">2 CLT</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Contratar Sommelier Júnior p/ consultoria de clientes</p>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between pt-space-xs">
+<span class="font-body-md text-body-md text-on-surface font-bold">Salário: R$ 2.400 /mês</span>
+<button class="h-9 px-space-md bg-secondary text-on-secondary rounded-lg font-label-md text-label-md font-bold shadow-[0_3px_0_0_#00174b] active:translate-y-0.5 active:shadow-[0_1px_0_0_#00174b] transition-all flex items-center gap-1" onclick="handleAction(this, 'Sommelier contratado!')">
+<span class="material-symbols-outlined text-[16px]">person_add</span> Contratar CLT
+        </button>
+</div>
+</div>
+<!-- Tile 3: Marketing & Redes Sociais -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-[0_4px_0_0_#dde4de] flex flex-col gap-space-sm">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-tertiary-fixed flex items-center justify-center text-tertiary-container shadow-[0_2px_0_0_#ffb95f] shrink-0">
+<span class="material-symbols-outlined text-[24px]">campaign</span>
+</div>
+<div>
+<h4 class="font-body-lg text-body-lg text-on-surface font-bold">Tráfego Pago &amp; WhatsApp</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Anúncio geolocalizado nos bairros Pinheiros e Vila Madalena</p>
+</div>
+</div>
+<span class="font-label-md text-label-md px-2 py-0.5 bg-primary-fixed text-on-primary-fixed font-black rounded-full shrink-0">+15% Clientes</span>
+</div>
+<div class="flex items-center justify-between pt-space-xs">
+<span class="font-body-md text-body-md text-on-surface font-bold">Investimento: R$ 600</span>
+<button class="h-9 px-space-md bg-tertiary-container text-on-tertiary rounded-lg font-label-md text-label-md font-bold shadow-[0_3px_0_0_#402500] active:translate-y-0.5 active:shadow-[0_1px_0_0_#402500] transition-all flex items-center gap-1" onclick="handleAction(this, 'Campanha de tráfego iniciada!')">
+<span class="material-symbols-outlined text-[16px]">rocket_launch</span> Impulsionar
+        </button>
+</div>
+</div>
+<!-- Tile 4: Linha de Crédito PJ -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-[0_4px_0_0_#dde4de] flex flex-col gap-space-sm">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-secondary shadow-[0_2px_0_0_#bccabe] shrink-0">
+<span class="material-symbols-outlined text-[24px]">account_balance</span>
+</div>
+<div>
+<div class="flex items-center gap-space-xs">
+<h4 class="font-body-lg text-body-lg text-on-surface font-bold">Crédito PRONAMPE / BNDES</h4>
+<span class="font-label-sm text-label-sm px-1.5 py-0.2 rounded bg-primary-fixed text-on-primary-fixed font-bold">Pré-Aprovado</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Linha subsidiada de R$ 50.000 a taxa de 1,2% a.m.</p>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between pt-space-xs">
+<span class="font-body-md text-body-md text-on-surface font-bold">Limite: R$ 50.000</span>
+<button class="h-9 px-space-md bg-surface-container-high text-on-surface rounded-lg font-label-md text-label-md font-bold shadow-[0_3px_0_0_#bccabe] active:translate-y-0.5 active:shadow-[0_1px_0_0_#bccabe] transition-all flex items-center gap-1" onclick="handleAction(this, 'Crédito transferido para a conta PJ!')">
+<span class="material-symbols-outlined text-[16px]">download</span> Tomar Crédito
+        </button>
+</div>
+</div>
+<!-- Tile 5: Regime Tributário & Contador -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-[0_4px_0_0_#dde4de] flex flex-col gap-space-sm">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-primary shadow-[0_2px_0_0_#bccabe] shrink-0">
+<span class="material-symbols-outlined text-[24px]">receipt_long</span>
+</div>
+<div>
+<h4 class="font-body-lg text-body-lg text-on-surface font-bold">Regime Fiscal &amp; DAS</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Guia Simples Nacional e emissão de NFe mensal</p>
+</div>
+</div>
+<span class="font-label-sm text-label-sm px-2 py-0.5 bg-surface-container rounded-full text-primary font-bold flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[12px]">check_circle</span> 100% Em Dia
+        </span>
+</div>
+<div class="flex items-center justify-between pt-space-xs">
+<span class="font-body-sm text-body-sm text-on-surface-variant font-bold">Honorários: R$ 420/mês</span>
+<button class="h-9 px-space-md bg-surface-container text-on-surface rounded-lg font-label-md text-label-md font-bold shadow-[0_3px_0_0_#bccabe] active:translate-y-0.5 active:shadow-[0_1px_0_0_#bccabe] transition-all flex items-center gap-1" onclick="handleAction(this, 'Guia DAS liquidada sem juros!')">
+<span class="material-symbols-outlined text-[16px]">task_alt</span> Pagar DAS
+        </button>
+</div>
+</div>
+</div>
+<!-- BUSINESS DILEMMA CARD (STORY EVENT) -->
+<div class="w-full bg-surface-container-high rounded-xl p-space-md shadow-[0_4px_0_0_#bccabe] flex flex-col gap-space-sm relative border-l-4 border-l-secondary-container">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[22px]">lightbulb</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-extrabold">Dilema Empresarial da Rodada</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+      Um renomado bistrô contemporâneo dos Jardins ofereceu parceria de exclusividade total para a safra do seu Empório. Qual estratégia você adotará?
+    </p>
+<!-- Choice Buttons -->
+<div class="grid grid-cols-1 gap-space-sm pt-space-xs">
+<button class="w-full p-space-sm rounded-lg bg-surface-container-lowest shadow-[0_3px_0_0_#dde4de] text-left active:translate-y-0.5 active:shadow-[0_1px_0_0_#dde4de] transition-all flex flex-col" onclick="resolveDilemma(this, 'Contrato de Exclusividade firmado! +R$ 15.000 no caixa.')">
+<span class="font-body-lg text-body-lg font-bold text-on-surface flex items-center gap-1">
+          ✍️ Assinar Exclusividade
+        </span>
+<span class="font-body-sm text-body-sm text-primary font-bold">+ R$ 15.000 adiantados • Vendas do balcão limitadas</span>
+</button>
+<button class="w-full p-space-sm rounded-lg bg-surface-container-lowest shadow-[0_3px_0_0_#dde4de] text-left active:translate-y-0.5 active:shadow-[0_1px_0_0_#dde4de] transition-all flex flex-col" onclick="resolveDilemma(this, 'Varejo mantido com sucesso! Margens preservadas.')">
+<span class="font-body-lg text-body-lg font-bold text-on-surface flex items-center gap-1">
+          🍷 Continuar Varejo Aberto
+        </span>
+<span class="font-body-sm text-body-sm text-secondary font-bold">Margem de lucro livre • Fortalece a marca local do empório</span>
+</button>
+</div>
+</div>
+<!-- EXPANSION GOAL BLOCK -->
+<div class="w-full bg-surface-container-lowest rounded-xl p-space-md shadow-[0_4px_0_0_#dde4de] flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[24px]">domain_add</span>
+<div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface font-extrabold">Nova Filial: Bairro Pinheiros</h4>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Próximo passo na jornada de expansão</span>
+</div>
+</div>
+<span class="font-label-md text-label-md font-bold text-primary">54%</span>
+</div>
+<!-- Progress Brick Bar -->
+<div class="h-3 w-full bg-surface-container rounded-full overflow-hidden p-0.5 shadow-inner">
+<div class="h-full bg-primary-container rounded-full shadow-[inset_0_1px_0_rgba(255,255,255,0.6)]" style="width: 54%;"></div>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
+<span>Investimento: R$ 43.200 acumulados</span>
+<span class="font-bold text-on-surface">Meta: R$ 80.000</span>
+</div>
+<!-- Master Tactile Expansion Button -->
+<button class="w-full mt-space-xs py-space-sm bg-primary text-on-primary rounded-xl font-headline-sm text-headline-sm font-extrabold shadow-[0_4px_0_0_#00321c] active:translate-y-1 active:shadow-[0_1px_0_0_#00321c] transition-all flex items-center justify-center gap-space-xs" onclick="handleAction(this, 'Fundos direcionados para a obra em Pinheiros!')">
+<span class="material-symbols-outlined text-[20px]">add_business</span>
+      Investir na Nova Filial (R$ 10.000)
+    </button>
+</div>
+<!-- FLOATING INTERACTIVE FEEDBACK TOAST -->
+<div class="hidden fixed bottom-20 left-4 right-4 bg-on-surface text-surface py- space-sm px-space-md rounded-xl shadow-[0_6px_16px_rgba(0,0,0,0.25)] flex items-center justify-between z-50 transition-all" id="game-toast">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-fixed text-[20px]">check_circle</span>
+<span class="font-body-md text-body-md text-surface font-bold" id="toast-message">Ação realizada!</span>
+</div>
+<button class="text-surface-variant" onclick="document.getElementById('game-toast').classList.add('hidden')">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+</div>
+<script>
+  function showToast(msg) {
+    const toast = document.getElementById('game-toast');
+    const msgEl = document.getElementById('toast-message');
+    if (!toast || !msgEl) return;
+    msgEl.textContent = msg;
+    toast.classList.remove('hidden');
+    clearTimeout(window._toastTimeout);
+    window._toastTimeout = setTimeout(() => {
+      toast.classList.add('hidden');
+    }, 3200);
+  }
+
+  function handleAction(btn, message) {
+    btn.disabled = true;
+    btn.classList.add('opacity-75');
+    showToast(message);
+    setTimeout(() => {
+      btn.disabled = false;
+      btn.classList.remove('opacity-75');
+    }, 1500);
+  }
+
+  function resolveDilemma(btn, msg) {
+    const parent = btn.parentElement;
+    const buttons = parent.querySelectorAll('button');
+    buttons.forEach(b => {
+      b.disabled = true;
+      b.classList.add('opacity-40');
+    });
+    btn.classList.remove('opacity-40');
+    btn.classList.add('bg-primary-fixed', 'text-on-primary-fixed');
+    showToast(msg);
+  }
+</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface/85 backdrop-blur-xl shadow-[0_-2px_12px_rgba(0,0,0,0.05)]" data-active-classes="text-primary font-bold"><div class="h-16 px-gutter flex items-center justify-around"><a class="flex flex-col items-center justify-center w-14 h-14 text-on-surface-variant transition-colors" data-path="gestao-de-negocios" href="#"><span class="material-symbols-outlined text-[24px]">storefront</span><span class="font-label-sm text-label-sm mt-0.5">Negócios</span></a><a class="flex flex-col items-center justify-center w-14 h-14 text-on-surface-variant transition-colors" data-path="gestao-de-cnpj" href="#"><span class="material-symbols-outlined text-[24px]">receipt_long</span><span class="font-label-sm text-label-sm mt-0.5">CNPJ</span></a><a class="flex flex-col items-center justify-center w-14 h-14 text-on-surface-variant transition-colors" data-path="mercado-e-estoque" href="#"><span class="material-symbols-outlined text-[24px]">inventory_2</span><span class="font-label-sm text-label-sm mt-0.5">Estoque</span></a><a class="flex flex-col items-center justify-center w-14 h-14 text-on-surface-variant transition-colors" data-path="funcionarios-e-rh" href="#"><span class="material-symbols-outlined text-[24px]">groups</span><span class="font-label-sm text-label-sm mt-0.5">Equipe</span></a></div></nav></body></html>

@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_stack" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@500;600;700&amp;family=Outfit:wght@700;800&amp;family=Plus+Jakarta+Sans:wght@700;800&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "on-surface-variant": "#3e4941", "on-primary": "#ffffff", "on-tertiary-fixed": "#001d32", "error": "#ba1a1a", "surface-container-highest": "#dde4db", "primary": "#006740", "tertiary": "#005e91", "inverse-surface": "#2b322c", "surface-dim": "#d5dcd3", "surface-container-high": "#e3eae1", "on-secondary-fixed-variant": "#5e4200", "outline-variant": "#bdcabf", "on-tertiary": "#ffffff", "primary-fixed-dim": "#76daa3", "secondary": "#7c5800", "inverse-on-surface": "#ecf3ea", "on-secondary-fixed": "#271900", "primary-container": "#0d8253", "background": "#f4fbf2", "tertiary-fixed": "#cde5ff", "on-background": "#161d18", "on-secondary-container": "#6d4d00", "on-primary-fixed-variant": "#005232", "surface-tint": "#006d44", "inverse-primary": "#76daa3", "on-secondary": "#ffffff", "secondary-fixed": "#ffdea8", "tertiary-container": "#0077b6", "tertiary-fixed-dim": "#94ccff", "surface-container": "#e9f0e7", "on-primary-container": "#e2ffe9", "on-surface": "#161d18", "surface-variant": "#dde4db", "secondary-container": "#fdbb2d", "surface-container-lowest": "#ffffff", "surface-bright": "#f4fbf2", "on-primary-fixed": "#002111", "outline": "#6e7a71", "secondary-fixed-dim": "#fdbb2d", "on-error": "#ffffff", "surface": "#f4fbf2", "on-tertiary-container": "#f4f8ff", "error-container": "#ffdad6", "on-tertiary-fixed-variant": "#004a74", "on-error-container": "#93000a", "surface-container-low": "#eef6ec", "primary-fixed": "#93f7be" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "space-sm": "0.5rem", "space-md": "1rem", "gutter-mobile": "0.75rem", "space-xs": "0.25rem", "space-xl": "2.25rem", "margin": "1.5rem", "space-lg": "1.5rem", "margin-mobile": "1rem", "gutter": "1rem" }, fontFamily: { "body-md": ["Nunito Sans"], "headline-md": ["Plus Jakarta Sans"], "headline-lg-mobile": ["Plus Jakarta Sans"], "body-lg": ["Nunito Sans"], "headline-xl": ["Plus Jakarta Sans"], "headline-xl-mobile": ["Plus Jakarta Sans"], "label-md": ["Outfit"], "label-sm": ["Outfit"], "label-lg": ["Outfit"], "body-sm": ["Nunito Sans"], "headline-lg": ["Plus Jakarta Sans"] }, fontSize: { "body-md": ["15px", { "lineHeight": "22px", "fontWeight": "500" }], "headline-md": ["20px", { "lineHeight": "26px", "fontWeight": "700" }], "headline-lg-mobile": ["22px", { "lineHeight": "28px", "fontWeight": "700" }], "body-lg": ["17px", { "lineHeight": "24px", "fontWeight": "600" }], "headline-xl": ["38px", { "lineHeight": "46px", "fontWeight": "800" }], "headline-xl-mobile": ["28px", { "lineHeight": "34px", "fontWeight": "800" }], "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "700" }], "label-sm": ["10px", { "lineHeight": "14px", "fontWeight": "800" }], "label-lg": ["14px", { "lineHeight": "18px", "fontWeight": "700" }], "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "500" }], "headline-lg": ["28px", { "lineHeight": "36px", "fontWeight": "700" }] } } } };</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased flex flex-col min-h-screen"><header class="fixed top-0 inset-x-0 z-50 bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] pt-safe"><div class="h-20 px-margin-mobile flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm min-w-0 flex-1"><button aria-label="Retornar ao Jogo" class="w-11 h-11 min-w-[44px] min-h-[44px] rounded-xl bg-surface-container-high text-on-surface flex items-center justify-center active:translate-y-0.5 transition-all shadow-[0_3px_0_0_#d5dcd3]" onclick="history.back()" type="button"><span class="material-symbols-outlined text-[22px]">arrow_back_ios_new</span></button><div class="flex flex-col min-w-0"><span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-bold flex items-center gap-1"><span class="material-symbols-outlined text-[13px] text-secondary">celebration</span>Evento Especial</span><h1 class="font-headline-md text-headline-md text-on-surface truncate">Evento Aniversario Enzo</h1></div></div><div class="flex items-center gap-space-xs shrink-0"><div class="flex items-center gap-1 px-space-sm py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-md text-label-md shadow-[0_2px_0_0_#fdbb2d]"><span class="material-symbols-outlined text-[16px] text-secondary">bolt</span><span>100%</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex flex-col relative w-full px-margin-mobile pt-20 pb-safe bg-surface min-h-screen"><div class="flex flex-col w-full pb-8">
+<!-- Smartphone Bezel Outer Container (Toy-morphism Frame) -->
+<div class="w-full rounded-[2rem] bg-inverse-surface p-2.5 shadow-2xl relative transition-all">
+<!-- Screen Surface Glass & Wallpaper -->
+<div class="w-full rounded-[1.6rem] bg-gradient-to-b from-surface via-surface-container-low to-surface-container relative overflow-hidden flex flex-col shadow-inner">
+<!-- Ambient Studio Ghibli Coastal Sky Artwork / Wallpaper Banner -->
+<div class="relative w-full h-44 overflow-hidden rounded-t-[1.5rem]">
+<div class="w-full h-full bg-cover bg-center" data-alt="Warm cozy Studio Ghibli style watercolor illustration of a sunny coastal Brazilian street in 2053, lush tropical banana leaves, terracotta rooftops, soft fluffy pastel clouds, warm gentle golden hour lighting, peaceful aesthetic slice of life" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAQ55MXTDsSuj-rO7dBcZhqTtSb-XJHKrpL-F2LQSZe04VqhxmnBvUE5iLIcu98keu0LDvOy4PHklCDMBp8BWpEqptiqEcwig5rfknQhsXUi9XCpqm-6EE46z8ja7RYKYWZF3hEtmVqjkv3qPA1gtm_Vr-L69ADpPBgn9mcwfmHGUKZi6vkPApxTFcMDru3p5dZ0nusKhu7lNJ_KqRCzbuPq9IUBWdGdal5VukXMsAY')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface via-surface/40 to-black/35"></div>
+<!-- Dynamic Island / Notch Floating Top Pill -->
+<div class="absolute top-2.5 inset-x-0 flex justify-center items-center pointer-events-none z-20">
+<div class="bg-black/90 backdrop-blur-md px-3.5 py-1 rounded-full flex items-center gap-2 shadow-md">
+<span class="w-2.5 h-2.5 rounded-full bg-primary-fixed animate-pulse"></span>
+<span class="font-label-sm text-label-sm text-surface tracking-wider font-bold">19:16</span>
+<span class="w-1.5 h-1.5 rounded-full bg-outline-variant/60"></span>
+<span class="font-label-sm text-label-sm text-primary-fixed font-semibold flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[11px]">wifi</span> 5G
+            </span>
+</div>
+</div>
+<!-- In-Phone Header Bar -->
+<div class="absolute top-2 inset-x-2.5 flex items-center justify-between z-10">
+<button class="flex items-center gap-1 px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md text-surface active:scale-95 transition-transform shadow-sm" onclick="history.back()" type="button">
+<span class="material-symbols-outlined text-[15px] text-surface">close</span>
+<span class="font-label-sm text-label-sm font-bold tracking-tight">Fechar Celular</span>
+</button>
+<div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md text-surface">
+<span class="material-symbols-outlined text-[14px] text-secondary-fixed">battery_charging_90</span>
+<span class="font-label-sm text-label-sm font-bold">97%</span>
+</div>
+</div>
+<!-- Lockscreen Greetings & Clock Widget -->
+<div class="absolute bottom-3 left-4 right-4 flex items-end justify-between text-on-surface">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-primary font-extrabold flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px] text-primary">calendar_month</span>
+              Quarta-feira • Ano 2053
+            </span>
+<span class="font-headline-md text-headline-md font-bold text-on-surface drop-shadow-sm">
+              Bom dia, Lucas! 🌴
+            </span>
+</div>
+<div class="flex items-center gap-1 bg-secondary-container text-on-secondary-container px-2.5 py-1 rounded-xl shadow-[0_2px_0_0_#6d4d00]">
+<span class="material-symbols-outlined text-[14px]">notifications_active</span>
+<span class="font-label-sm text-label-sm font-extrabold">5 pendentes</span>
+</div>
+</div>
+</div>
+<!-- Main Phone Inner Body -->
+<div class="p-3.5 flex flex-col gap-4">
+<!-- 1. Dilema Urgente Notificação Push (Toy Brick Card) -->
+<section class="bg-error-container text-on-error-container p-3.5 rounded-2xl shadow-[0_4px_0_0_#ba1a1a] flex flex-col gap-2.5 relative">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="w-6 h-6 rounded-lg bg-error text-on-error flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[15px]">security</span>
+</span>
+<span class="font-label-md text-label-md uppercase tracking-wider font-extrabold text-on-error-container">
+                Alerta de Fraude Pix
+              </span>
+</div>
+<span class="font-label-sm text-label-sm bg-surface-container-lowest/80 text-error px-2 py-0.5 rounded-full font-bold">
+              Agora
+            </span>
+</div>
+<div class="flex flex-col gap-0.5">
+<p class="font-headline-md text-body-md font-bold text-on-error-container">
+              Suposto primo pedindo R$ 800!
+            </p>
+<p class="font-body-sm text-body-sm text-on-error-container/90 leading-tight">
+              Número desconhecido com a foto do Renan: <em>“Lucas, meu app do banco travou, faz um Pix pro mecânico urgente?”</em>
+</p>
+</div>
+<!-- Ações Táteis do Dilema -->
+<div class="grid grid-cols-2 gap-2 mt-1" id="dilemma-actions">
+<button class="py-2.5 px-2 bg-error text-on-error rounded-xl font-label-md text-label-md font-extrabold flex items-center justify-center gap-1 shadow-[0_3px_0_0_#93000a] active:translate-y-0.5 active:shadow-[0_1px_0_0_#93000a] transition-all" onclick="handleDilemma('blocked')" type="button">
+<span class="material-symbols-outlined text-[16px]">block</span>
+              Bloquear e Denunciar
+            </button>
+<button class="py-2.5 px-2 bg-surface-container-lowest text-on-surface rounded-xl font-label-md text-label-md font-extrabold flex items-center justify-center gap-1 shadow-[0_3px_0_0_#bdcabf] active:translate-y-0.5 active:shadow-[0_1px_0_0_#bdcabf] transition-all" onclick="handleDilemma('question')" type="button">
+<span class="material-symbols-outlined text-[16px] text-secondary">psychology_alt</span>
+              Fazer Pergunta Teste
+            </button>
+</div>
+<div class="hidden text-center font-label-md text-label-md py-1 font-bold" id="dilemma-feedback"></div>
+</section>
+<!-- 2. Widget Clima & Economia G1 Brasil 2053 -->
+<section class="bg-surface-container-lowest p-3.5 rounded-2xl shadow-[0_3px_0_0_#dde4db] flex flex-col gap-2.5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<div class="w-6 h-6 rounded-lg bg-error text-on-error flex items-center justify-center font-headline-md text-label-sm font-black">
+                G1
+              </div>
+<span class="font-label-md text-label-md font-extrabold text-on-surface tracking-wide">
+                Economia &amp; Notícias • 2053
+              </span>
+</div>
+<div class="flex items-center gap-1 bg-surface-container-high px-2 py-0.5 rounded-md font-label-sm text-label-sm font-bold text-on-surface-variant">
+<span class="material-symbols-outlined text-[13px] text-secondary">wb_sunny</span> 29°C SP
+            </div>
+</div>
+<div class="bg-surface-container-low p-2.5 rounded-xl flex items-start gap-2.5">
+<span class="material-symbols-outlined text-[20px] text-tertiary shrink-0 mt-0.5">trending_up</span>
+<div class="flex flex-col min-w-0">
+<p class="font-body-sm text-body-sm font-bold text-on-surface line-clamp-2">
+                Copom eleva Selic a 10,75% a.a.; lavouras de café sustentável aquecem mercado interno no interior paulista.
+              </p>
+<div class="flex items-center gap-3 mt-1.5">
+<span class="font-label-sm text-label-sm font-bold text-primary flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[12px]">monetization_on</span> USD: R$ 5,42
+                </span>
+<span class="font-label-sm text-label-sm text-outline font-semibold">Atualizado há 12m</span>
+</div>
+</div>
+</div>
+<button class="w-full py-2 bg-surface-container text-on-surface font-label-md text-label-md rounded-xl flex items-center justify-center gap-1 shadow-[0_2px_0_0_#bdcabf] active:translate-y-0.5 transition-all" type="button">
+<span>Abrir feed completo do G1 Brasil</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</section>
+<!-- 3. Grade de Aplicativos Instalados (Tactile 3D App Bricks) -->
+<section class="flex flex-col gap-2">
+<div class="flex items-center justify-between px-1">
+<h2 class="font-headline-md text-headline-md font-extrabold text-on-surface">
+              Aplicativos
+            </h2>
+<span class="font-label-sm text-label-sm font-bold text-outline">Página 1 de 2</span>
+</div>
+<div class="grid grid-cols-4 gap-2.5">
+<!-- App 1: Zap Tropical -->
+<button class="flex flex-col items-center gap-1 group active:scale-95 transition-all text-center" type="button">
+<div class="w-13 h-13 w-[52px] h-[52px] rounded-2xl bg-primary text-on-primary flex items-center justify-center relative shadow-[0_4px_0_0_#005232] group-hover:brightness-105">
+<span class="material-symbols-outlined text-[26px]">chat</span>
+<span class="absolute -top-1 -right-1 bg-secondary-container text-on-secondary-container text-[10px] font-black rounded-full px-1.5 py-0.2 shadow-sm font-label-sm">
+                  14
+                </span>
+</div>
+<span class="font-label-sm text-label-sm font-bold text-on-surface truncate w-full">Zap Tropical</span>
+</button>
+<!-- App 2: Banco Digital -->
+<button class="flex flex-col items-center gap-1 group active:scale-95 transition-all text-center" type="button">
+<div class="w-[52px] h-[52px] rounded-2xl bg-tertiary-container text-on-tertiary-container flex items-center justify-center relative shadow-[0_4px_0_0_#004a74] group-hover:brightness-105">
+<span class="material-symbols-outlined text-[26px]">account_balance</span>
+<span class="absolute -top-1 -right-1 bg-primary text-on-primary text-[9px] font-black rounded-full px-1 py-0.2 font-label-sm">
+                  Pix
+                </span>
+</div>
+<span class="font-label-sm text-label-sm font-bold text-on-surface truncate w-full">Banco Pindorama</span>
+</button>
+<!-- App 3: Tinder Tropical -->
+<button class="flex flex-col items-center gap-1 group active:scale-95 transition-all text-center" type="button">
+<div class="w-[52px] h-[52px] rounded-2xl bg-secondary-container text-on-secondary-container flex items-center justify-center relative shadow-[0_4px_0_0_#6d4d00] group-hover:brightness-105">
+<span class="material-symbols-outlined text-[26px]">local_fire_department</span>
+<span class="absolute -top-1 -right-1 bg-error text-on-error text-[10px] font-black rounded-full px-1.5 py-0.2 font-label-sm">
+                  1
+                </span>
+</div>
+<span class="font-label-sm text-label-sm font-bold text-on-surface truncate w-full">Tinder Brasil</span>
+</button>
+<!-- App 4: iFood Delivery -->
+<button class="flex flex-col items-center gap-1 group active:scale-95 transition-all text-center" type="button">
+<div class="w-[52px] h-[52px] rounded-2xl bg-error text-on-error flex items-center justify-center relative shadow-[0_4px_0_0_#93000a] group-hover:brightness-105">
+<span class="material-symbols-outlined text-[26px]">restaurant</span>
+<span class="absolute -top-1 -right-1 bg-secondary-fixed text-on-secondary-fixed text-[9px] font-black rounded-full px-1 py-0.2 font-label-sm">
+                  Cupom
+                </span>
+</div>
+<span class="font-label-sm text-label-sm font-bold text-on-surface truncate w-full">Delivery Food</span>
+</button>
+<!-- App 5: Serasa Score -->
+<button class="flex flex-col items-center gap-1 group active:scale-95 transition-all text-center" type="button">
+<div class="w-[52px] h-[52px] rounded-2xl bg-surface-container-highest text-on-surface flex items-center justify-center relative shadow-[0_4px_0_0_#bdcabf] group-hover:brightness-105">
+<span class="material-symbols-outlined text-[26px] text-primary">speed</span>
+</div>
+<span class="font-label-sm text-label-sm font-bold text-on-surface truncate w-full">Serasa Score</span>
+</button>
+<!-- App 6: Tigrinho Bet -->
+<button class="flex flex-col items-center gap-1 group active:scale-95 transition-all text-center" type="button">
+<div class="w-[52px] h-[52px] rounded-2xl bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center relative shadow-[0_4px_0_0_#fdbb2d] group-hover:brightness-105">
+<span class="material-symbols-outlined text-[26px] text-secondary">casino</span>
+</div>
+<span class="font-label-sm text-label-sm font-bold text-on-surface truncate w-full">Tigrinho Bet</span>
+</button>
+<!-- App 7: Câmera & Insta -->
+<button class="flex flex-col items-center gap-1 group active:scale-95 transition-all text-center" type="button">
+<div class="w-[52px] h-[52px] rounded-2xl bg-primary-fixed-dim text-on-primary-fixed-variant flex items-center justify-center relative shadow-[0_4px_0_0_#005232] group-hover:brightness-105">
+<span class="material-symbols-outlined text-[26px]">photo_camera</span>
+</div>
+<span class="font-label-sm text-label-sm font-bold text-on-surface truncate w-full">Insta Tropical</span>
+</button>
+<!-- App 8: Bloco de Notas / Diário -->
+<button class="flex flex-col items-center gap-1 group active:scale-95 transition-all text-center" type="button">
+<div class="w-[52px] h-[52px] rounded-2xl bg-surface-container text-on-surface flex items-center justify-center relative shadow-[0_4px_0_0_#bdcabf] group-hover:brightness-105">
+<span class="material-symbols-outlined text-[26px] text-tertiary">edit_note</span>
+</div>
+<span class="font-label-sm text-label-sm font-bold text-on-surface truncate w-full">Diário de Vida</span>
+</button>
+</div>
+</section>
+<!-- 4. Zap Tropical: Central de Mensagens e Dilemas de Relacionamento -->
+<section class="bg-surface-container-lowest p-3.5 rounded-2xl shadow-[0_3px_0_0_#dde4db] flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-7 h-7 rounded-xl bg-primary text-on-primary flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[17px]">forum</span>
+</span>
+<div>
+<h3 class="font-headline-md text-headline-md font-extrabold text-on-surface leading-none">
+                  Zap Tropical
+                </h3>
+<span class="font-label-sm text-label-sm text-primary font-bold">Conversas Recentes</span>
+</div>
+</div>
+<span class="font-label-sm text-label-sm bg-primary-fixed text-on-primary-fixed px-2 py-0.5 rounded-full font-bold">
+              Online
+            </span>
+</div>
+<!-- Chat List -->
+<div class="flex flex-col gap-2.5">
+<!-- Contato 1: Patrícia Amor (Com Dilema Rápido Interativo) -->
+<div class="bg-surface-container-low p-3 rounded-xl flex flex-col gap-2 transition-all">
+<div class="flex items-start gap-2.5">
+<div class="relative shrink-0">
+<div class="w-11 h-11 rounded-full overflow-hidden shadow-sm bg-secondary-fixed">
+<img class="w-full h-full object-cover" data-alt="Cute Studio Ghibli inspired portrait miniature of Patrícia, a young Brazilian woman with warm smiling eyes, curly dark hair, wearing a cozy yellow summer top, vibrant colors" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqpwOkawOlqqnfIr4sTAREkG3O0t9JFn6v18AaJtMPOueoLh0yQGT3yc6oysmT0vSCYmCqvxBgorY82uzSB3KUOv-gkv2g2AoS-MYfRE1Yj0cL-6JgIX81QNE2Gpzcc1f_6uLCeWz7YFEF9Urf6LKms0-BkYVdTiuCjCs0eyl_Uqd_QOun25II10ObZhvDk0dxVd8Bg7ZQXMH3tjwGPSX3LrUhWL15LUvZpCokn11i"/>
+</div>
+<span class="absolute bottom-0 right-0 w-3 h-3 bg-primary-container rounded-full ring-2 ring-surface-container-lowest"></span>
+</div>
+<div class="flex flex-col flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<span class="font-headline-md text-body-md font-bold text-on-surface truncate">
+                      Patrícia Amor 💖
+                    </span>
+<span class="font-label-sm text-label-sm text-primary font-bold shrink-0">19:14</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">
+                    “Amor, vamos pedir aquela pizza de quatro queijos hoje à noite? 🍕”
+                  </p>
+</div>
+</div>
+<!-- Quick Reply Interactive Buttons -->
+<div class="flex items-center gap-2 pt-1" id="patricia-reply-box">
+<button class="flex-1 py-1.5 px-2 bg-primary text-on-primary font-label-md text-label-md font-extrabold rounded-lg shadow-[0_2px_0_0_#005232] active:translate-y-0.5 transition-all text-center" onclick="replyPatricia('pizza')" type="button">
+                  🍕 “Bora, fechou!” (-R$ 68)
+                </button>
+<button class="flex-1 py-1.5 px-2 bg-surface-container-high text-on-surface font-label-md text-label-md font-extrabold rounded-lg shadow-[0_2px_0_0_#bdcabf] active:translate-y-0.5 transition-all text-center" onclick="replyPatricia('fit')" type="button">
+                  🥗 “Tô no foco fit hj!” (+Saúde)
+                </button>
+</div>
+<div class="hidden font-label-sm text-label-sm text-primary font-extrabold text-center py-1" id="patricia-reply-status"></div>
+</div>
+<!-- Contato 2: Grupo da Família Silva -->
+<div class="bg-surface-container-low p-3 rounded-xl flex items-start gap-2.5">
+<div class="relative shrink-0">
+<div class="w-11 h-11 rounded-full overflow-hidden shadow-sm bg-tertiary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-[24px] text-tertiary">groups</span>
+</div>
+<span class="absolute -top-1 -right-1 bg-secondary text-on-secondary rounded-full font-label-sm text-label-sm px-1 font-black">
+                  12
+                </span>
+</div>
+<div class="flex flex-col flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<span class="font-headline-md text-body-md font-bold text-on-surface truncate">
+                    Família Silva 👨‍👩‍👧‍👦
+                  </span>
+<span class="font-label-sm text-label-sm text-outline font-semibold shrink-0">18:42</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant truncate">
+<strong class="text-on-surface">Mãe:</strong> “Quem esqueceu o pote de sorvete na geladeira cheio de feijão?!”
+                </p>
+</div>
+</div>
+<!-- Contato 3: Enzo Gabriel -->
+<div class="bg-surface-container-low p-3 rounded-xl flex items-start gap-2.5">
+<div class="relative shrink-0">
+<div class="w-11 h-11 rounded-full overflow-hidden shadow-sm bg-primary-fixed">
+<img class="w-full h-full object-cover" data-alt="Playful toy style Lego avatar headshot of young Brazilian guy named Enzo with a backward cap, friendly smile, warm pastel tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZ8CDPTXLFPfshG_0xaxvdUoctmHgyAoTNzEH376FexXf0JtlQpKsNFnagyRluwZefY21fvVOcBnlbQ8t2nfvPjd1F49rFKLXOIVSYhEj6m0jeJR6x66DjxnBXSBW_hftfRyeAUHjGjr4Ufh414_kHqJW6DtRFk5vSUV9W6nW5kK-not5lq-a_Of5GqQDzJjZmBW5QQ01-lT_1wVZXCOX1MVGgXAJnMcpbSmx7snML"/>
+</div>
+</div>
+<div class="flex flex-col flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<span class="font-headline-md text-body-md font-bold text-on-surface truncate">
+                    Enzo Gabriel 🍻
+                  </span>
+<span class="font-label-sm text-label-sm text-outline font-semibold shrink-0">17:30</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant truncate">
+                  “Bora pro rodízio ou churrasco sábado na laje? Eu levo o cooler!”
+                </p>
+</div>
+</div>
+<!-- Contato 4: Gerente Banco Pindorama -->
+<div class="bg-surface-container-low p-3 rounded-xl flex items-start gap-2.5">
+<div class="relative shrink-0">
+<div class="w-11 h-11 rounded-full bg-secondary-fixed flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[22px] text-secondary">savings</span>
+</div>
+</div>
+<div class="flex flex-col flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<span class="font-headline-md text-body-md font-bold text-on-surface truncate">
+                    Gerente Pindorama 🏦
+                  </span>
+<span class="font-label-sm text-label-sm text-outline font-semibold shrink-0">15:10</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant truncate">
+                  “Seu CDB 130% rendeu <strong class="text-primary font-bold">+R$ 820,00</strong> este mês! Deseja reinvestir?”
+                </p>
+</div>
+</div>
+<!-- Contato 5: RH Restaurante Terroir -->
+<div class="bg-surface-container-low p-3 rounded-xl flex items-start gap-2.5">
+<div class="relative shrink-0">
+<div class="w-11 h-11 rounded-full bg-surface-container-highest flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[22px] text-on-surface-variant">wine_bar</span>
+</div>
+</div>
+<div class="flex flex-col flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<span class="font-headline-md text-body-md font-bold text-on-surface truncate">
+                    RH Restaurante Terroir 🍇
+                  </span>
+<span class="font-label-sm text-label-sm text-outline font-semibold shrink-0">Ontem</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant truncate">
+                  “Escala de sommelier do fim de semana confirmada. Bom turno!”
+                </p>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Smartphone Bottom Navigation Dock & Home Bar -->
+<div class="w-full bg-surface-container-high/90 backdrop-blur-md p-3 flex flex-col items-center gap-2.5">
+<div class="flex items-center justify-around w-full max-w-xs">
+<button class="w-10 h-10 rounded-xl bg-surface-container-lowest text-on-surface flex items-center justify-center shadow-[0_2px_0_0_#dde4db] active:translate-y-0.5 transition-all" type="button">
+<span class="material-symbols-outlined text-[20px]">phone</span>
+</button>
+<button class="w-10 h-10 rounded-xl bg-primary text-on-primary flex items-center justify-center shadow-[0_2px_0_0_#005232] active:translate-y-0.5 transition-all" type="button">
+<span class="material-symbols-outlined text-[20px]">chat</span>
+</button>
+<button class="w-10 h-10 rounded-xl bg-surface-container-lowest text-on-surface flex items-center justify-center shadow-[0_2px_0_0_#dde4db] active:translate-y-0.5 transition-all" type="button">
+<span class="material-symbols-outlined text-[20px]">photo_camera</span>
+</button>
+<button class="w-10 h-10 rounded-xl bg-surface-container-lowest text-on-surface flex items-center justify-center shadow-[0_2px_0_0_#dde4db] active:translate-y-0.5 transition-all" type="button">
+<span class="material-symbols-outlined text-[20px]">apps</span>
+</button>
+</div>
+<!-- Physical Home Indicator Pill -->
+<div class="w-32 h-1.5 rounded-full bg-inverse-surface/40"></div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  function handleDilemma(choice) {
+    const actionsBox = document.getElementById('dilemma-actions');
+    const feedbackBox = document.getElementById('dilemma-feedback');
+    if (!actionsBox || !feedbackBox) return;
+
+    actionsBox.classList.add('hidden');
+    feedbackBox.classList.remove('hidden');
+
+    if (choice === 'blocked') {
+      feedbackBox.className = 'font-label-md text-label-md py-1.5 px-3 rounded-lg bg-surface-container-lowest text-primary font-black shadow-sm';
+      feedbackBox.innerHTML = '🛡️ Você bloqueou o golpista! Economizou R$ 800 e ganhou +5 Sabedoria.';
+    } else {
+      feedbackBox.className = 'font-label-md text-label-md py-1.5 px-3 rounded-lg bg-surface-container-lowest text-secondary font-black shadow-sm';
+      feedbackBox.innerHTML = '🕵️ Você perguntou o nome do cachorro dele. O número parou de responder na hora!';
+    }
+  }
+
+  function replyPatricia(choice) {
+    const replyBox = document.getElementById('patricia-reply-box');
+    const statusBox = document.getElementById('patricia-reply-status');
+    if (!replyBox || !statusBox) return;
+
+    replyBox.classList.add('hidden');
+    statusBox.classList.remove('hidden');
+
+    if (choice === 'pizza') {
+      statusBox.innerHTML = '💖 Patrícia: "Ebaaa! Vou abrir o delivery agora mesmo! Te amo!" (+15 Felicidade)';
+    } else {
+      statusBox.innerHTML = '💖 Patrícia: "Orgulho de você! Vou fazer uma saladinha caprichada pra gente!" (+10 Saúde)';
+    }
+  }
+</script></main></body></html>

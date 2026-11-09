@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@500;600;700&amp;family=Outfit:wght@700;800&amp;family=Plus+Jakarta+Sans:wght@700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;background-color:#f4fbf2;}body{overscroll-behavior:none;-webkit-tap-highlight-color:transparent;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-background": "#161d18", "surface-bright": "#f4fbf2", "on-error-container": "#93000a", "secondary-fixed": "#ffdea8", "surface-dim": "#d5dcd3", "outline-variant": "#bdcabf", "error-container": "#ffdad6", "on-tertiary": "#ffffff", "on-secondary": "#ffffff", "inverse-on-surface": "#ecf3ea", "on-tertiary-container": "#f4f8ff", "secondary": "#7c5800", "primary": "#006740", "tertiary-fixed": "#cde5ff", "secondary-fixed-dim": "#fdbb2d", "surface": "#f4fbf2", "on-tertiary-fixed-variant": "#004a74", "surface-container": "#e9f0e7", "surface-tint": "#006d44", "primary-container": "#0d8253", "on-secondary-fixed-variant": "#5e4200", "error": "#ba1a1a", "surface-container-lowest": "#ffffff", "inverse-surface": "#2b322c", "outline": "#6e7a71", "inverse-primary": "#76daa3", "background": "#f4fbf2", "surface-container-low": "#eef6ec", "on-surface-variant": "#3e4941", "surface-container-high": "#e3eae1", "tertiary-fixed-dim": "#94ccff", "on-secondary-container": "#6d4d00", "primary-fixed": "#93f7be", "on-surface": "#161d18", "surface-variant": "#dde4db", "on-primary-fixed-variant": "#005232", "on-primary-container": "#e2ffe9", "tertiary": "#005e91", "on-primary-fixed": "#002111", "surface-container-highest": "#dde4db", "on-error": "#ffffff", "primary-fixed-dim": "#76daa3", "on-primary": "#ffffff", "tertiary-container": "#0077b6", "on-tertiary-fixed": "#001d32", "secondary-container": "#fdbb2d", "on-secondary-fixed": "#271900" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-xs": "0.25rem", "space-md": "1rem", "space-lg": "1.5rem", "margin-mobile": "1rem", "space-sm": "0.5rem", "gutter": "1rem", "space-xl": "2.25rem", "margin": "1.5rem", "gutter-mobile": "0.75rem" }, "fontFamily": { "label-lg": ["Outfit"], "label-sm": ["Outfit"], "headline-md": ["Plus Jakarta Sans"], "label-md": ["Outfit"], "body-md": ["Nunito Sans"], "headline-xl-mobile": ["Plus Jakarta Sans"], "body-lg": ["Nunito Sans"], "headline-lg": ["Plus Jakarta Sans"], "body-sm": ["Nunito Sans"], "headline-lg-mobile": ["Plus Jakarta Sans"], "headline-xl": ["Plus Jakarta Sans"] }, "fontSize": { "label-lg": ["14px", { "lineHeight": "18px", "fontWeight": "700" }], "label-sm": ["10px", { "lineHeight": "14px", "fontWeight": "800" }], "headline-md": ["20px", { "lineHeight": "26px", "fontWeight": "700" }], "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "700" }], "body-md": ["15px", { "lineHeight": "22px", "fontWeight": "500" }], "headline-xl-mobile": ["28px", { "lineHeight": "34px", "fontWeight": "800" }], "body-lg": ["17px", { "lineHeight": "24px", "fontWeight": "600" }], "headline-lg": ["28px", { "lineHeight": "36px", "fontWeight": "700" }], "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "500" }], "headline-lg-mobile": ["22px", { "lineHeight": "28px", "fontWeight": "700" }], "headline-xl": ["38px", { "lineHeight": "46px", "fontWeight": "800" }] } } } };</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-md text-body-md text-on-surface flex flex-col min-h-screen selection:bg-primary-fixed"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(22,29,24,0.06)]"><div class="h-28 px-margin-mobile flex flex-col justify-between py-space-xs"><div class="flex items-center justify-between gap-space-xs"><div class="flex items-center gap-space-sm min-w-0 flex-1"><div class="relative w-9 h-9 rounded-lg bg-secondary-fixed flex items-center justify-center shadow-[0_2px_0_#5e4200] shrink-0"><div class="absolute -top-1 w-3.5 h-1.5 bg-secondary-fixed rounded-t-sm shadow-[0_1px_0_#5e4200]"></div><span class="material-symbols-outlined text-secondary text-[22px]">sentiment_satisfied</span></div><div class="flex flex-col min-w-0"><div class="flex items-center gap-space-xs"><span class="font-headline-md text-headline-md text-on-surface truncate">Lucas Silva</span><span class="px-1.5 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm shrink-0">27a • SP</span></div><div class="flex items-center gap-1.5 text-on-surface-variant font-body-sm text-body-sm truncate"><span class="truncate">Sommelier &amp; Gestor</span><span class="text-primary font-label-sm text-label-sm font-bold shrink-0">R$ 12.960/m</span><span class="px-1 rounded bg-primary-fixed text-on-primary-fixed-variant font-label-sm text-label-sm font-bold shrink-0">Serasa 1000</span></div></div></div><div class="flex items-center gap-space-xs shrink-0"><button class="w-11 h-11 rounded-xl bg-surface-container-low flex items-center justify-center text-on-surface-variant hover:text-on-surface"><span class="material-symbols-outlined text-[20px]">notifications</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div><div class="grid grid-cols-4 gap-space-xs pt-1"><div class="flex flex-col gap-0.5 bg-surface-container-low rounded-lg p-1.5 shadow-[0_2px_0_#dde4db]"><div class="flex items-center justify-between"><div class="flex items-center gap-0.5"><span class="material-symbols-outlined text-primary text-[13px]">favorite</span><span class="font-label-sm text-label-sm text-on-surface-variant">Saúde</span></div><span class="font-label-sm text-label-sm text-primary">95%</span></div><div class="w-full h-1.5 bg-surface-container-highest rounded-full overflow-hidden"><div class="h-full bg-primary rounded-full" style="width: 95%"></div></div></div><div class="flex flex-col gap-0.5 bg-surface-container-low rounded-lg p-1.5 shadow-[0_2px_0_#dde4db]"><div class="flex items-center justify-between"><div class="flex items-center gap-0.5"><span class="material-symbols-outlined text-secondary text-[13px]">sunny</span><span class="font-label-sm text-label-sm text-on-surface-variant">Feliz</span></div><span class="font-label-sm text-label-sm text-secondary">100%</span></div><div class="w-full h-1.5 bg-surface-container-highest rounded-full overflow-hidden"><div class="h-full bg-secondary-container rounded-full" style="width: 100%"></div></div></div><div class="flex flex-col gap-0.5 bg-surface-container-low rounded-lg p-1.5 shadow-[0_2px_0_#dde4db]"><div class="flex items-center justify-between"><div class="flex items-center gap-0.5"><span class="material-symbols-outlined text-tertiary text-[13px]">psychology</span><span class="font-label-sm text-label-sm text-on-surface-variant">Saber</span></div><span class="font-label-sm text-label-sm text-tertiary">100%</span></div><div class="w-full h-1.5 bg-surface-container-highest rounded-full overflow-hidden"><div class="h-full bg-tertiary-container rounded-full" style="width: 100%"></div></div></div><div class="flex flex-col gap-0.5 bg-surface-container-low rounded-lg p-1.5 shadow-[0_2px_0_#dde4db]"><div class="flex items-center justify-between"><div class="flex items-center gap-0.5"><span class="material-symbols-outlined text-error text-[13px]">bolt</span><span class="font-label-sm text-label-sm text-on-surface-variant">Energia</span></div><span class="font-label-sm text-label-sm text-error">0%</span></div><div class="w-full h-1.5 bg-surface-container-highest rounded-full overflow-hidden"><div class="h-full bg-error rounded-full" style="width: 0%"></div></div></div></div></div></header><main class="flex flex-col relative w-full pt-28 pb-24 bg-surface min-h-screen"><div class="flex flex-col w-full">
+<div class="px-margin-mobile flex flex-col gap-space-md py-space-sm">
+<!-- Card de Sintonia Amorosa Principal: Toy-morphic Card -->
+<div class="relative w-full rounded-2xl bg-surface-container-lowest p-space-md shadow-[0_5px_0_#dde4db,0_12px_24px_rgba(22,29,24,0.06)] flex flex-col gap-space-sm overflow-hidden">
+<!-- Fita Decorativa Toy de Status -->
+<div class="absolute -right-10 top-3 rotate-12 bg-secondary-container text-on-secondary-container font-label-sm text-label-sm py-0.5 px-10 shadow-[0_2px_0_#b57f00] flex items-center gap-1 justify-center">
+<span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<span>ALMA GÊMEA</span>
+</div>
+<div class="flex items-start gap-space-sm">
+<!-- Avatar Cabeça LEGO Fofa Patrícia com stud e bochechas -->
+<div class="relative w-16 h-16 rounded-xl bg-secondary-fixed flex flex-col items-center justify-center shadow-[0_4px_0_#5e4200] shrink-0">
+<!-- Pinos/Studs de Encaixe LEGO Superior -->
+<div class="absolute -top-2 flex gap-1 items-center justify-center">
+<div class="w-3 h-2 bg-secondary-fixed rounded-t-sm shadow-[0_1px_0_#5e4200]"></div>
+<div class="w-3 h-2 bg-secondary-fixed rounded-t-sm shadow-[0_1px_0_#5e4200]"></div>
+</div>
+<!-- Cabelinho castanho estilizado arquiteta -->
+<div class="absolute top-1 w-12 h-3.5 bg-secondary rounded-t-lg"></div>
+<!-- Rostinho fofo com bochechas coradas -->
+<div class="flex items-center gap-2 pt-2">
+<span class="w-1.5 h-2 bg-on-background rounded-full"></span>
+<span class="w-1.5 h-2 bg-on-background rounded-full"></span>
+</div>
+<div class="w-2.5 h-1 border-b-2 border-on-background rounded-full mt-0.5"></div>
+<div class="flex justify-between w-9 px-0.5 -mt-1.5">
+<span class="w-2 h-1 bg-error-container rounded-full opacity-90"></span>
+<span class="w-2 h-1 bg-error-container rounded-full opacity-90"></span>
+</div>
+<!-- Badge de Aliança no avatar -->
+<span class="absolute -bottom-1 -right-1 bg-secondary-container text-on-secondary-fixed-variant rounded-full p-0.5 shadow-[0_1px_0_#5e4200] text-[13px] material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">diamond</span>
+</div>
+<!-- Dados e Fase do Relacionamento -->
+<div class="flex flex-col min-w-0 flex-1 pr-6">
+<div class="flex items-center gap-1.5 flex-wrap">
+<h2 class="font-headline-md text-headline-md text-on-surface truncate">Patrícia Monteiro</h2>
+<span class="px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed-variant font-label-sm text-label-sm">Noiva • 26a</span>
+</div>
+<p class="text-on-surface-variant font-body-sm text-body-sm flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-[15px] text-tertiary">architecture</span>
+            Arquiteta e Urbanista (Ateliê Vila Madalena)
+          </p>
+<div class="mt-1 flex items-center gap-1 text-primary font-label-md text-label-md">
+<span class="material-symbols-outlined text-[16px] text-primary" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<span>Fase: Planejando Casamento na Praia 💍</span>
+</div>
+</div>
+</div>
+<!-- Barra de Sintonia 100% estilo seiva/líquido toy LEGO -->
+<div class="flex flex-col gap-1 mt-1 bg-surface-container-low p-space-sm rounded-xl shadow-[0_2px_0_#dde4db]">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-primary text-[15px]" style="font-variation-settings: 'FILL' 1;">volunteer_activism</span>
+<span class="font-label-md text-label-md text-on-surface">Sintonia e Cumplicidade</span>
+</div>
+<span class="font-label-md text-label-md text-primary">100% • Máxima Harmonia</span>
+</div>
+<div class="relative w-full h-3 bg-surface-container-highest rounded-full overflow-hidden p-0.5 flex items-center">
+<div class="h-full bg-primary rounded-full relative flex items-center justify-end pr-1 w-full">
+<div class="w-1.5 h-1.5 bg-surface-container-lowest rounded-full opacity-80"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Pílulas Táteis de Navegação (Toy Bricks Tabs) -->
+<div class="flex items-center gap-2 overflow-x-auto no-scrollbar py-1">
+<button class="px-3 py-2 rounded-xl bg-primary text-on-primary font-label-md text-label-md shadow-[0_3px_0_#003822] shrink-0 flex items-center gap-1.5 active:translate-y-0.5 active:shadow-[0_1px_0_#003822] transition-all">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<span>Vida a Dois &amp; Romance</span>
+</button>
+<button class="px-3 py-2 rounded-xl bg-surface-container text-on-surface font-label-md text-label-md shadow-[0_3px_0_#bdcabf] shrink-0 flex items-center gap-1.5 active:translate-y-0.5 active:shadow-[0_1px_0_#bdcabf] transition-all">
+<span class="material-symbols-outlined text-[16px]">diversity_1</span>
+<span>Momentos em Família</span>
+</button>
+<button class="px-3 py-2 rounded-xl bg-surface-container text-on-surface font-label-md text-label-md shadow-[0_3px_0_#bdcabf] shrink-0 flex items-center gap-1.5 active:translate-y-0.5 active:shadow-[0_1px_0_#bdcabf] transition-all">
+<span class="material-symbols-outlined text-[16px]">forum</span>
+<span>Diálogos Profundos</span>
+</button>
+<button class="px-3 py-2 rounded-xl bg-surface-container text-on-surface font-label-md text-label-md shadow-[0_3px_0_#bdcabf] shrink-0 flex items-center gap-1.5 active:translate-y-0.5 active:shadow-[0_1px_0_#bdcabf] transition-all">
+<span class="material-symbols-outlined text-[16px]">event_repeat</span>
+<span>Projetos Futuros</span>
+</button>
+</div>
+<!-- BANNER DE DESTAQUE: Decisão do Casamento (Botão Dourado 3D) -->
+<div class="w-full rounded-2xl bg-secondary-fixed p-space-md shadow-[0_4px_0_#5e4200] flex flex-col gap-space-xs relative overflow-hidden">
+<div class="flex items-center justify-between">
+<span class="px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-fixed-variant font-label-sm text-label-sm">Grande Passo</span>
+<span class="material-symbols-outlined text-secondary text-[24px]">church</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-secondary-fixed">Organizar Casamento em Ilhabela</h3>
+<p class="font-body-sm text-body-sm text-on-secondary-fixed-variant">A Patrícia finalizou a maquete do altar na areia e precisa da sua confirmação para fechar os contratos.</p>
+<button class="mt-2 w-full py-2.5 px-4 rounded-xl bg-secondary text-on-secondary font-label-lg text-label-lg shadow-[0_4px_0_#382400] flex items-center justify-center gap-2 active:translate-y-1 active:shadow-[0_0px_0_#382400] transition-all">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+<span>Escolher Buffet &amp; Padrinhos 💍</span>
+</button>
+</div>
+<!-- SEÇÃO 1: GESTOS DE AMOR COTIDIANO -->
+<div class="flex flex-col gap-space-xs mt-1">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-primary"></span>
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">Gestos de Amor Cotidiano</h3>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">4 disponíveis</span>
+</div>
+<div class="grid grid-cols-1 gap-space-xs">
+<!-- Card Ação 1: Café na Cama -->
+<div class="rounded-xl bg-surface-container-lowest p-space-sm shadow-[0_3px_0_#dde4db] flex items-center justify-between gap-space-sm hover:shadow-[0_4px_0_#bdcabf] transition-all">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-secondary shrink-0 shadow-[0_2px_0_#bdcabf]">
+<span class="material-symbols-outlined text-[20px]">coffee</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-lg text-label-lg text-on-surface truncate">Levar Café na Cama com Bilhete</span>
+<div class="flex items-center gap-1.5 flex-wrap mt-0.5">
+<span class="font-label-sm text-label-sm text-primary">+15 Afeto</span>
+<span class="font-label-sm text-label-sm text-secondary">+10 Feliz</span>
+<span class="font-label-sm text-label-sm text-error">-R$ 20</span>
+</div>
+</div>
+</div>
+<button class="px-3 py-1.5 rounded-lg bg-primary-container text-on-primary-container font-label-md text-label-md shadow-[0_3px_0_#005232] shrink-0 active:translate-y-0.5 active:shadow-[0_1px_0_#005232] transition-all flex items-center gap-1">
+<span>Fazer</span>
+</button>
+</div>
+<!-- Card Ação 2: Massagem Relaxante -->
+<div class="rounded-xl bg-surface-container-lowest p-space-sm shadow-[0_3px_0_#dde4db] flex items-center justify-between gap-space-sm hover:shadow-[0_4px_0_#bdcabf] transition-all">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-primary shrink-0 shadow-[0_2px_0_#bdcabf]">
+<span class="material-symbols-outlined text-[20px]">spa</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-lg text-label-lg text-on-surface truncate">Massagem Pós-Trabalho</span>
+<div class="flex items-center gap-1.5 flex-wrap mt-0.5">
+<span class="font-label-sm text-label-sm text-primary">+20 Sintonia</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Alivia Estresse</span>
+<span class="font-label-sm text-label-sm text-error">-10 Energia</span>
+</div>
+</div>
+</div>
+<button class="px-3 py-1.5 rounded-lg bg-primary-container text-on-primary-container font-label-md text-label-md shadow-[0_3px_0_#005232] shrink-0 active:translate-y-0.5 active:shadow-[0_1px_0_#005232] transition-all flex items-center gap-1">
+<span>Relaxar</span>
+</button>
+</div>
+<!-- Card Ação 3: Elogiar Projeto -->
+<div class="rounded-xl bg-surface-container-lowest p-space-sm shadow-[0_3px_0_#dde4db] flex items-center justify-between gap-space-sm hover:shadow-[0_4px_0_#bdcabf] transition-all">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-tertiary shrink-0 shadow-[0_2px_0_#bdcabf]">
+<span class="material-symbols-outlined text-[20px]">draw</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-lg text-label-lg text-on-surface truncate">Elogiar Projeto de Arquitetura</span>
+<div class="flex items-center gap-1.5 flex-wrap mt-0.5">
+<span class="font-label-sm text-label-sm text-primary">+15 Cumplicidade</span>
+<span class="font-label-sm text-label-sm text-tertiary">Grátis</span>
+</div>
+</div>
+</div>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-high text-on-surface font-label-md text-label-md shadow-[0_3px_0_#bdcabf] shrink-0 active:translate-y-0.5 active:shadow-[0_1px_0_#bdcabf] transition-all flex items-center gap-1">
+<span>Conversar</span>
+</button>
+</div>
+<!-- Card Ação 4: Girassóis & Bombom -->
+<div class="rounded-xl bg-surface-container-lowest p-space-sm shadow-[0_3px_0_#dde4db] flex items-center justify-between gap-space-sm hover:shadow-[0_4px_0_#bdcabf] transition-all">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-10 h-10 rounded-lg bg-secondary-fixed flex items-center justify-center text-secondary shrink-0 shadow-[0_2px_0_#5e4200]">
+<span class="material-symbols-outlined text-[20px]">local_florist</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-lg text-label-lg text-on-surface truncate">Girassóis &amp; Trufas Paulistanas</span>
+<div class="flex items-center gap-1.5 flex-wrap mt-0.5">
+<span class="font-label-sm text-label-sm text-primary">+35 Afeto Máx</span>
+<span class="font-label-sm text-label-sm text-error">-R$ 85</span>
+</div>
+</div>
+</div>
+<button class="px-3 py-1.5 rounded-lg bg-primary text-on-primary font-label-md text-label-md shadow-[0_3px_0_#003822] shrink-0 active:translate-y-0.5 active:shadow-[0_1px_0_#003822] transition-all flex items-center gap-1">
+<span>Presentear</span>
+</button>
+</div>
+</div>
+</div>
+<!-- SEÇÃO 2: ENCONTROS & EXPERIÊNCIAS -->
+<div class="flex flex-col gap-space-xs mt-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary-container"></span>
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">Encontros &amp; Experiências</h3>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Memórias</span>
+</div>
+<div class="grid grid-cols-2 gap-space-xs">
+<!-- Card Experiência 1: Jantar Pinheiros -->
+<div class="rounded-xl bg-surface-container-lowest p-space-sm shadow-[0_3px_0_#dde4db] flex flex-col justify-between gap-2">
+<div class="w-full h-20 rounded-lg overflow-hidden relative shadow-[0_2px_0_#dde4db]">
+<img class="w-full h-full object-cover" data-alt="A cozy and warm candlelit dinner in Pinheiros Sao Paulo, vibrant brick aesthetic, soft Ghibli diffuse lighting, wine glasses, flowers, gentle golden warm tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuALRKqZiHLqtOdEZlwFeK8XQ0Xqnou42E5KCl9NJiPecaJZU5822AQG8aYxi9EYNO3N4X54YK2qGu6Rej3rLo1vZWz14SbpMN0RrIkxguYP-RBwzK3ZwXdC5g8PClvpdr3bOJXMEcATNrG-JGUSIW5-4Bd5hxJVQInJhBYcpNF5dahuY7NufdhfC29qPKWvK7RxMySyFzgYznrEWWk2YawmeW-m1C3PtAjEhuDN_V6X"/>
+<span class="absolute bottom-1 right-1 px-1.5 py-0.2 rounded bg-surface-container-lowest/90 font-label-sm text-label-sm text-error">-R$ 180</span>
+</div>
+<div>
+<h4 class="font-label-lg text-label-lg text-on-surface truncate">Jantar à Luz de Velas</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Bistrô charmoso em Pinheiros</p>
+<span class="inline-block mt-1 font-label-sm text-label-sm text-primary">+30 Romance</span>
+</div>
+<button class="w-full py-1.5 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md shadow-[0_2px_0_#bdcabf] active:translate-y-0.5 active:shadow-none transition-all">
+            Reservar Mesa
+          </button>
+</div>
+<!-- Card Experiência 2: Maratona Ghibli -->
+<div class="rounded-xl bg-surface-container-lowest p-space-sm shadow-[0_3px_0_#dde4db] flex flex-col justify-between gap-2">
+<div class="w-full h-20 rounded-lg overflow-hidden relative shadow-[0_2px_0_#dde4db]">
+<img class="w-full h-full object-cover" data-alt="Cozy living room blanket fort watching Studio Ghibli films with fresh popcorn and tea, warm rainy afternoon light outside, friendly Brazilian apartment interior." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZP2oqxutJIq6s2LwdQEyF7ML4Ci2AF67frmf44rF70FbPx4ZK-1HEhc6gTNSvpjsu_P4y3w9XRRIOCqHhBNUGxYHM6eSj3RHaLEpR_KvqBqQsBCK08qBK7EMROfirMLdxkYG9_1G_UZK32fVXidRDjnOqElh7Xw4xnRtAyaGaeDz6GpYCYDjXewnP0mkY5Z_Y2LdGqY_i-yItLKvYJ0-AbRWrHw8iQchp--Nt4BPT"/>
+<span class="absolute bottom-1 right-1 px-1.5 py-0.2 rounded bg-surface-container-lowest/90 font-label-sm text-label-sm text-primary">Grátis</span>
+</div>
+<div>
+<h4 class="font-label-lg text-label-lg text-on-surface truncate">Maratona de Filmes Ghibli</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Pipoca de panela e cobertor</p>
+<span class="inline-block mt-1 font-label-sm text-label-sm text-primary">+25 Aconchego</span>
+</div>
+<button class="w-full py-1.5 rounded-lg bg-primary-container text-on-primary-container font-label-md text-label-md shadow-[0_2px_0_#005232] active:translate-y-0.5 active:shadow-none transition-all">
+            Iniciar Sessão
+          </button>
+</div>
+<!-- Card Experiência 3: Piquenique Ibirapuera -->
+<div class="rounded-xl bg-surface-container-lowest p-space-sm shadow-[0_3px_0_#dde4db] flex flex-col justify-between gap-2">
+<div class="w-full h-20 rounded-lg overflow-hidden relative shadow-[0_2px_0_#dde4db]">
+<img class="w-full h-full object-cover" data-alt="Sunny afternoon picnic under Brazilian trees at Ibirapuera park, red checkered picnic mat, tropical fruits, soft breeze and blue sky." src="https://lh3.googleusercontent.com/aida-public/AB6AXuATeBK2WCzgl6QegF6A7cZyqJ6qYTGdlCJvhxFpBATVqlo1CsZ3ONo_Pd7sGog9GdQXK_7cImZwg6z-t16RFZFErlfu-A-IqBEldo60H_1M9whn5S1VthFthSddAcZcXi0Sdu7Tv7Wfvil83PTaiXfbKdH3cnzDkfuBT8goJsfnGJk1dHVdjnieKp7NamUjMhbdPPhgP-eu-u4OVE9-Y-xslhzD18y4ivx5UNb6ndXc"/>
+<span class="absolute bottom-1 right-1 px-1.5 py-0.2 rounded bg-surface-container-lowest/90 font-label-sm text-label-sm text-error">-R$ 45</span>
+</div>
+<div>
+<h4 class="font-label-lg text-label-lg text-on-surface truncate">Piquenique no Parque</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Domingo de sol no Ibirapuera</p>
+<span class="inline-block mt-1 font-label-sm text-label-sm text-primary">+20 Afeto • +15 Saúde</span>
+</div>
+<button class="w-full py-1.5 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md shadow-[0_2px_0_#bdcabf] active:translate-y-0.5 active:shadow-none transition-all">
+            Montar Cesta
+          </button>
+</div>
+<!-- Card Experiência 4: Campos do Jordão -->
+<div class="rounded-xl bg-surface-container-lowest p-space-sm shadow-[0_3px_0_#dde4db] flex flex-col justify-between gap-2">
+<div class="w-full h-20 rounded-lg overflow-hidden relative shadow-[0_2px_0_#dde4db]">
+<img class="w-full h-full object-cover" data-alt="Charming mountain wooden chalet in Campos do Jordao Brazil, mist rolling over pine trees, fireplace glow through glass windows, warm romantic atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCT0zNxk8zcLybHD9w6_UUPWZPQ40CPVmYc5al6aLa0BYkAYt3SKjbJcUkF7vNHFrvcw8KGFsElZMb9faMvJZ0tfSGHERwqUF4ELpj_0JO0B_uCCx8S8QtH-JqBlsN_wGV1VIgRCbeL3DFwbcH30cs6ZlLZchKspI9GghdUBaWkvoRBvRyD4l79znAxGKsXqcG7uaY4As2Z1_tgVUGuO-WfsOoFl2P6V96ODh3CnFby"/>
+<span class="absolute bottom-1 right-1 px-1.5 py-0.2 rounded bg-surface-container-lowest/90 font-label-sm text-label-sm text-error">-R$ 650</span>
+</div>
+<div>
+<h4 class="font-label-lg text-label-lg text-on-surface truncate">Fim de Semana na Serra</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Campos do Jordão com lareira</p>
+<span class="inline-block mt-1 font-label-sm text-label-sm text-secondary">+60 Romance Épico</span>
+</div>
+<button class="w-full py-1.5 rounded-lg bg-secondary text-on-secondary font-label-md text-label-md shadow-[0_2px_0_#5e4200] active:translate-y-0.5 active:shadow-none transition-all">
+            Viajar Juntos
+          </button>
+</div>
+</div>
+</div>
+<!-- SEÇÃO 3: INTIMIDADE & VIDA CONJUNTA -->
+<div class="flex flex-col gap-space-xs mt-2">
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-tertiary"></span>
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">Intimidade &amp; Vida Conjunta</h3>
+</div>
+<div class="rounded-xl bg-surface-container-low p-space-sm shadow-[0_3px_0_#dde4db] flex flex-col gap-space-xs">
+<div class="flex items-center justify-between p-2 rounded-lg bg-surface-container-lowest shadow-[0_2px_0_#dde4db]">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary text-[20px]">psychology_alt</span>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Conversa Sincera sobre Filhos e Lar</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">+20 Cumplicidade • Alinha Metas</p>
+</div>
+</div>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-high text-on-surface font-label-sm text-label-sm shadow-[0_2px_0_#bdcabf] active:translate-y-0.5 transition-all">
+            Conversar
+          </button>
+</div>
+<div class="flex items-center justify-between p-2 rounded-lg bg-surface-container-lowest shadow-[0_2px_0_#dde4db]">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]" style="font-variation-settings: 'FILL' 1;">bedtime</span>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Noite Especial &amp; Intimidade Segura</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">+40 Harmonia • +20 Felicidade</p>
+</div>
+</div>
+<button class="px-3 py-1.5 rounded-lg bg-primary text-on-primary font-label-sm text-label-sm shadow-[0_2px_0_#003822] active:translate-y-0.5 transition-all">
+            Conectar
+          </button>
+</div>
+</div>
+</div>
+<!-- SEÇÃO 4: LAÇOS COM OS PAIS (Sérgio & Cristina) -->
+<div class="flex flex-col gap-space-xs mt-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">Interações com os Pais (Sérgio &amp; Cristina)</h3>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Família Raiz</span>
+</div>
+<!-- Mini-perfil dos pais com cabeças LEGO -->
+<div class="flex items-center gap-space-sm p-space-sm rounded-xl bg-surface-container-lowest shadow-[0_3px_0_#dde4db]">
+<div class="flex -space-x-3 shrink-0">
+<div class="w-10 h-10 rounded-lg bg-secondary-fixed flex items-center justify-center shadow-[0_2px_0_#5e4200] relative">
+<span class="material-symbols-outlined text-secondary text-[18px]">face_6</span>
+</div>
+<div class="w-10 h-10 rounded-lg bg-primary-fixed flex items-center justify-center shadow-[0_2px_0_#005232] relative">
+<span class="material-symbols-outlined text-primary text-[18px]">face_3</span>
+</div>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-on-surface">Pai Sérgio (58a) &amp; Mãe Cristina (56a)</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Vila Mariana • Amor incondicional</span>
+</div>
+</div>
+<div class="grid grid-cols-1 gap-space-xs">
+<!-- Ação Pais 1: Almoço de Domingo -->
+<div class="rounded-xl bg-surface-container-lowest p-space-sm shadow-[0_3px_0_#dde4db] flex items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-9 h-9 rounded-lg bg-surface-container-high flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-[18px]">soup_kitchen</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-on-surface truncate">Feijoada de Domingo da Mãe</span>
+<div class="flex items-center gap-1.5 flex-wrap">
+<span class="font-label-sm text-label-sm text-primary">+30 Carinho Materno</span>
+<span class="font-label-sm text-label-sm text-secondary">+10 Energia</span>
+<span class="font-label-sm text-label-sm text-tertiary">Grátis</span>
+</div>
+</div>
+</div>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md shadow-[0_2px_0_#bdcabf] shrink-0 active:translate-y-0.5 transition-all">
+            Visitar
+          </button>
+</div>
+<!-- Ação Pais 2: Churrasco com Pai -->
+<div class="rounded-xl bg-surface-container-lowest p-space-sm shadow-[0_3px_0_#dde4db] flex items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-9 h-9 rounded-lg bg-surface-container-high flex items-center justify-center text-secondary shrink-0">
+<span class="material-symbols-outlined text-[18px]">outdoor_grill</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-on-surface truncate">Churrasco &amp; Papo de Futebol</span>
+<div class="flex items-center gap-1.5 flex-wrap">
+<span class="font-label-sm text-label-sm text-primary">+25 Afeto Paterno</span>
+<span class="font-label-sm text-label-sm text-error">-R$ 40</span>
+</div>
+</div>
+</div>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md shadow-[0_2px_0_#bdcabf] shrink-0 active:translate-y-0.5 transition-all">
+            Assar
+          </button>
+</div>
+<!-- Ação Pais 3: Conselho de Vida -->
+<div class="rounded-xl bg-surface-container-lowest p-space-sm shadow-[0_3px_0_#dde4db] flex items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-9 h-9 rounded-lg bg-surface-container-high flex items-center justify-center text-tertiary shrink-0">
+<span class="material-symbols-outlined text-[18px]">lightbulb</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-on-surface truncate">Pedir Conselho de Finanças ao Pai</span>
+<div class="flex items-center gap-1.5 flex-wrap">
+<span class="font-label-sm text-label-sm text-tertiary">+15 Sabedoria</span>
+<span class="font-label-sm text-label-sm text-primary">+20 Respeito</span>
+</div>
+</div>
+</div>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md shadow-[0_2px_0_#bdcabf] shrink-0 active:translate-y-0.5 transition-all">
+            Ouvir
+          </button>
+</div>
+<!-- Ação Pais 4: Tarde com os Netos -->
+<div class="rounded-xl bg-surface-container-lowest p-space-sm shadow-[0_3px_0_#dde4db] flex items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-9 h-9 rounded-lg bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed shrink-0">
+<span class="material-symbols-outlined text-[18px]">family_restroom</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-on-surface truncate">Tarde das Crianças na Casa dos Avós</span>
+<div class="flex items-center gap-1.5 flex-wrap">
+<span class="font-label-sm text-label-sm text-secondary">+40 Alegria Avós</span>
+<span class="font-label-sm text-label-sm text-primary">+Tempo Casal</span>
+</div>
+</div>
+</div>
+<button class="px-3 py-1.5 rounded-lg bg-primary-container text-on-primary-container font-label-md text-label-md shadow-[0_2px_0_#005232] shrink-0 active:translate-y-0.5 transition-all">
+            Levar
+          </button>
+</div>
+</div>
+</div>
+<!-- SEÇÃO 5: DINÂMICAS COLETIVAS DO LAR -->
+<div class="flex flex-col gap-space-xs mt-2 mb-space-sm">
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-primary-container"></span>
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">Dinâmicas Coletivas em Família</h3>
+</div>
+<div class="grid grid-cols-1 gap-space-xs">
+<!-- Dinâmica 1: Jogos de Tabuleiro -->
+<div class="rounded-xl bg-surface-container-lowest p-space-sm shadow-[0_3px_0_#dde4db] flex items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-10 h-10 rounded-lg bg-surface-container-low flex items-center justify-center text-tertiary shrink-0">
+<span class="material-symbols-outlined text-[20px]">casino</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-lg text-label-lg text-on-surface truncate">Noite de Jogos de Tabuleiro</span>
+<span class="font-body-sm text-body-sm text-primary">+30 Harmonia Geral do Lar</span>
+</div>
+</div>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md shadow-[0_2px_0_#bdcabf] shrink-0 active:translate-y-0.5 transition-all">
+            Jogar
+          </button>
+</div>
+<!-- Dinâmica 2: Pizza Caseira -->
+<div class="rounded-xl bg-surface-container-lowest p-space-sm shadow-[0_3px_0_#dde4db] flex items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-10 h-10 rounded-lg bg-secondary-fixed flex items-center justify-center text-secondary shrink-0">
+<span class="material-symbols-outlined text-[20px]">local_pizza</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-lg text-label-lg text-on-surface truncate">Fazer Pizza Caseira na Cozinha</span>
+<span class="font-body-sm text-body-sm text-secondary">Farinha, risos e bagunça: +35 Afeto</span>
+</div>
+</div>
+<button class="px-3 py-1.5 rounded-lg bg-secondary-container text-on-secondary-container font-label-md text-label-md shadow-[0_2px_0_#b57f00] shrink-0 active:translate-y-0.5 transition-all">
+            Cozinhar
+          </button>
+</div>
+<!-- Dinâmica 3: Pracinha do Bairro -->
+<div class="rounded-xl bg-surface-container-lowest p-space-sm shadow-[0_3px_0_#dde4db] flex items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-10 h-10 rounded-lg bg-surface-container-low flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-[20px]">park</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-lg text-label-lg text-on-surface truncate">Passeio na Pracinha do Bairro</span>
+<span class="font-body-sm text-body-sm text-primary">+25 Saúde Coletiva e Alegria</span>
+</div>
+</div>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md shadow-[0_2px_0_#bdcabf] shrink-0 active:translate-y-0.5 transition-all">
+            Passear
+          </button>
+</div>
+</div>
+</div>
+</div>
+</div></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface/90 backdrop-blur-xl shadow-[0_-2px_12px_rgba(22,29,24,0.06)]" data-active-classes="text-primary font-bold"><div class="flex items-center justify-around h-16 px-1"><a class="flex flex-col items-center justify-center w-12 h-12 text-on-surface-variant hover:text-on-surface transition-all" data-path="inicio" href="#"><span class="material-symbols-outlined text-[20px]">home</span><span class="font-label-sm text-[9px] tracking-tight">Início</span></a><a class="flex flex-col items-center justify-center w-12 h-12 text-on-surface-variant hover:text-on-surface transition-all" data-path="carreira" href="#"><span class="material-symbols-outlined text-[20px]">work</span><span class="font-label-sm text-[9px] tracking-tight">Carreira</span></a><a class="flex flex-col items-center justify-center w-12 h-12 text-on-surface-variant hover:text-on-surface transition-all" data-path="banco" href="#"><span class="material-symbols-outlined text-[20px]">account_balance</span><span class="font-label-sm text-[9px] tracking-tight">Banco</span></a><a class="flex flex-col items-center justify-center w-12 h-12 text-on-surface-variant hover:text-on-surface transition-all" data-path="bens-e-eu" href="#"><span class="material-symbols-outlined text-[20px]">inventory_2</span><span class="font-label-sm text-[9px] tracking-tight">Bens &amp; Eu</span></a><a class="flex flex-col items-center justify-center w-12 h-12 text-on-surface-variant hover:text-on-surface transition-all" data-path="familia" href="#"><span class="material-symbols-outlined text-[20px]">group</span><span class="font-label-sm text-[9px] tracking-tight">Família</span></a><a class="flex flex-col items-center justify-center w-12 h-12 text-on-surface-variant hover:text-on-surface transition-all" data-path="atividades" href="#"><span class="material-symbols-outlined text-[20px]">sports_esports</span><span class="font-label-sm text-[9px] tracking-tight">Atividades</span></a><a class="flex flex-col items-center justify-center w-12 h-12 text-on-surface-variant hover:text-on-surface transition-all" data-path="mais" href="#"><span class="material-symbols-outlined text-[20px]">menu</span><span class="font-label-sm text-[9px] tracking-tight">Mais</span></a></div></nav></body></html>

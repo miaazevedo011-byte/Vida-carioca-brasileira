@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+<title>Vida Real Brasil - Simulador da Vida</title>
+<!-- Google Fonts: Fredoka & Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&amp;family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN v3 -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['"Fredoka"', 'cursive', 'sans-serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif']
+          },
+          colors: {
+            parchment: '#f9f8f0',
+            cardBg: '#ffffff',
+            emeraldCustom: {
+              400: '#10b981',
+              500: '#0ca768',
+              600: '#0a8853',
+              700: '#076940',
+              800: '#055132'
+            },
+            mintSoft: '#e3f7ed',
+            amberGlow: '#f59e0b'
+          },
+          boxShadow: {
+            'clay-card': '0 12px 36px -4px rgba(45, 90, 60, 0.08), 0 4px 16px -2px rgba(0, 0, 0, 0.03), inset 0 2px 0 rgba(255, 255, 255, 0.9)',
+            'clay-button': '0 5px 0 #055132, 0 10px 18px rgba(10, 136, 83, 0.35)',
+            'clay-button-active': '0 1px 0 #055132, 0 4px 8px rgba(10, 136, 83, 0.2)',
+            'toy-icon': '0 8px 20px rgba(13, 130, 83, 0.12), inset 0 2px 2px rgba(255, 255, 255, 0.8), inset 0 -2px 4px rgba(0, 0, 0, 0.04)',
+            'lego-play': '0 4px 0 #1d4ed8, 0 8px 16px rgba(37, 99, 235, 0.35)',
+            'lego-play-active': '0 1px 0 #1d4ed8, 0 3px 6px rgba(37, 99, 235, 0.2)'
+          }
+        }
+      }
+    };
+  </script>
+<style data-purpose="custom-animations">
+    /* Subtle tactile bounce feedback on interactive elements */
+    .tactile-btn {
+      transition: all 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .tactile-btn:active {
+      transform: translateY(3px);
+    }
+    
+    /* Ghibli warm natural backdrop texture */
+    .warm-bg {
+      background-color: #f7f6ec;
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(225, 245, 230, 0.6) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(254, 243, 199, 0.4) 0px, transparent 55%);
+    }
+
+    /* Brazilian flag inspired top header ribbon gradient */
+    .top-gradient-strip {
+      background: linear-gradient(90deg, #109457 0%, #eab308 45%, #2563eb 100%);
+    }
+
+    /* Animação para feedback sonoro/toast */
+    @keyframes popIn {
+      0% { transform: translate(-50%, 20px) scale(0.9); opacity: 0; }
+      100% { transform: translate(-50%, 0) scale(1); opacity: 1; }
+    }
+    .toast-anim {
+      animation: popIn 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+
+    /* Ondas sonoras visuais lúdicas */
+    @keyframes soundWave {
+      0%, 100% { height: 6px; }
+      50% { height: 16px; }
+    }
+    .wave-bar-1 { animation: soundWave 0.6s infinite ease-in-out; }
+    .wave-bar-2 { animation: soundWave 0.6s infinite ease-in-out 0.15s; }
+    .wave-bar-3 { animation: soundWave 0.6s infinite ease-in-out 0.3s; }
+  </style>
+</head>
+<body class="warm-bg min-h-screen font-sans text-slate-800 antialiased flex flex-col justify-start items-center p-3 sm:p-6 select-none relative">
+<!-- Toast de feedback visual / Carregando Save -->
+<div class="hidden fixed top-6 left-1/2 -translate-x-1/2 z-50 bg-slate-900/95 backdrop-blur-md text-white px-4 py-2.5 rounded-full shadow-2xl border border-emerald-400/40 flex items-center gap-3" id="game-toast">
+<!-- Equalizador lúdico de onda sonora -->
+<div class="flex items-center gap-0.5 h-4 w-4 justify-center">
+<span class="w-1 bg-emerald-400 rounded-full wave-bar-1"></span>
+<span class="w-1 bg-amber-400 rounded-full wave-bar-2"></span>
+<span class="w-1 bg-sky-400 rounded-full wave-bar-3"></span>
+</div>
+<span class="text-xs font-bold font-sans tracking-wide text-emerald-100" id="toast-text">Carregando save...</span>
+<span class="text-xs">✨</span>
+</div>
+<!-- BEGIN: MainContainer -->
+<!-- Constrained mobile iOS layout viewport container -->
+<main class="w-full max-w-[430px] my-auto pt-2 pb-6" data-purpose="mobile-card-wrapper">
+<!-- Card Principal com borda tátil estilo toy/Ghibli -->
+<div class="relative bg-white rounded-[2.25rem] shadow-clay-card border border-emerald-900/10 overflow-hidden" data-purpose="main-game-dialog">
+<!-- Linha Gradiente de Topo Estilo Brasil Modernista -->
+<div class="h-2 w-full" data-purpose="flag-gradient-bar" style="background: linear-gradient(90deg, #1d4ed8 0%, #3b82f6 40%, #f59e0b 80%, #10b981 100%);"></div>
+<div class="px-5 pt-6 pb-6 flex flex-col items-center">
+<!-- BEGIN: HeaderSection -->
+<header class="flex flex-col items-center text-center w-full" data-purpose="header-section">
+<!-- Ícone do Coqueiro Tropical Estilo Peça Colecionável / LEGO / Ghibli -->
+<div class="relative mb-3.5 group cursor-pointer tactile-btn" data-purpose="app-mascot-logo" id="mascot-logo-btn"><div class="w-20 h-20 rounded-[1.75rem] border-2 shadow-toy-icon flex items-center justify-center transform transition-transform group-hover:scale-105 duration-200" style="background: linear-gradient(180deg, #eff6ff 0%, #dbeafe 100%); border-color: #93c5fd;"><svg class="w-12 h-12 drop-shadow-md" fill="none" viewbox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><circle cx="32" cy="32" fill="#1e40af" r="26" stroke="#fbbf24" stroke-width="2.5"></circle><circle cx="32" cy="32" fill="#1e3a8a" r="22"></circle><circle cx="32" cy="32" fill="#0f172a" r="20" stroke="#60a5fa" stroke-dasharray="2 2" stroke-width="1"></circle><path d="M32 14L34 29L32 32L30 29Z" fill="#f59e0b"></path><path d="M32 50L34 35L32 32L30 35Z" fill="#94a3b8"></path><path d="M14 32L29 30L32 32L29 34Z" fill="#94a3b8"></path><path d="M50 32L35 30L32 32L35 34Z" fill="#94a3b8"></path><polygon fill="#ef4444" filter="drop-shadow(0 1px 2px rgba(0,0,0,0.4))" points="32,15 36,32 32,30 28,32"></polygon><polygon fill="#38bdf8" filter="drop-shadow(0 1px 2px rgba(0,0,0,0.4))" points="32,49 36,32 32,30 28,32"></polygon><circle cx="32" cy="32" fill="#fbbf24" r="3.5" stroke="#78350f" stroke-width="1"></circle><circle cx="32" cy="32" fill="#ffffff" r="1.2"></circle><text fill="#fef08a" font-family="sans-serif" font-size="6" font-weight="800" text-anchor="middle" x="32" y="21">N</text><text fill="#93c5fd" font-family="sans-serif" font-size="5" font-weight="700" text-anchor="middle" x="32" y="47">S</text><text fill="#93c5fd" font-family="sans-serif" font-size="5" font-weight="700" text-anchor="middle" x="45" y="34">L</text><text fill="#93c5fd" font-family="sans-serif" font-size="5" font-weight="700" text-anchor="middle" x="19" y="34">O</text></svg></div><div class="absolute -top-1 -right-1 w-5 h-5 bg-amber-400 rounded-full flex items-center justify-center shadow-sm border border-amber-200"><span class="text-[10px] text-amber-950 font-extrabold">🧭</span></div></div>
+<!-- Tag Pill Estilizada -->
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 shadow-sm mb-2.5"><span class="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse"></span><span class="text-[10.5px] font-bold tracking-wider text-blue-800 uppercase font-sans">SIMULADOR BRASILEIRO • MULTI-SAVES</span></div>
+<!-- Título Expressivo Vida Real Brasil -->
+<h1 class="text-[29px] leading-tight font-extrabold tracking-tight text-slate-900 font-display">
+            Vida Real Brasil
+          </h1>
+<!-- Subtítulo Acolhedor -->
+<p class="text-[13px] leading-snug text-slate-500 font-medium mt-1.5 max-w-[340px] px-1">
+            Crie e viva múltiplas trajetórias: estude, trabalhe, cuide da família, viaje pelo mundo e construa seu legado!
+          </p>
+</header>
+<!-- END: HeaderSection -->
+<!-- BEGIN: SavesListSection -->
+<section aria-label="Lista de Saves Salvos" class="w-full mt-5">
+<!-- Cabeçalho da Seção com linha separadora -->
+<div class="flex items-center justify-between pb-2.5 mb-3 border-b border-slate-100">
+<h2 class="text-[11.5px] font-bold uppercase tracking-wider text-slate-500 flex items-center gap-1.5">
+<span>PERSONAGENS &amp; VIDAS SALVAS</span>
+<span class="bg-emerald-100 text-emerald-800 text-[10px] px-1.5 py-0.5 rounded-md font-extrabold">4</span>
+</h2>
+<span class="text-[11px] text-slate-400 font-medium">Slots em nuvem</span>
+</div>
+<!-- Container dos Cards de Saves -->
+<div class="flex items-center gap-1.5 mb-3 overflow-x-auto pb-1" data-purpose="sort-filters" id="sort-filters-bar"><span class="text-[11px] font-bold text-slate-400 mr-0.5 flex-shrink-0">Filtrar:</span><button class="sort-filter-chip tactile-btn px-2.5 py-1 rounded-full text-[11px] font-bold transition-all flex items-center gap-1 flex-shrink-0 bg-blue-600 text-white shadow-sm" data-sort="default" type="button"><span>Todos (4)</span></button><button class="sort-filter-chip tactile-btn px-2.5 py-1 rounded-full text-[11px] font-semibold transition-all flex items-center gap-1 flex-shrink-0 bg-slate-100 hover:bg-blue-50 text-slate-600 hover:text-blue-700 border border-slate-200/80" data-sort="age-desc" type="button"><span>Mais Velhos 👴</span></button><button class="sort-filter-chip tactile-btn px-2.5 py-1 rounded-full text-[11px] font-semibold transition-all flex items-center gap-1 flex-shrink-0 bg-slate-100 hover:bg-blue-50 text-slate-600 hover:text-blue-700 border border-slate-200/80" data-sort="age-asc" type="button"><span>Mais Novos 👶</span></button><button class="sort-filter-chip tactile-btn px-2.5 py-1 rounded-full text-[11px] font-semibold transition-all flex items-center gap-1 flex-shrink-0 bg-slate-100 hover:bg-blue-50 text-slate-600 hover:text-blue-700 border border-slate-200/80" data-sort="wealth-desc" type="button"><span>Maior Patrimônio 💰</span></button><button class="sort-filter-chip tactile-btn px-2.5 py-1 rounded-full text-[11px] font-semibold transition-all flex items-center gap-1 flex-shrink-0 bg-slate-100 hover:bg-blue-50 text-slate-600 hover:text-blue-700 border border-slate-200/80" data-sort="level-desc" type="button"><span>Nível ★</span></button></div><div class="space-y-3" data-purpose="save-slots-list">
+<!-- SAVE 1: Lucas Silva (Bebê) -->
+<article class="group relative bg-[#fdfdfd] hover:bg-blue-50/30 border border-slate-200/80 hover:border-blue-300 rounded-2xl p-3 flex items-center justify-between transition-all duration-200 shadow-sm" data-age="1" data-level="1" data-purpose="save-item-1" data-wealth="1558"><div class="flex items-center gap-3 min-w-0 pr-2"><div class="relative flex-shrink-0 w-12 h-12 rounded-2xl bg-amber-50 border-2 border-blue-400/60 p-0.5 shadow-sm overflow-hidden flex items-center justify-center"><svg class="w-full h-full drop-shadow-sm" fill="none" viewbox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><!-- Fundo de contraste suave --><rect fill="#FEF3C7" height="64" rx="14" width="64"></rect><!-- Stud superior LEGO --><rect fill="#FBBF24" height="5" rx="2" stroke="#D97706" stroke-width="1.5" width="12" x="26" y="8"></rect><!-- Cabelinho LEGO molde plástico --><path d="M20 18C20 13 25 10 32 10C39 10 44 13 44 18C44 20 40 18 36 18C33 18 31 16 28 17C24 17 22 19 20 18Z" fill="#92400E"></path><!-- Cabeça Cilíndrica LEGO Amarela Clássica --><rect fill="#FDE047" height="28" rx="6" stroke="#CA8A04" stroke-width="1.8" width="28" x="18" y="16"></rect><!-- Olhos redondos minifig com brilho --><ellipse cx="26" cy="28" fill="#1E293B" rx="2.2" ry="3"></ellipse><ellipse cx="38" cy="28" fill="#1E293B" rx="2.2" ry="3"></ellipse><circle cx="27" cy="27" fill="#FFFFFF" r="0.9"></circle><circle cx="39" cy="27" fill="#FFFFFF" r="0.9"></circle><!-- Bochechas rosadas infantis --><ellipse cx="23" cy="33" fill="#FB7185" fill-opacity="0.6" rx="2.8" ry="1.8"></ellipse><ellipse cx="41" cy="33" fill="#FB7185" fill-opacity="0.6" rx="2.8" ry="1.8"></ellipse><!-- Chupeta estilizada LEGO --><circle cx="32" cy="36" fill="#38BDF8" r="4" stroke="#0284C7" stroke-width="1.5"></circle><circle cx="32" cy="36" fill="#BAE6FD" r="1.8"></circle><path d="M32 40C34.5 40 36 41.5 35 43C34 44.2 30 44.2 29 43C28 41.5 29.5 40 32 40Z" fill="#0284C7"></path><!-- Pescoço de encaixe LEGO --><rect fill="#FBBF24" height="5" rx="1" stroke="#D97706" stroke-width="1.2" width="10" x="27" y="44"></rect><!-- Macacão de bebê --><path d="M20 49C22 47 42 47 44 49L46 56H18L20 49Z" fill="#60A5FA"></path></svg></div><div class="min-w-0"><div class="flex items-center gap-1.5 flex-wrap mb-0.5"><h3 class="text-sm font-bold text-slate-800 truncate leading-snug">Lucas Silva</h3><span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold tracking-tight shadow-sm" style="background-color: #FEF3C7; border: 1px solid #FCD34D; color: #92400E;"><span style="color: #F59E0B;">★</span> Nv. 1 • Infância</span></div><p class="text-[11.5px] text-slate-500 truncate font-medium">1 ano (2027) • <span class="text-slate-600 font-semibold">Bebê</span></p><div class="flex items-center gap-2 mt-1 flex-wrap"><p class="text-[11px] font-bold text-blue-700 flex items-center gap-1">Patrimônio: <span class="bg-blue-50 px-1.5 py-0.5 rounded-md text-blue-800 border border-blue-200/60 font-bold">R$ 1.558</span></p><span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold shadow-sm" style="background-color: #FFFBEB; border: 1px solid #FDE68A; color: #92400E;">🍼 Satisfeito</span></div></div></div><div class="flex items-center gap-2 flex-shrink-0"><button aria-label="Jogar com Lucas Silva" class="tactile-btn play-btn flex items-center justify-center gap-1.5 px-3.5 py-1.5 rounded-xl text-white font-extrabold text-xs active:translate-y-1 transition-all duration-150" data-name="Lucas Silva" style="background: linear-gradient(180deg, #ff7a00 0%, #ff5500 100%); box-shadow: 0 4px 0 #b83200, 0 6px 14px rgba(255, 85, 0, 0.4); border-top: 1px solid rgba(255, 255, 255, 0.4); text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);" type="button"><span class="text-[11px] text-white drop-shadow-sm">▶</span><span class="tracking-wide">Jogar</span></button><button aria-label="Excluir save de Lucas Silva" class="delete-btn w-8 h-8 rounded-full flex items-center justify-center text-rose-500 hover:text-rose-700 hover:bg-rose-50 transition-colors" data-delete="Lucas Silva" type="button"><svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" stroke-linecap="round" stroke-linejoin="round"></path></svg></button></div></article>
+<!-- SAVE 2: Beatriz Helena (Técnica) -->
+<article class="group relative bg-[#fdfdfd] hover:bg-blue-50/30 border border-slate-200/80 hover:border-blue-300 rounded-2xl p-3 flex items-center justify-between transition-all duration-200 shadow-sm" data-age="18" data-level="18" data-purpose="save-item-2" data-wealth="657"><div class="flex items-center gap-3 min-w-0 pr-2"><div class="relative flex-shrink-0 w-12 h-12 rounded-2xl bg-teal-50 border-2 border-blue-400/60 p-0.5 shadow-sm overflow-hidden flex items-center justify-center"><svg class="w-full h-full drop-shadow-sm" fill="none" viewbox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><!-- Fundo suave --><rect fill="#E0F2FE" height="64" rx="14" width="64"></rect><!-- Stud superior LEGO --><rect fill="#FBBF24" height="5" rx="2" stroke="#D97706" stroke-width="1.5" width="12" x="26" y="7"></rect><!-- Penteado Peça Plástica LEGO Castanho com rabo lateral --><path d="M16 19C16 11 23 8 32 8C41 8 48 11 48 19C48 24 45 28 45 32C45 35 48 37 49 41C48 45 44 46 41 44C41 40 42 36 41 33C39 33 37 32 36 30C35 24 33 22 28 22C24 22 20 25 19 32C19 37 17 38 16 35C15 31 16 23 16 19Z" fill="#451A03" stroke="#290E02" stroke-width="1.2"></path><!-- Cabeça Cilíndrica LEGO Pele Morena Clara --><rect fill="#FED7AA" height="27" rx="6" stroke="#EA580C" stroke-width="1.6" width="28" x="18" y="16"></rect><!-- Visor Óculos de Proteção Técnica LEGO --><path d="M18 23H46V29C46 30.5 44.5 32 43 32H21C19.5 32 18 30.5 18 29V23Z" fill="#38BDF8" fill-opacity="0.75" stroke="#0284C7" stroke-width="1.5"></path><rect fill="#FFFFFF" fill-opacity="0.6" height="4" rx="1" width="10" x="20" y="24"></rect><rect fill="#FFFFFF" fill-opacity="0.6" height="4" rx="1" width="10" x="34" y="24"></rect><!-- Olhos LEGO com cílios femininos --><circle cx="26" cy="27.5" fill="#0F172A" r="2"></circle><circle cx="38" cy="27.5" fill="#0F172A" r="2"></circle><path d="M24 24.5L27 24" stroke="#0F172A" stroke-linecap="round" stroke-width="1.2"></path><path d="M40 24.5L37 24" stroke="#0F172A" stroke-linecap="round" stroke-width="1.2"></path><!-- Sorriso simpático LEGO --><path d="M28 36C30 38.5 34 38.5 36 36" stroke="#7C2D12" stroke-linecap="round" stroke-width="1.6"></path><!-- Batom discreto --><path d="M29 37C31 38 33 38 35 37" stroke="#FB7185" stroke-linecap="round" stroke-width="1.2"></path><!-- Pescoço minifig & Uniforme de Técnica --><rect fill="#FED7AA" height="5" rx="1" stroke="#EA580C" stroke-width="1" width="10" x="27" y="43"></rect><path d="M19 48C23 45 41 45 45 48L47 57H17L19 48Z" fill="#0284C7"></path><path d="M28 47L32 52L36 47" stroke="#FFFFFF" stroke-linecap="round" stroke-width="1.6"></path></svg></div><div class="min-w-0"><div class="flex items-center gap-1.5 flex-wrap mb-0.5"><h3 class="text-sm font-bold text-slate-800 truncate leading-snug">Beatriz Helena</h3><span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold tracking-tight shadow-sm" style="background-color: #E0F2FE; border: 1px solid #7DD3FC; color: #0369A1;"><span style="color: #0284C7;">★</span> Nv. 18 • Jovem Adulta</span></div><p class="text-[11.5px] text-slate-500 truncate font-medium max-w-[155px]" title="18 anos (2044) • Técnico de Manutenção">18 anos (2044) • <span class="text-slate-600 font-semibold">Técnico de Manutenção</span></p><div class="flex items-center gap-2 mt-1 flex-wrap"><p class="text-[11px] font-bold text-blue-700 flex items-center gap-1">Patrimônio: <span class="bg-blue-50 px-1.5 py-0.5 rounded-md text-blue-800 border border-blue-200/60 font-bold">R$ 657</span></p><span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold shadow-sm" style="background-color: #F3E8FF; border: 1px solid #D8B4FE; color: #6B21A8;">📚 Focada nos Estudos</span></div></div></div><div class="flex items-center gap-2 flex-shrink-0"><button aria-label="Jogar com Beatriz Helena" class="tactile-btn play-btn flex items-center justify-center gap-1.5 px-3.5 py-1.5 rounded-xl text-white font-extrabold text-xs active:translate-y-1 transition-all duration-150" data-name="Beatriz Helena" style="background: linear-gradient(180deg, #ff7a00 0%, #ff5500 100%); box-shadow: 0 4px 0 #b83200, 0 6px 14px rgba(255, 85, 0, 0.4); border-top: 1px solid rgba(255, 255, 255, 0.4); text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);" type="button"><span class="text-[11px] text-white drop-shadow-sm">▶</span><span class="tracking-wide">Jogar</span></button><button aria-label="Excluir save de Beatriz Helena" class="delete-btn w-8 h-8 rounded-full flex items-center justify-center text-rose-500 hover:text-rose-700 hover:bg-rose-50 transition-colors" data-delete="Beatriz Helena" type="button"><svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" stroke-linecap="round" stroke-linejoin="round"></path></svg></button></div></article>
+<!-- SAVE 3: Gabriel Costa (Desenvolvedor Indie) -->
+<article class="group relative bg-[#fdfdfd] hover:bg-blue-50/30 border border-slate-200/80 hover:border-blue-300 rounded-2xl p-3 flex items-center justify-between transition-all duration-200 shadow-sm" data-age="24" data-level="24" data-purpose="save-item-3" data-wealth="8920"><div class="flex items-center gap-3 min-w-0 pr-2"><div class="relative flex-shrink-0 w-12 h-12 rounded-2xl bg-violet-50 border-2 border-blue-400/60 p-0.5 shadow-sm overflow-hidden flex items-center justify-center"><svg class="w-full h-full drop-shadow-sm" fill="none" viewbox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><!-- Fundo suave --><rect fill="#EDE9FE" height="64" rx="14" width="64"></rect><!-- Stud superior LEGO --><rect fill="#FDE047" height="5" rx="2" stroke="#CA8A04" stroke-width="1.5" width="12" x="26" y="7"></rect><!-- Headset Gamer Arco Superior --><path d="M14 26C14 15 22 11 32 11C42 11 50 15 50 26" stroke="#4F46E5" stroke-linecap="round" stroke-width="3.5"></path><!-- Almofadas do Fone LEGO nos lados --><rect fill="#312E81" height="12" rx="3" stroke="#6366F1" stroke-width="1.2" width="6" x="11" y="24"></rect><rect fill="#312E81" height="12" rx="3" stroke="#6366F1" stroke-width="1.2" width="6" x="47" y="24"></rect><!-- Cabelo LEGO preto topete texturizado --><path d="M17 19C17 12 24 12 32 12C40 12 47 12 47 19C47 21 44 20 41 18C37 17 34 19 32 17C29 19 25 18 22 19C19 20 17 21 17 19Z" fill="#1E293B"></path><!-- Cabeça LEGO Amarela Padrão --><rect fill="#FDE047" height="27" rx="6" stroke="#CA8A04" stroke-width="1.8" width="30" x="17" y="16"></rect><!-- Óculos retangulares de Desenvolvedor --><rect fill="#F8FAFC" fill-opacity="0.75" height="7" rx="2" stroke="#1E1B4B" stroke-width="1.8" width="9" x="21" y="24"></rect><rect fill="#F8FAFC" fill-opacity="0.75" height="7" rx="2" stroke="#1E1B4B" stroke-width="1.8" width="9" x="34" y="24"></rect><line stroke="#1E1B4B" stroke-width="2" x1="30" x2="34" y1="27" y2="27"></line><!-- Olhos dentro dos óculos --><circle cx="25.5" cy="27.5" fill="#0F172A" r="1.8"></circle><circle cx="38.5" cy="27.5" fill="#0F172A" r="1.8"></circle><!-- Barba rala pontilhada LEGO e Sorriso Confiante --><path d="M29 36C31 37.5 33 37.5 35 36" stroke="#78350F" stroke-linecap="round" stroke-width="1.6"></path><circle cx="25" cy="37" fill="#78350F" fill-opacity="0.7" r="0.7"></circle><circle cx="27" cy="39" fill="#78350F" fill-opacity="0.7" r="0.7"></circle><circle cx="37" cy="39" fill="#78350F" fill-opacity="0.7" r="0.7"></circle><circle cx="39" cy="37" fill="#78350F" fill-opacity="0.7" r="0.7"></circle><!-- Microfone boom do Headset --><path d="M14 34L22 39" stroke="#6366F1" stroke-linecap="round" stroke-width="1.8"></path><circle cx="23" cy="39.5" fill="#F43F5E" r="1.5"></circle><!-- Pescoço & Camiseta Dev Roxa --><rect fill="#FDE047" height="5" rx="1" stroke="#CA8A04" stroke-width="1" width="10" x="27" y="43"></rect><path d="M18 48C22 45 42 45 46 48L48 57H16L18 48Z" fill="#7C3AED"></path></svg></div><div class="min-w-0"><div class="flex items-center gap-1.5 flex-wrap mb-0.5"><h3 class="text-sm font-bold text-slate-800 truncate leading-snug">Gabriel Costa</h3><span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold tracking-tight shadow-sm" style="background-color: #DCFCE7; border: 1px solid #86EFAC; color: #166534;"><span style="color: #15803D;">★</span> Nv. 24 • Carreira Ativa</span></div><p class="text-[11.5px] text-slate-500 truncate font-medium max-w-[155px]" title="24 anos (2050) • Desenvolvedor Indie">24 anos (2050) • <span class="text-slate-600 font-semibold">Desenvolvedor Indie</span></p><div class="flex items-center gap-2 mt-1 flex-wrap"><p class="text-[11px] font-bold text-blue-700 flex items-center gap-1">Patrimônio: <span class="bg-blue-50 px-1.5 py-0.5 rounded-md text-blue-800 border border-blue-200/60 font-bold">R$ 8.920</span></p><span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold shadow-sm" style="background-color: #F1F5F9; border: 1px solid #CBD5E1; color: #334155;">💼 Modo Dev Focado</span></div></div></div><div class="flex items-center gap-2 flex-shrink-0"><button aria-label="Jogar com Gabriel Costa" class="tactile-btn play-btn flex items-center justify-center gap-1.5 px-3.5 py-1.5 rounded-xl text-white font-extrabold text-xs active:translate-y-1 transition-all duration-150" data-name="Gabriel Costa" style="background: linear-gradient(180deg, #ff7a00 0%, #ff5500 100%); box-shadow: 0 4px 0 #b83200, 0 6px 14px rgba(255, 85, 0, 0.4); border-top: 1px solid rgba(255, 255, 255, 0.4); text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);" type="button"><span class="text-[11px] text-white drop-shadow-sm">▶</span><span class="tracking-wide">Jogar</span></button><button aria-label="Excluir save de Gabriel Costa" class="delete-btn w-8 h-8 rounded-full flex items-center justify-center text-rose-500 hover:text-rose-700 hover:bg-rose-50 transition-colors" data-delete="Gabriel Costa" type="button"><svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" stroke-linecap="round" stroke-linejoin="round"></path></svg></button></div></article>
+<article class="group relative bg-gradient-to-r from-[#fdfdfd] to-[#f8faff] hover:bg-blue-50/40 border-2 border-blue-200/90 rounded-2xl p-3 flex items-center justify-between transition-all duration-200 shadow-sm" data-age="68" data-level="68" data-purpose="save-item-4" data-wealth="42500"><div class="flex items-center gap-3 min-w-0 pr-2"><div class="relative flex-shrink-0 w-12 h-12 rounded-2xl bg-slate-100 border-2 border-blue-500/60 p-0.5 shadow-sm overflow-hidden flex items-center justify-center"><svg class="w-full h-full drop-shadow-sm" fill="none" viewbox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><!-- Fundo suave --><rect fill="#F1F5F9" height="64" rx="14" width="64"></rect><!-- Boina / Quepe Clássico de Idoso LEGO encaixado no pino stud --><ellipse cx="32" cy="15" fill="#334155" rx="17" ry="6" stroke="#0F172A" stroke-width="1.5"></ellipse><rect fill="#475569" height="4" rx="2" stroke="#0F172A" stroke-width="1" width="10" x="27" y="8"></rect><path d="M18 16C18 16 26 19 38 17C43 16 46 14 46 14" stroke="#1E293B" stroke-linecap="round" stroke-width="2"></path><!-- Cabeça Cilíndrica LEGO Pele Clara/Amarelada --><rect fill="#FED7AA" height="26" rx="6" stroke="#D97706" stroke-width="1.8" width="28" x="18" y="17"></rect><!-- Cabelos brancos grisalhos nas laterais LEGO --><path d="M17 21C16 25 16 32 17 35C19 35 19 30 19 25Z" fill="#E2E8F0" stroke="#CBD5E1" stroke-width="1"></path><path d="M47 21C48 25 48 32 47 35C45 35 45 30 45 25Z" fill="#E2E8F0" stroke="#CBD5E1" stroke-width="1"></path><!-- Óculos Redondos Armação Azul Retrô LEGO --><circle cx="26" cy="27" fill="#FFFFFF" fill-opacity="0.8" r="4.2" stroke="#1E40AF" stroke-width="1.8"></circle><circle cx="38" cy="27" fill="#FFFFFF" fill-opacity="0.8" r="4.2" stroke="#1E40AF" stroke-width="1.8"></circle><line stroke="#1E40AF" stroke-width="2" x1="30.2" x2="33.8" y1="27" y2="27"></line><!-- Olhos expressivos através das lentes --><circle cx="26" cy="27" fill="#0F172A" r="1.6"></circle><circle cx="38" cy="27" fill="#0F172A" r="1.6"></circle><!-- Ruguinhas sábias de expressão LEGO --><path d="M24 21C26 20.5 28 20.5 29 21" stroke="#D97706" stroke-linecap="round" stroke-width="1"></path><path d="M35 21C36 20.5 38 20.5 40 21" stroke="#D97706" stroke-linecap="round" stroke-width="1"></path><!-- Bigode Branco Minifig Curvado Típico LEGO --><path d="M23 34C26 33.5 29 34 32 36C35 34 38 33.5 41 34C42 36 40 38.5 36 38C34 37.8 33 36.8 32 36.8C31 36.8 30 37.8 28 38C24 38.5 22 36 23 34Z" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"></path><!-- Sorrisinho sob o bigode --><path d="M29 39.5C31 40.5 33 40.5 35 39.5" stroke="#78350F" stroke-linecap="round" stroke-width="1.2"></path><!-- Pescoço & Camisa Polo Azul Aposentado --><rect fill="#FED7AA" height="5" rx="1" stroke="#D97706" stroke-width="1" width="10" x="27" y="43"></rect><path d="M19 48C23 45 41 45 45 48L47 57H17L19 48Z" fill="#1D4ED8"></path><path d="M32 46V53" stroke="#FFFFFF" stroke-linecap="round" stroke-width="1.4"></path></svg></div><div class="min-w-0"><div class="flex items-center gap-1.5 flex-wrap mb-0.5"><h3 class="text-sm font-bold text-slate-900 truncate leading-snug">Geraldo Antunes</h3><span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold tracking-tight shadow-sm" style="background-color: #FEF3C7; border: 1px solid #FCD34D; color: #92400E;"><span style="color: #F59E0B;">★</span> Nv. 68 • Aposentado</span></div><p class="text-[11.5px] text-slate-500 truncate font-medium max-w-[155px]" title="68 anos (2094) • Aposentado da Indústria">68 anos (2094) • <span class="text-slate-700 font-semibold">Aposentado</span></p><div class="flex items-center gap-2 mt-1 flex-wrap"><p class="text-[11px] font-bold text-blue-700 flex items-center gap-1">Patrimônio: <span class="bg-blue-50 px-1.5 py-0.5 rounded-md text-blue-900 border border-blue-200/80 font-bold">R$ 42.500</span></p><button class="legacy-btn tactile-btn inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-extrabold shadow-sm bg-amber-100 hover:bg-amber-200 text-amber-900 border border-amber-300 transition-colors" data-name="Geraldo Antunes" type="button"><span>🏆 Ver Legado</span></button></div></div></div><div class="flex items-center gap-2 flex-shrink-0"><button aria-label="Jogar com Geraldo Antunes" class="tactile-btn play-btn flex items-center justify-center gap-1.5 px-3.5 py-1.5 rounded-xl text-white font-extrabold text-xs active:translate-y-1 transition-all duration-150" data-name="Geraldo Antunes" style="background: linear-gradient(180deg, #ff7a00 0%, #ff5500 100%); box-shadow: 0 4px 0 #b83200, 0 6px 14px rgba(255, 85, 0, 0.4); border-top: 1px solid rgba(255, 255, 255, 0.4); text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);" type="button"><span class="text-[11px] text-white drop-shadow-sm">▶</span><span class="tracking-wide">Jogar</span></button><button aria-label="Excluir save de Geraldo Antunes" class="delete-btn w-8 h-8 rounded-full flex items-center justify-center text-rose-500 hover:text-rose-700 hover:bg-rose-50 transition-colors" data-delete="Geraldo Antunes" type="button"><svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" stroke-linecap="round" stroke-linejoin="round"></path></svg></button></div></article></div>
+</section>
+<!-- END: SavesListSection -->
+<!-- BEGIN: ActionCreateSection -->
+<!-- Botão Principal Chamativo com relevo 3D / LEGO feeling -->
+<div class="w-full mt-5" data-purpose="primary-create-action">
+<button class="tactile-btn w-full py-3.5 px-4 rounded-2xl text-white font-display font-bold text-[14.5px] tracking-wide flex items-center justify-center gap-2.5 cursor-pointer active:translate-y-1 transition-all duration-150" id="create-char-btn" style="background: linear-gradient(180deg, #2563eb 0%, #1d4ed8 70%, #1e40af 100%); box-shadow: 0 6px 0 #172554, 0 10px 20px rgba(37, 99, 235, 0.4); border-top: 1.5px solid rgba(255, 255, 255, 0.45); text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);" type="button"><svg class="w-5 h-5 drop-shadow-sm text-blue-100" fill="none" stroke="currentColor" stroke-width="2.2" viewbox="0 0 24 24"><path d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Criar Novo Personagem &amp; Iniciar Trajetória</span></button>
+</div>
+<!-- END: ActionCreateSection -->
+<!-- BEGIN: FooterNote -->
+<footer class="mt-6 pt-2 text-center" data-purpose="page-footer">
+<p class="text-[11px] font-semibold text-slate-400 tracking-wide">
+            Tropic Modernism Game UI • Vida Real Brasil © 2026
+          </p>
+</footer>
+<!-- END: FooterNote -->
+</div>
+</div>
+</main>
+<!-- END: MainContainer -->
+<!-- Interatividade de cliques táteis + Sintetizador Web Audio API -->
+<script data-purpose="tactile-interactions">
+    // Web Audio API sintetizador de som pop/blip de LEGO
+    let audioCtx = null;
+    function getAudioContext() {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+      return audioCtx;
+    }
+
+    // Toca som lúdico característico de clique/peça conectando
+    function playLegoSound(type = 'play') {
+      try {
+        const ctx = getAudioContext();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+
+        const now = ctx.currentTime;
+        if (type === 'play') {
+          // Blip sonoro alegre de subida (duas frequências rápidas)
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(587.33, now); // D5
+          osc.frequency.exponentialRampToValueAtTime(880, now + 0.08); // A5
+          gain.gain.setValueAtTime(0.28, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.18);
+          osc.start(now);
+          osc.stop(now + 0.18);
+        } else if (type === 'create') {
+          // Pop brilhante em acorde de brinquedo
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(440, now);
+          osc.frequency.exponentialRampToValueAtTime(1046.5, now + 0.12);
+          gain.gain.setValueAtTime(0.32, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.22);
+          osc.start(now);
+          osc.stop(now + 0.22);
+        } else if (type === 'delete') {
+          // Click curto grave
+          osc.type = 'sawtooth';
+          osc.frequency.setValueAtTime(260, now);
+          osc.frequency.exponentialRampToValueAtTime(130, now + 0.09);
+          gain.gain.setValueAtTime(0.18, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.1);
+          osc.start(now);
+          osc.stop(now + 0.1);
+        }
+      } catch (e) {
+        // Fallback gracioso se áudio bloqueado
+      }
+    }
+
+    // Feedback visual Toast animado
+    let toastTimeout = null;
+    function showToast(message) {
+      const toast = document.getElementById('game-toast');
+      const toastText = document.getElementById('toast-text');
+      if (!toast || !toastText) return;
+      
+      toastText.textContent = message;
+      toast.classList.remove('hidden');
+      toast.classList.add('toast-anim');
+      
+      if (toastTimeout) clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        toast.classList.add('hidden');
+        toast.classList.remove('toast-anim');
+      }, 2200);
+    }
+
+    // Eventos dos botões de Jogar
+    document.querySelectorAll('.play-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        if (navigator.vibrate) navigator.vibrate([15, 30, 20]);
+        playLegoSound('play');
+        const charName = this.getAttribute('data-name') || 'Personagem';
+        showToast(`Iniciando jornada: ${charName}...`);
+      });
+    });
+
+    // Evento de Criar Personagem
+    const createBtn = document.getElementById('create-char-btn');
+    if (createBtn) {
+      createBtn.addEventListener('click', function() {
+        if (navigator.vibrate) navigator.vibrate(35);
+        playLegoSound('create');
+        showToast('Abrindo criador de personagem...');
+      });
+    }
+
+    // Evento de Deletar Save
+    document.querySelectorAll('.delete-btn').forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        if (navigator.vibrate) navigator.vibrate(15);
+        playLegoSound('delete');
+        const charName = this.getAttribute('data-delete') || 'save';
+        showToast(`Excluir slot de ${charName}?`);
+      });
+    });
+
+    // Mascote logo clique fofo
+    const mascot = document.getElementById('mascot-logo-btn');
+    if (mascot) {
+      mascot.addEventListener('click', function() {
+        if (navigator.vibrate) navigator.vibrate(20);
+        playLegoSound('play');
+        showToast('Vida Real Brasil 🌴');
+      });
+    }
+  </script>
+</body></html>

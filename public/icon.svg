@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#087F48" />
+      <stop offset="100%" stop-color="#004724" />
+    </linearGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F4B300" />
+      <stop offset="100%" stop-color="#D99A00" />
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#bg)" />
+  <circle cx="256" cy="256" r="180" fill="#ffffff" fill-opacity="0.1" />
+  <circle cx="256" cy="180" r="70" fill="url(#gold)" />
+  <!-- Palm silhouette and Brazilian geometric motifs -->
+  <path d="M256 220 C256 340 240 400 230 430 H282 C272 400 256 340 256 220 Z" fill="#ffffff" />
+  <path d="M256 220 C210 160 120 180 80 230 C130 240 210 230 256 220 Z" fill="#93f7b4" />
+  <path d="M256 220 C302 160 392 180 432 230 C382 240 302 230 256 220 Z" fill="#93f7b4" />
+  <path d="M256 200 C230 130 160 120 110 150 C150 180 220 190 256 200 Z" fill="#ffffff" />
+  <path d="M256 200 C282 130 352 120 402 150 C362 180 292 190 256 200 Z" fill="#ffffff" />
+  <!-- Diamond star -->
+  <polygon points="256,70 270,105 305,105 278,125 288,160 256,138 224,160 234,125 207,105 242,105" fill="#F4B300" />
+</svg>

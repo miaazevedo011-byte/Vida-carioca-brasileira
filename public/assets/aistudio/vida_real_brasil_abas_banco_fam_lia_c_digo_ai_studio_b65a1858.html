@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Vida Real - Simulador Tropical</title>
+<!-- Tailwind CSS CDN v3 -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            tropical: {
+              cream: '#FDFBF7',
+              sand: '#F7F3E9',
+              gold: '#D97706',
+              emerald: '#059669',
+              amber: '#F59E0B',
+              coral: '#E11D48',
+              cardborder: '#E8DFD1',
+              dark: '#2D2B2A'
+            }
+          },
+          boxShadow: {
+            'tactile': '0 3px 0 0 rgba(0,0,0,0.08), 0 2px 6px -1px rgba(0,0,0,0.06)',
+            'tactile-pressed': '0 1px 0 0 rgba(0,0,0,0.08)',
+            'card-soft': '0 4px 14px -2px rgba(120, 80, 40, 0.05)'
+          },
+          borderRadius: {
+            'lego': '14px'
+          }
+        }
+      }
+    }
+  </script>
+<!-- Custom UI Styling -->
+<style data-purpose="custom-enhancements">
+    /* Remove tap highlight on mobile iOS */
+    * {
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+    /* Estilização suave de barras de progresso táteis */
+    .progress-track {
+      background-color: #E6E1D8;
+      border-radius: 9999px;
+      overflow: hidden;
+      height: 7px;
+    }
+    .lego-stud {
+      background: radial-gradient(circle at 35% 35%, #fde047 0%, #ca8a04 100%);
+      box-shadow: inset -1px -1px 2px rgba(0,0,0,0.3), 0 2px 3px rgba(0,0,0,0.15);
+    }
+  </style>
+</head>
+<body class="bg-[#F7F4EE] text-[#332F2A] font-sans antialiased min-h-screen pb-12 flex justify-center selection:bg-amber-100">
+<!-- BEGIN: MainContainer -->
+<main class="w-full max-w-md mx-auto min-h-screen bg-[#FAF7F2] border-x border-[#E9E2D5] flex flex-col shadow-sm">
+<!-- BEGIN: HeaderProfile -->
+<header class="p-3.5 bg-white border-b border-[#E8DFD1] sticky top-0 z-30 shadow-xs" data-purpose="player-profile-header">
+<div class="flex items-center justify-between">
+<!-- Avatar e Info básica -->
+<div class="flex items-center gap-3">
+<!-- Cabeça Estilo Lego com Sombras Táteis -->
+<div class="relative w-12 h-12 bg-amber-300 rounded-2xl flex items-center justify-center border-2 border-amber-500 shadow-sm shrink-0">
+<!-- Stud do Lego no topo -->
+<div class="absolute -top-1.5 w-4 h-1.5 rounded-full lego-stud"></div>
+<!-- Face Simplificada (Óculos e Sorriso) -->
+<div class="flex flex-col items-center">
+<div class="flex items-center gap-1.5">
+<div class="w-2.5 h-2.5 rounded-full border-[1.5px] border-amber-950 bg-white/70 flex items-center justify-center">
+<div class="w-1 h-1 bg-amber-950 rounded-full"></div>
+</div>
+<div class="w-1 h-0.5 bg-amber-950"></div>
+<div class="w-2.5 h-2.5 rounded-full border-[1.5px] border-amber-950 bg-white/70 flex items-center justify-center">
+<div class="w-1 h-1 bg-amber-950 rounded-full"></div>
+</div>
+</div>
+<div class="w-2 h-1 border-b-2 border-amber-950 rounded-full mt-0.5"></div>
+</div>
+<!-- Indicador online/ativo -->
+<span class="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 bg-emerald-500 border-2 border-white rounded-full"></span>
+</div>
+<div>
+<div class="flex items-center gap-1.5">
+<h1 class="text-sm font-black text-stone-800 tracking-tight leading-none">Lucas Silva</h1>
+<span class="px-1.5 py-0.5 text-[10px] font-bold bg-stone-200 text-stone-700 rounded-md">5a</span>
+</div>
+<p class="text-[11px] text-stone-500 font-medium flex items-center gap-1 mt-0.5">
+<svg class="w-3 h-3 text-stone-400 inline" fill="currentColor" viewbox="0 0 20 20"><path clip-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" fill-rule="evenodd"></path></svg>
+              São Paulo, SP • <span class="font-semibold text-stone-600">2031</span>
+</p>
+</div>
+</div>
+<!-- Serasa Badge & Status Recarga -->
+<div class="flex flex-col items-end gap-1">
+<div class="flex items-center gap-1 px-2 py-0.5 bg-emerald-50 border border-emerald-300 rounded-full text-emerald-800 text-[11px] font-bold shadow-xs">
+<svg class="w-3 h-3 text-emerald-600" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            Score: 725
+          </div>
+<span class="text-[10px] text-stone-400 font-medium tracking-tight">Sem renda formal</span>
+</div>
+</div>
+<!-- Badge de Ocupação Atual -->
+<div class="mt-2.5 flex items-center justify-between bg-amber-50/80 border border-amber-200/80 rounded-lg px-2.5 py-1">
+<div class="flex items-center gap-1.5 text-xs text-amber-900 font-semibold">
+<span class="text-sm">🎒</span>
+<span>CRIANÇA (EDUCAÇÃO INFANTIL)</span>
+</div>
+<span class="text-[10px] text-amber-700 bg-amber-100 font-bold px-1.5 py-0.5 rounded">Fase 1</span>
+</div>
+</header>
+<!-- END: HeaderProfile -->
+<!-- BEGIN: QuickStatsBars -->
+<!-- Quatro Cápsulas de Status Vital -->
+<section class="p-3 grid grid-cols-2 gap-2" data-purpose="status-indicators">
+<!-- Saúde -->
+<div class="bg-white p-2.5 rounded-xl border border-stone-200/90 shadow-tactile flex flex-col justify-between">
+<div class="flex justify-between items-center mb-1.5">
+<span class="text-xs font-bold text-stone-700 flex items-center gap-1">
+<span class="text-emerald-500">❤️</span> Saúde
+          </span>
+<span class="text-xs font-extrabold text-emerald-600">100%</span>
+</div>
+<div class="progress-track">
+<div class="bg-emerald-500 h-full rounded-full" style="width: 100%;"></div>
+</div>
+</div>
+<!-- Felicidade -->
+<div class="bg-white p-2.5 rounded-xl border border-stone-200/90 shadow-tactile flex flex-col justify-between">
+<div class="flex justify-between items-center mb-1.5">
+<span class="text-xs font-bold text-stone-700 flex items-center gap-1">
+<span class="text-amber-500">☀️</span> Felicidade
+          </span>
+<span class="text-xs font-extrabold text-amber-600">100%</span>
+</div>
+<div class="progress-track">
+<div class="bg-amber-400 h-full rounded-full" style="width: 100%;"></div>
+</div>
+</div>
+<!-- Intelecto -->
+<div class="bg-white p-2.5 rounded-xl border border-stone-200/90 shadow-tactile flex flex-col justify-between">
+<div class="flex justify-between items-center mb-1.5">
+<span class="text-xs font-bold text-stone-700 flex items-center gap-1">
+<span class="text-blue-500">💡</span> Intelecto
+          </span>
+<span class="text-xs font-extrabold text-blue-600">95%</span>
+</div>
+<div class="progress-track">
+<div class="bg-blue-500 h-full rounded-full" style="width: 95%;"></div>
+</div>
+</div>
+<!-- Energia -->
+<div class="bg-white p-2.5 rounded-xl border border-stone-200/90 shadow-tactile flex flex-col justify-between">
+<div class="flex justify-between items-center mb-1.5">
+<span class="text-xs font-bold text-stone-700 flex items-center gap-1">
+<span class="text-orange-500">⚡</span> Energia
+          </span>
+<span class="text-xs font-extrabold text-orange-600">90%</span>
+</div>
+<div class="progress-track">
+<div class="bg-gradient-to-r from-orange-500 to-amber-500 h-full rounded-full" style="width: 90%;"></div>
+</div>
+</div>
+</section>
+<!-- END: QuickStatsBars -->
+<!-- BEGIN: MainNavTabs -->
+<!-- Barra Horizontal de Navegação do Jogo -->
+<nav class="px-2 pt-1 border-b border-stone-200 bg-white" data-purpose="game-primary-tabs">
+<div class="flex items-center justify-between overflow-x-auto text-[11px] font-semibold text-stone-500 pb-1 scrollbar-none">
+<button class="flex flex-col items-center py-1 px-2 hover:text-stone-900 transition-colors" type="button">
+<span class="text-base">👤</span>
+<span>Início</span>
+</button>
+<button class="flex flex-col items-center py-1 px-2 hover:text-stone-900 transition-colors" type="button">
+<span class="text-base">💼</span>
+<span>Carreira</span>
+</button>
+<!-- Aba Ativa Default: Banco -->
+<button class="flex flex-col items-center py-1 px-2.5 border-b-2 border-stone-900 text-stone-900 font-bold transition-all" id="nav-btn-banco" onclick="switchMainTab('banco')" type="button">
+<span class="text-base">💳</span>
+<span>Banco</span>
+</button>
+<button class="flex flex-col items-center py-1 px-2 hover:text-stone-900 transition-colors" type="button">
+<span class="text-base">🏠</span>
+<span>Bens</span>
+</button>
+<!-- Alternador para Família -->
+<button class="flex flex-col items-center py-1 px-2.5 border-b-2 border-transparent hover:text-stone-900 text-stone-500 transition-all" id="nav-btn-familia" onclick="switchMainTab('familia')" type="button">
+<span class="text-base">👥</span>
+<span>Família</span>
+</button>
+<button class="flex flex-col items-center py-1 px-2 hover:text-stone-900 transition-colors" type="button">
+<span class="text-base">🌴</span>
+<span>Atividades</span>
+</button>
+<button class="flex flex-col items-center py-1 px-2 hover:text-stone-900 transition-colors" type="button">
+<span class="text-base">⚡</span>
+<span>Mais</span>
+</button>
+</div>
+</nav>
+<!-- END: MainNavTabs -->
+<!-- BEGIN: DynamicContentSection -->
+<div class="p-3 flex-1 flex flex-col gap-3">
+<!-- ============================================== -->
+<!-- ABA 1: BANCO & FINANÇAS                        -->
+<!-- ============================================== -->
+<section class="flex flex-col gap-3" data-purpose="bank-finances-view" id="tab-content-banco">
+<!-- Seletor Auxiliar Topo da Aba de Finanças -->
+<div class="grid grid-cols-2 gap-2 text-xs font-bold">
+<button class="py-2 px-3 bg-amber-100/90 text-amber-950 border border-amber-300 rounded-xl flex items-center justify-center gap-1.5 shadow-sm">
+<span>💳</span> Contas &amp; Finanças
+          </button>
+<button class="py-2 px-3 bg-white text-stone-600 border border-stone-200 rounded-xl flex items-center justify-center gap-1.5 hover:bg-stone-50 transition-colors">
+<span>🏛️</span> Sucessão &amp; Bens
+          </button>
+</div>
+<!-- Ticker de Mercado Econômico -->
+<div class="bg-[#ECE7DF] px-3 py-1.5 rounded-lg flex items-center justify-between text-[11px] font-bold text-stone-700 tracking-tight">
+<span class="text-stone-500 uppercase">MERCADO 2031</span>
+<div class="flex items-center gap-3">
+<span>SELIC <strong class="text-stone-900">10,75%</strong></span>
+<span>IPCA <strong class="text-stone-900">3,80%</strong></span>
+<span>USD <strong class="text-stone-900">R$ 5,42</strong></span>
+</div>
+</div>
+<!-- 1. CONTA CORRENTE DIGITAL -->
+<div class="bg-white rounded-lego border border-[#E2D8C7] p-3.5 shadow-tactile relative overflow-hidden" data-purpose="checking-account-card">
+<div class="flex items-center justify-between pb-2 border-b border-stone-100">
+<div class="flex items-center gap-2">
+<span class="text-xl">🏦</span>
+<div>
+<h3 class="text-xs font-black uppercase tracking-wide text-stone-800">Conta Corrente Digital</h3>
+<p class="text-[10px] text-stone-500 font-semibold">Banco Pindorama S.A.</p>
+</div>
+</div>
+<span class="text-[10px] font-extrabold px-2 py-0.5 bg-emerald-100 text-emerald-800 rounded-md flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> PIX ATIVO
+            </span>
+</div>
+<!-- Saldo -->
+<div class="my-3">
+<span class="text-[11px] text-stone-500 font-medium">Saldo em Conta Disponível</span>
+<div class="flex items-baseline justify-between">
+<div class="text-2xl font-black text-stone-900 tracking-tight">R$ 20<span class="text-stone-400 text-lg font-bold">,00</span></div>
+<span class="text-xs font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">Livre</span>
+</div>
+<p class="text-[10.5px] text-stone-400 mt-0.5 leading-snug">Disponível para uso imediato em transferências, boletos e compras</p>
+</div>
+<!-- Ações Rápidas de Conta -->
+<div class="grid grid-cols-2 gap-2 pt-1">
+<button class="py-2 px-3 bg-stone-900 text-white rounded-xl text-xs font-bold flex items-center justify-center gap-1 shadow-sm active:translate-y-0.5 transition-all">
+<span>↗</span> Fazer PIX
+            </button>
+<button class="py-2 px-3 bg-stone-100 text-stone-800 border border-stone-200 rounded-xl text-xs font-bold flex items-center justify-center gap-1 active:translate-y-0.5 transition-all">
+<span>📜</span> Extrato
+            </button>
+</div>
+</div>
+<!-- 2. RESERVA DE EMERGÊNCIA (CAIXINHA) -->
+<div class="bg-white rounded-lego border border-[#E2D8C7] p-3.5 shadow-tactile" data-purpose="emergency-fund-card">
+<div class="flex items-center justify-between pb-2 border-b border-stone-100">
+<div class="flex items-center gap-2">
+<span class="text-lg">📈</span>
+<div>
+<h3 class="text-xs font-black uppercase text-stone-800">Reserva de Emergência</h3>
+<p class="text-[10px] text-stone-500">Caixinha Liquidez Diária</p>
+</div>
+</div>
+<span class="text-xs font-black text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
+              ~10.5% A.A.
+            </span>
+</div>
+<div class="flex justify-between items-baseline mt-3">
+<div>
+<span class="text-[10.5px] text-stone-500 font-medium">Saldo Acumulado</span>
+<p class="text-xl font-black text-stone-900 leading-tight">R$ 166<span class="text-stone-400 text-sm font-semibold">,00</span></p>
+</div>
+<div class="text-right">
+<span class="text-xs font-black text-emerald-600">+R$ 1/mês</span>
+<p class="text-[9.5px] text-stone-400">Rendimento líquido</p>
+</div>
+</div>
+<div class="flex justify-between items-center text-[10.5px] font-bold text-stone-600 my-2 pt-2 border-t border-dashed border-stone-200">
+<span>Histórico últimos 8 ciclos</span>
+<a class="text-amber-800 hover:underline" href="#">Ver Extrato &amp; Rendimentos →</a>
+</div>
+<!-- Controles de Aporte e Retirada -->
+<div class="flex items-center gap-2 bg-[#F9F7F3] p-1.5 rounded-xl border border-stone-200">
+<span class="text-xs font-bold text-stone-500 px-2">R$ 0,00</span>
+<span class="text-[10px] font-bold text-stone-400 ml-auto mr-1 uppercase">Max</span>
+</div>
+<div class="grid grid-cols-2 gap-2 mt-2">
+<button class="py-1.5 bg-amber-500 text-white rounded-lg text-xs font-bold shadow-xs active:translate-y-0.5">↙ Guardar</button>
+<button class="py-1.5 bg-white border border-stone-300 text-stone-700 rounded-lg text-xs font-bold active:translate-y-0.5">↗ Resgatar</button>
+</div>
+</div>
+<!-- 3. INVESTIMENTOS A PRAZO FECHADO (CDBS) -->
+<div class="bg-white rounded-lego border border-[#E2D8C7] p-3.5 shadow-tactile" data-purpose="cdb-investments-card">
+<div class="flex justify-between items-center pb-2 border-b border-stone-100">
+<div class="flex items-center gap-1.5">
+<span class="text-base">💹</span>
+<h3 class="text-xs font-black uppercase text-stone-800">CDBs a Prazo Fechado</h3>
+</div>
+<span class="text-[10px] font-bold text-stone-500">3 opções disponíveis</span>
+</div>
+<!-- Alerta de Inflação -->
+<div class="mt-2.5 p-2 bg-amber-50/70 border border-amber-200 rounded-lg text-[10px] text-amber-900">
+<p class="font-bold flex items-center gap-1">
+<span>📉</span> INFLAÇÃO VIGENTE: 4,5% A.A.
+            </p>
+<p class="text-stone-600 mt-0.5">Dinheiro parado na conta perde poder de compra. Trave rentabilidade acima do CDI garantida pelo FGC!</p>
+</div>
+<!-- Lista de Títulos -->
+<div class="flex flex-col gap-2 mt-3">
+<div class="p-2 border border-stone-200 rounded-lg flex items-center justify-between hover:bg-stone-50">
+<div>
+<span class="text-xs font-extrabold text-stone-800">CDB 1 Ano 110% CDI</span>
+<p class="text-[10px] text-stone-500">Carência 12 meses • Mín. R$ 500</p>
+</div>
+<button class="px-3 py-1 bg-stone-900 text-white rounded-lg text-xs font-bold">Aplicar</button>
+</div>
+<div class="p-2 border border-stone-200 rounded-lg flex items-center justify-between hover:bg-stone-50">
+<div>
+<span class="text-xs font-extrabold text-stone-800">CDB 2 Anos 120% CDI</span>
+<p class="text-[10px] text-stone-500">Carência 24 meses • Mín. R$ 1.000</p>
+</div>
+<button class="px-3 py-1 bg-stone-900 text-white rounded-lg text-xs font-bold">Aplicar</button>
+</div>
+<div class="p-2 border border-amber-300 bg-amber-50/30 rounded-lg flex items-center justify-between">
+<div>
+<span class="text-xs font-extrabold text-stone-900 flex items-center gap-1">CDB 3 Anos 130% CDI <span class="text-amber-500">★</span></span>
+<p class="text-[10px] text-stone-500">Carência 36 meses • Mín. R$ 2.000</p>
+</div>
+<button class="px-3 py-1 bg-amber-600 text-white rounded-lg text-xs font-bold shadow-xs">Aplicar</button>
+</div>
+</div>
+</div>
+<!-- 4. CARTÃO TROPICAL BLACK -->
+<div class="bg-gradient-to-br from-stone-900 via-stone-800 to-black text-white rounded-2xl p-4 shadow-lg border border-stone-700 relative overflow-hidden" data-purpose="credit-card-display">
+<div class="absolute -right-6 -bottom-6 w-32 h-32 rounded-full bg-amber-500/10 blur-xl"></div>
+<div class="flex justify-between items-start">
+<div>
+<span class="text-[10px] tracking-widest uppercase font-semibold text-stone-400">Cartão Tropical Black</span>
+<div class="flex items-center gap-2 mt-1">
+<!-- Chip Dourado -->
+<div class="w-7 h-5 bg-gradient-to-tr from-amber-400 to-yellow-200 rounded-sm border border-amber-600 flex items-center justify-center">
+<div class="w-4 h-2 border border-amber-700/60 rounded-xs"></div>
+</div>
+<!-- Contactless Icon -->
+<span class="text-xs text-stone-400">📡 contactless</span>
+</div>
+</div>
+<span class="text-xs font-black tracking-widest text-amber-400">VR BRASIL</span>
+</div>
+<div class="my-5">
+<span class="text-[9.5px] uppercase tracking-wider text-stone-400 font-bold">CARTÃO NÃO EMITIDO</span>
+<p class="text-base tracking-[0.25em] font-mono text-stone-300">•••• •••• •••• 8821</p>
+</div>
+<div class="flex justify-between items-end">
+<div>
+<p class="text-[9px] uppercase tracking-wider text-stone-500">Titular</p>
+<p class="text-xs font-bold tracking-wider text-stone-200 uppercase">LUCAS SILVA</p>
+</div>
+<div class="text-right">
+<p class="text-[9px] uppercase tracking-wider text-stone-500">SCORE</p>
+<p class="text-xs font-extrabold text-emerald-400">725</p>
+</div>
+</div>
+<!-- Banner de Oferta Serasa -->
+<div class="mt-3.5 pt-3 border-t border-stone-800 text-[10.5px]">
+<p class="text-amber-300 font-bold flex items-center gap-1">
+<span>✨</span> Pontuação Serasa Elegível
+            </p>
+<p class="text-stone-300 text-[10px] mt-0.5 leading-snug">Você tem perfil qualificado para limite inicial de até <strong class="text-white">R$ 35.000</strong> com cashback direto na conta e anuidade zero vitalícia.</p>
+<button class="mt-2.5 w-full py-2 bg-gradient-to-r from-amber-400 to-amber-500 text-stone-950 font-black text-xs rounded-xl shadow-md active:translate-y-0.5">
+              💳 Solicitar Cartão (+ Análise Serasa)
+            </button>
+</div>
+</div>
+<!-- 5. COMPROMISSOS FIXOS MENSAIS -->
+<div class="bg-white rounded-lego border border-[#E2D8C7] p-3.5 shadow-tactile" data-purpose="fixed-expenses-list">
+<div class="flex justify-between items-center pb-2 border-b border-stone-100">
+<h3 class="text-xs font-black uppercase text-stone-800">Compromissos Fixos</h3>
+<span class="text-[10px] font-bold text-amber-700 bg-amber-100 px-2 py-0.5 rounded">⚡ Débito Anual</span>
+</div>
+<div class="divide-y divide-stone-100 text-xs mt-1">
+<div class="py-2 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span>🏡</span>
+<div>
+<p class="font-bold text-stone-800 leading-tight">Casa de Bairro com Quintal</p>
+<p class="text-[10px] text-stone-500">R$ 200/mês</p>
+</div>
+</div>
+<div class="text-right">
+<span class="font-extrabold text-stone-900">R$ 2.400/ano</span>
+<span class="block text-[9.5px] font-semibold text-emerald-600">Em dia</span>
+</div>
+</div>
+<div class="py-2 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span>💡</span>
+<div>
+<p class="font-bold text-stone-800 leading-tight">Energia Elétrica &amp; Luz</p>
+<p class="text-[10px] text-stone-500">Tarifa residencial</p>
+</div>
+</div>
+<div class="text-right">
+<span class="font-extrabold text-stone-900">R$ 600/ano</span>
+<span class="block text-[9.5px] font-semibold text-emerald-600">Em dia</span>
+</div>
+</div>
+</div>
+<div class="mt-2 pt-2 bg-stone-50 p-2 rounded-lg flex items-center justify-between text-xs font-bold">
+<span class="text-stone-600">Custo de Vida Anual Estimado:</span>
+<span class="text-stone-900">R$ 3.000 / ano</span>
+</div>
+</div>
+</section>
+<!-- ============================================== -->
+<!-- ABA 2: FAMÍLIA & AMOR                          -->
+<!-- ============================================== -->
+<section class="hidden flex-col gap-3" data-purpose="family-love-view" id="tab-content-familia">
+<!-- Sub-navegação em Pílulas (Pills) -->
+<div class="flex items-center justify-between bg-stone-200/70 p-1 rounded-xl text-xs font-bold text-stone-600" data-purpose="family-sub-tabs">
+<button class="flex-1 py-1.5 px-2 bg-white text-stone-900 rounded-lg shadow-xs text-center transition-all">
+            👥 Pais &amp; Irmãos
+          </button>
+<button class="flex-1 py-1.5 px-2 text-stone-500 hover:text-stone-800 text-center transition-all flex items-center justify-center gap-1">
+<span>❤️ Amor</span>
+<span class="text-[10px]">🔒</span>
+</button>
+<button class="flex-1 py-1.5 px-2 text-stone-500 hover:text-stone-800 text-center transition-all">
+            👶 Filhos &amp; Pets
+          </button>
+</div>
+<!-- Descrição do Grupo Familiar -->
+<div class="bg-amber-50/70 border border-amber-200 p-2.5 rounded-xl">
+<h2 class="text-xs font-black text-amber-950 uppercase tracking-tight">Pais &amp; Família Base</h2>
+<p class="text-[11px] text-stone-600 leading-tight mt-0.5">Toque em um parente para ver ações, estreitar laços ou pedir auxílio financeiro.</p>
+</div>
+<!-- Card: Pai (Marcelo Silva) -->
+<div class="bg-white rounded-lego border border-[#E2D8C7] p-3.5 shadow-tactile flex flex-col gap-2.5" data-purpose="parent-card-father">
+<div class="flex items-center gap-3">
+<!-- Cabeça LEGO Pai -->
+<div class="relative w-12 h-12 bg-amber-300 rounded-2xl flex items-center justify-center border-2 border-amber-500 shadow-sm shrink-0">
+<div class="absolute -top-1.5 w-4 h-1.5 rounded-full lego-stud"></div>
+<!-- Rosto com Óculos e Bigode Suave -->
+<div class="flex flex-col items-center">
+<div class="flex items-center gap-1.5">
+<div class="w-2.5 h-2.5 rounded border border-stone-800 bg-white/80"></div>
+<div class="w-1 h-0.5 bg-stone-800"></div>
+<div class="w-2.5 h-2.5 rounded border border-stone-800 bg-white/80"></div>
+</div>
+<div class="w-3 h-1 border-b-2 border-stone-800 rounded-full mt-1"></div>
+</div>
+</div>
+<!-- Dados do Pai -->
+<div class="flex-1">
+<div class="flex items-baseline justify-between">
+<h3 class="text-xs font-black text-stone-900">Marcelo Silva <span class="text-[10px] text-stone-500 font-semibold">(Pai)</span></h3>
+<span class="text-[10px] font-bold text-stone-500">25 anos</span>
+</div>
+<p class="text-[11px] text-stone-600 font-medium">Servidor(a) Público(a) Municipal</p>
+</div>
+</div>
+<!-- Nível de Afeto / Cumplicidade -->
+<div class="mt-1">
+<div class="flex justify-between items-center text-[11px] mb-1">
+<span class="text-stone-500 font-bold">Nível de Afeto</span>
+<span class="font-extrabold text-amber-700">88%</span>
+</div>
+<div class="progress-track">
+<div class="bg-amber-500 h-full rounded-full" style="width: 88%;"></div>
+</div>
+</div>
+<!-- Botão de Interação -->
+<button class="mt-1 w-full py-2 bg-stone-50 hover:bg-stone-100 border border-stone-200 rounded-xl text-xs font-bold text-stone-800 flex items-center justify-center gap-1 active:translate-y-0.5 transition-all">
+            Interagir &amp; Pedir Ajuda <span class="text-stone-400">➔</span>
+</button>
+</div>
+<!-- Card: Mãe (Aline Lopes Silva) -->
+<div class="bg-white rounded-lego border border-[#E2D8C7] p-3.5 shadow-tactile flex flex-col gap-2.5" data-purpose="parent-card-mother">
+<div class="flex items-center gap-3">
+<!-- Cabeça LEGO Mãe -->
+<div class="relative w-12 h-12 bg-amber-300 rounded-2xl flex items-center justify-center border-2 border-amber-500 shadow-sm shrink-0">
+<div class="absolute -top-1.5 w-4 h-1.5 rounded-full lego-stud"></div>
+<!-- Rosto com Bochechas Rosadas e Tiara -->
+<div class="flex flex-col items-center">
+<!-- Cabelo/Franja simulada -->
+<div class="w-8 h-1.5 bg-amber-800 rounded-full -mt-1 mb-0.5"></div>
+<div class="flex items-center gap-2">
+<div class="w-1.5 h-1.5 bg-stone-900 rounded-full"></div>
+<div class="w-1.5 h-1.5 bg-stone-900 rounded-full"></div>
+</div>
+<div class="w-2.5 h-1 border-b-2 border-rose-500 rounded-full mt-0.5"></div>
+</div>
+</div>
+<!-- Dados da Mãe -->
+<div class="flex-1">
+<div class="flex items-baseline justify-between">
+<h3 class="text-xs font-black text-stone-900">Aline Lopes Silva <span class="text-[10px] text-stone-500 font-semibold">(Mãe)</span></h3>
+<span class="text-[10px] font-bold text-stone-500">30 anos</span>
+</div>
+<p class="text-[11px] text-stone-600 font-medium">Enfermeiro(a) Hospitalar</p>
+</div>
+</div>
+<!-- Nível de Afeto / Cumplicidade -->
+<div class="mt-1">
+<div class="flex justify-between items-center text-[11px] mb-1">
+<span class="text-stone-500 font-bold">Nível de Afeto</span>
+<span class="font-extrabold text-rose-600">91%</span>
+</div>
+<div class="progress-track">
+<div class="bg-rose-500 h-full rounded-full" style="width: 91%;"></div>
+</div>
+</div>
+<!-- Botão de Interação -->
+<button class="mt-1 w-full py-2 bg-stone-50 hover:bg-stone-100 border border-stone-200 rounded-xl text-xs font-bold text-stone-800 flex items-center justify-center gap-1 active:translate-y-0.5 transition-all">
+            Interagir &amp; Pedir Ajuda <span class="text-stone-400">➔</span>
+</button>
+</div>
+</section>
+</div>
+<!-- END: DynamicContentSection -->
+</main>
+<!-- END: MainContainer -->
+<!-- BEGIN: InteractiveTabSwitcherScript -->
+<script data-purpose="tab-switcher">
+    function switchMainTab(targetTab) {
+      const tabBanco = document.getElementById('tab-content-banco');
+      const tabFamilia = document.getElementById('tab-content-familia');
+      const btnBanco = document.getElementById('nav-btn-banco');
+      const btnFamilia = document.getElementById('nav-btn-familia');
+
+      if (targetTab === 'banco') {
+        tabBanco.classList.remove('hidden');
+        tabFamilia.classList.add('hidden');
+
+        btnBanco.className = 'flex flex-col items-center py-1 px-2.5 border-b-2 border-stone-900 text-stone-900 font-bold transition-all';
+        btnFamilia.className = 'flex flex-col items-center py-1 px-2.5 border-b-2 border-transparent hover:text-stone-900 text-stone-500 transition-all';
+      } else if (targetTab === 'familia') {
+        tabBanco.classList.add('hidden');
+        tabFamilia.classList.remove('hidden');
+
+        btnFamilia.className = 'flex flex-col items-center py-1 px-2.5 border-b-2 border-stone-900 text-stone-900 font-bold transition-all';
+        btnBanco.className = 'flex flex-col items-center py-1 px-2.5 border-b-2 border-transparent hover:text-stone-900 text-stone-500 transition-all';
+      }
+    }
+  </script>
+<!-- END: InteractiveTabSwitcherScript -->
+</body></html>
