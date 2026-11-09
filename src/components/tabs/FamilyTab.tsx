@@ -36,6 +36,7 @@ interface FamilyTabProps {
     guestNames: string[];
   }) => { success: boolean; message: string };
   onOpenWeddingPlanner?: () => void;
+  timeSubPeriod?: number;
 }
 
 const AVAILABLE_PETS: Pet[] = [
@@ -74,8 +75,32 @@ export const FamilyTab: React.FC<FamilyTabProps> = ({
   onAddRandomFriend,
   onFriendAction,
   onPlanFamilyEvent,
-  onOpenWeddingPlanner
+  onOpenWeddingPlanner,
+  timeSubPeriod = 1
 }) => {
+  const MONTH_NAMES = ['', 'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+  const currentMonthNum = timeSubPeriod || 1;
+  const currentMonthName = MONTH_NAMES[currentMonthNum] || 'Janeiro';
+
+  const parentsList = family.parents && family.parents.length > 0 ? family.parents : [
+    { name: 'Sérgio da Silva', role: 'Pai', age: 58, job: 'Aposentado', affection: 88, alive: true },
+    { name: 'Cristina da Silva', role: 'Mãe', age: 56, job: 'Dona de Casa', affection: 91, alive: true }
+  ];
+
+  const siblingsList = family.siblings && family.siblings.length > 0 ? family.siblings : [
+    { id: '1', name: 'Lucas', gender: 'M', age: 14, affection: 75 }
+  ];
+
+  const birthdayMap: Record<number, { name: string; relation: string }> = {
+    1: { name: parentsList[0]?.name || 'Pai', relation: 'Pai' },
+    3: { name: siblingsList[0]?.name || 'Irmão', relation: 'Irmão(ã)' },
+    5: { name: parentsList[1]?.name || 'Mãe', relation: 'Mãe' },
+    7: { name: relationship.partnerName || 'Cônjuge', relation: 'Parceiro(a)' },
+    9: { name: family.children?.[0]?.name || 'Filho(a)', relation: 'Filho(a)' },
+    11: { name: family.friends?.[0]?.name || 'Amigo', relation: 'Amigo(a)' }
+  };
+
+  const currentBirthdayPerson = birthdayMap[currentMonthNum];
   const [activeSubTab, setActiveSubTab] = useState<'amor' | 'pais_irmaos' | 'filhos' | 'pet' | 'amigos' | 'arvore'>('amor');
   const [feedback, setFeedback] = useState<string | null>(null);
   const [showMoreLoveGestures, setShowMoreLoveGestures] = useState<boolean>(false);
@@ -119,15 +144,6 @@ export const FamilyTab: React.FC<FamilyTabProps> = ({
   };
 
   const childrenCount = family.children ? family.children.length : 0;
-
-  const parentsList = family.parents && family.parents.length > 0 ? family.parents : [
-    { name: 'Sérgio da Silva', role: 'Pai', age: 58, job: 'Aposentado', affection: 88, alive: true },
-    { name: 'Cristina da Silva', role: 'Mãe', age: 56, job: 'Dona de Casa', affection: 91, alive: true }
-  ];
-
-  const siblingsList = family.siblings && family.siblings.length > 0 ? family.siblings : [
-    { id: '1', name: 'Lucas', gender: 'M', age: 14, affection: 75 }
-  ];
 
   const EVENT_TYPES = [
     {
@@ -335,35 +351,53 @@ export const FamilyTab: React.FC<FamilyTabProps> = ({
         </div>
       </div>
 
-      {/* Notificação Toast de Aniversário de Familiar / Amigo */}
-      <div className="mx-1 bg-gradient-to-r from-emerald-500 via-teal-600 to-cyan-600 rounded-2xl p-3 text-white shadow-md flex items-center justify-between gap-3">
-        <div className="flex items-center gap-2.5 min-w-0">
-          <div className="w-9 h-9 rounded-xl bg-white/20 backdrop-blur-xs flex items-center justify-center text-lg shrink-0">
-            🎂
+      {/* Notificação Toast de Aniversário Baseada no Mês Corrente */}
+      {currentBirthdayPerson ? (
+        <div className="mx-1 bg-gradient-to-r from-emerald-500 via-teal-600 to-cyan-600 rounded-2xl p-3 text-white shadow-md flex items-center justify-between gap-3 animate-fade-in">
+          <div className="flex items-center gap-2.5 min-w-0">
+            <div className="w-9 h-9 rounded-xl bg-white/20 backdrop-blur-xs flex items-center justify-center text-lg shrink-0">
+              🎂
+            </div>
+            <div className="min-w-0">
+              <h4 className="font-heading font-black text-xs sm:text-sm tracking-tight truncate">
+                Aniversário em {currentMonthName}: {currentBirthdayPerson.name}!
+              </h4>
+              <p className="text-[11px] text-emerald-100 font-medium truncate">
+                É aniversário de {currentBirthdayPerson.relation} ({currentBirthdayPerson.name}) neste mês. Envie os parabéns!
+              </p>
+            </div>
           </div>
-          <div className="min-w-0">
-            <h4 className="font-heading font-black text-xs sm:text-sm tracking-tight truncate">
-              Aniversário na Família &amp; Amigos!
-            </h4>
-            <p className="text-[11px] text-emerald-100 font-medium truncate">
-              Hoje é o aniversário de {parentsList[0]?.name || 'Sérgio'}! Envie os parabéns.
-            </p>
+          <button
+            type="button"
+            onClick={() => {
+              playClickSound();
+              playSuccessSound();
+              confetti({ particleCount: 50, spread: 70, origin: { y: 0.6 } });
+              onDoFamilyAction('parabens', currentBirthdayPerson.name, 0);
+              showMsg({ success: true, message: `🎁 Mensagem de parabéns enviada para ${currentBirthdayPerson.name}! (+20 Afeto)` });
+            }}
+            className="shrink-0 px-3 py-2 rounded-xl bg-white text-slate-900 font-bold text-xs shadow-md hover:bg-emerald-50 active:translate-y-0.5 transition-all cursor-pointer font-heading"
+          >
+            Dar Parabéns 🎉
+          </button>
+        </div>
+      ) : (
+        <div className="mx-1 bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 rounded-2xl p-3 text-white shadow-md flex items-center justify-between gap-3">
+          <div className="flex items-center gap-2.5 min-w-0">
+            <div className="w-9 h-9 rounded-xl bg-white/20 backdrop-blur-xs flex items-center justify-center text-lg shrink-0">
+              📅
+            </div>
+            <div className="min-w-0">
+              <h4 className="font-heading font-black text-xs sm:text-sm tracking-tight truncate">
+                Mês Corrente: {currentMonthName}
+              </h4>
+              <p className="text-[11px] text-amber-100 font-medium truncate">
+                Nenhum aniversário de familiar neste mês específico. Aproveite para planejar um evento!
+              </p>
+            </div>
           </div>
         </div>
-        <button
-          type="button"
-          onClick={() => {
-            playClickSound();
-            playSuccessSound();
-            confetti({ particleCount: 50, spread: 70, origin: { y: 0.6 } });
-            onDoFamilyAction('parabens', parentsList[0]?.name || 'Pai', 0);
-            showMsg({ success: true, message: `🎁 Mensagem de parabéns enviada com sucesso! (+15 Afeto)` });
-          }}
-          className="shrink-0 px-3 py-2 rounded-xl bg-white text-slate-900 font-bold text-xs shadow-md hover:bg-emerald-50 active:translate-y-0.5 transition-all cursor-pointer font-heading"
-        >
-          Dar Parabéns 🎉
-        </button>
-      </div>
+      )}
 
       {/* ============================================================== */}
       {/* ABA: ÁRVORE GENEALÓGICA D3 */}
@@ -1226,6 +1260,11 @@ export const FamilyTab: React.FC<FamilyTabProps> = ({
                           {child.isExtramarital && (
                             <span className="px-1.5 py-0.2 rounded-full bg-purple-100 text-purple-800 text-[9px] font-black border border-purple-300">
                               Extraconjugal
+                            </span>
+                          )}
+                          {child.otherParentName && (
+                            <span className="text-[10px] text-purple-700 font-bold block mt-0.5 w-full">
+                              Mãe / Outro Pai: {child.otherParentName} {child.isExtramarital ? '(Extraconjugal)' : ''}
                             </span>
                           )}
                         </div>

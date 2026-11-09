@@ -71,7 +71,7 @@ export const DesktopSidebar: React.FC<DesktopSidebarProps> = ({ gameState, posit
                 <ShieldAlert className="w-4 h-4 text-[#D9532F]" />
               )}
               <h4 className="font-heading font-extrabold text-xs text-[#141E18]">
-                Termômetro Serasa Score
+                Situação Cadastral
               </h4>
             </div>
             <span
@@ -83,10 +83,9 @@ export const DesktopSidebar: React.FC<DesktopSidebarProps> = ({ gameState, posit
             </span>
           </div>
 
-          {/* Score number */}
-          <div className="text-3xl font-black font-heading text-[#141E18] my-1">
-            {serasa.score}{' '}
-            <span className="text-xs font-semibold text-[#566359]">/ 1000</span>
+          {/* Status text */}
+          <div className="text-xl font-black font-heading text-[#141E18] my-1">
+            {isNomeLimpo ? 'Crédito Positivo' : 'Restrição Ativa'}
           </div>
 
           {/* Progress bar gauge */}

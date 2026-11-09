@@ -363,7 +363,7 @@ export const SmartphoneModal: React.FC<SmartphoneModalProps> = ({
 
   if (!isOpen) return null;
 
-  if (gameState.character.age < 18) {
+  if (gameState.character.age < 15) {
     return (
       <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-900/80 backdrop-blur-xs animate-fade-in text-slate-900">
         <div className="bg-[#fffdf7] dark:bg-slate-900 border-2 border-amber-500 rounded-3xl max-w-sm w-full p-6 text-center space-y-4 shadow-2xl relative text-slate-900 dark:text-slate-100">
@@ -381,10 +381,10 @@ export const SmartphoneModal: React.FC<SmartphoneModalProps> = ({
               🔞 Bloqueado por Idade
             </span>
             <h3 className="font-heading font-black text-lg text-slate-900 dark:text-white">
-              Acesso ao Celular (18+ Anos)
+              Acesso ao Celular (15+ Anos)
             </h3>
             <p className="text-xs text-slate-600 dark:text-slate-300 max-w-xs mx-auto leading-relaxed">
-              Você tem atualmente <strong>{gameState.character.age} anos</strong>. O uso e acesso ao celular, redes sociais e aplicativos de relacionamento é liberado apenas a partir dos <strong>18 anos de idade</strong>!
+              Você tem atualmente <strong>{gameState.character.age} anos</strong>. Menores de 15 anos não têm permissão para acessar o Smartphone Digital, redes sociais ou jogos de azar!
             </p>
           </div>
           <button
@@ -1688,6 +1688,34 @@ export const SmartphoneModal: React.FC<SmartphoneModalProps> = ({
 
             {/* TINDER TROPICAL BR (ESTÉTICA POLAROID, BOTOES 3D BRICK E INSTANT MATCH) */}
             {activeApp === 'tinder' && (() => {
+              if (gameState.character.age < 18) {
+                return (
+                  <div className="p-6 flex flex-col items-center justify-center text-center space-y-4 my-auto h-full min-h-[420px]">
+                    <div className="w-16 h-16 rounded-2xl bg-rose-100 dark:bg-rose-950 text-rose-500 flex items-center justify-center shadow-lg">
+                      <Heart className="w-8 h-8" />
+                    </div>
+                    <div className="space-y-1.5">
+                      <span className="text-[10px] font-black uppercase tracking-wider text-rose-600 bg-rose-100 dark:bg-rose-900/40 px-2.5 py-0.5 rounded-full inline-block">
+                        18+ Somente
+                      </span>
+                      <h4 className="font-heading font-black text-base text-slate-900 dark:text-white">
+                        Tinder Tropical Bloqueado
+                      </h4>
+                      <p className="text-xs text-slate-600 dark:text-slate-300 max-w-xs leading-relaxed">
+                        Você tem <strong>{gameState.character.age} anos</strong>. Aplicativos de romance e encontros são liberados apenas após completar a maioridade (18 anos).
+                      </p>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={handleBackToHome}
+                      className="px-4 py-2.5 rounded-xl bg-rose-500 hover:bg-rose-600 text-white font-bold text-xs shadow-md transition-all cursor-pointer"
+                    >
+                      Voltar ao Início
+                    </button>
+                  </div>
+                );
+              }
+
               const TINDER_BRICK_PROFILES = REALTREE_NPCS.map((npc, idx) => ({
                 id: npc.id,
                 name: npc.name,

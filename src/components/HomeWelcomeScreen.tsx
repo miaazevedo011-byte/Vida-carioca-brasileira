@@ -245,7 +245,7 @@ function createDemoGameState(
 }
 
 // 4 iconic starter showcase slots from the provided HTML design
-const DEMO_STARTER_SLOTS: SavedLifeSlot[] = [
+export const DEMO_STARTER_SLOTS: SavedLifeSlot[] = [
   {
     id: 'demo_lucas',
     slotName: 'Slot 1: Lucas Silva',
@@ -449,15 +449,14 @@ export const HomeWelcomeScreen: React.FC<HomeWelcomeScreenProps> = ({
 }) => {
   const [activeSort, setActiveSort] = useState<SortFilter>('default');
   const [toastMessage, setToastMessage] = useState<string | null>(null);
+  const [optimisticDeletedIds, setOptimisticDeletedIds] = useState<Set<string>>(new Set());
   const toastTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Active slots to render: use savedSlots if player has saves, or display the 4 starter showcase saves
+  // Active slots to render: use savedSlots directly and filter out deleted slots instantly
   const effectiveSlots = useMemo(() => {
-    if (savedSlots && savedSlots.length > 0) {
-      return savedSlots;
-    }
-    return DEMO_STARTER_SLOTS;
-  }, [savedSlots]);
+    const base = savedSlots !== undefined ? savedSlots : DEMO_STARTER_SLOTS;
+    return base.filter((s) => !optimisticDeletedIds.has(s.id));
+  }, [savedSlots, optimisticDeletedIds]);
 
   // Sorting
   const sortedSlots = useMemo(() => {
@@ -482,7 +481,7 @@ export const HomeWelcomeScreen: React.FC<HomeWelcomeScreenProps> = ({
     if (toastTimeoutRef.current) clearTimeout(toastTimeoutRef.current);
     toastTimeoutRef.current = setTimeout(() => {
       setToastMessage(null);
-    }, 2200);
+    }, 1800);
   };
 
   const handleMascotClick = () => {
@@ -493,18 +492,24 @@ export const HomeWelcomeScreen: React.FC<HomeWelcomeScreenProps> = ({
 
   const handlePlayClick = (slot: SavedLifeSlot) => {
     playLegoSound('play');
-    if (navigator.vibrate) navigator.vibrate([15, 30, 20]);
     showToast(`Iniciando jornada: ${slot.characterName}...`);
     setTimeout(() => {
       onSelectSlot(slot);
-    }, 200);
+    }, 120);
   };
 
   const handleDeleteClick = (slot: SavedLifeSlot) => {
-    playLegoSound('delete');
-    if (navigator.vibrate) navigator.vibrate(15);
-    showToast(`Excluir slot de ${slot.characterName}?`);
+    // Exclusão 100% instantânea no UI
+    setOptimisticDeletedIds((prev) => {
+      const next = new Set(prev);
+      next.add(slot.id);
+      return next;
+    });
+    showToast(`Personagem "${slot.characterName}" excluído.`);
     onDeleteSlot(slot.id);
+    try {
+      playLegoSound('delete');
+    } catch (e) {}
   };
 
   const handleCreateNewClick = () => {
@@ -699,7 +704,18 @@ export const HomeWelcomeScreen: React.FC<HomeWelcomeScreenProps> = ({
 
               {/* Cards de Saves */}
               <div className="space-y-3">
-                {sortedSlots.map((slot, index) => {
+                {sortedSlots.length === 0 ? (
+                  <div className="bg-white/95 rounded-2xl p-6 text-center border-2 border-dashed border-slate-300 space-y-2 shadow-xs">
+                    <div className="text-3xl">🌴</div>
+                    <h3 className="font-display font-extrabold text-sm text-slate-800">
+                      Nenhum personagem salvo
+                    </h3>
+                    <p className="text-xs text-slate-500">
+                      Você pode criar um novo personagem agora mesmo para começar sua trajetória!
+                    </p>
+                  </div>
+                ) : (
+                  sortedSlots.map((slot, index) => {
                   const badgeInfo = getPhaseBadgeInfo(slot.age);
                   const isRetiree = slot.age >= 60;
 
@@ -805,7 +821,8 @@ export const HomeWelcomeScreen: React.FC<HomeWelcomeScreenProps> = ({
                       </div>
                     </article>
                   );
-                })}
+                })
+              )}
               </div>
             </section>
 

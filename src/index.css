@@ -5,22 +5,25 @@
 :root {
   --bg-color: #fff8e8;
   --text-color: #4a3520;
+  --heading-color: #141E18;
+  --card-bg: #ffffff;
+  --card-border: #dde4db;
+  --accent-color: #087F48;
 }
 
-[data-theme='verde'], [data-theme='green'], [data-theme='default'] { --bg-color: #fff8e8; --text-color: #4a3520; }
-[data-theme='vermelho'], [data-theme='red'] { --bg-color: #fff0eb; --text-color: #7f1d1d; }
-[data-theme='preto'], [data-theme='black'] { --bg-color: #2b2118; --text-color: #fff8e8; }
-[data-theme='amarelo'], [data-theme='yellow'] { --bg-color: #fffbeb; --text-color: #4a3520; }
-[data-theme='azul'], [data-theme='blue'] { --bg-color: #f0f7ff; --text-color: #1e3a8a; }
-[data-theme='laranja'], [data-theme='orange'] { --bg-color: #fff7ed; --text-color: #7c2d12; }
-[data-theme='roxo'], [data-theme='purple'] { --bg-color: #faf5ff; --text-color: #581c87; }
-[data-theme='vinho'], [data-theme='wine'] { --bg-color: #fdf2f8; --text-color: #701a75; }
-
-/* Global Dark Mode ('Modo Sombrio') Overrides */
-html.dark, [data-dark='true'] {
-  --bg-color: #0c1412 !important;
-  --text-color: #f1f5f3 !important;
+/* Global Dark Theme Modes */
+html.dark, [data-dark='true'], [data-theme-mode='dark'] {
+  --bg-color: #121212;
+  --text-color: #f1f5f9;
+  --heading-color: #ffffff;
+  --card-bg: #1c1c1e;
+  --card-border: #2c2c2e;
   color-scheme: dark;
+}
+
+/* Global Light Theme Modes */
+html:not(.dark), [data-dark='false'], [data-theme-mode='light'] {
+  color-scheme: light;
 }
 
 html.dark body, [data-dark='true'] body {

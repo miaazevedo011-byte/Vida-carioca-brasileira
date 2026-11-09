@@ -1,6 +1,6 @@
 import React from 'react';
 import { Character, Career, SerasaProfile, GameState } from '../types/game';
-import { ShieldCheck, ShieldAlert, MapPin, Briefcase, RefreshCw } from 'lucide-react';
+import { MapPin, Briefcase, RefreshCw } from 'lucide-react';
 import { PWAInstallButton } from './PWAInstallButton';
 import { LegoMinifigHead } from './LegoMinifigHead';
 import { useTheme } from '../context/ThemeContext';
@@ -56,7 +56,6 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({
   onOpenDocuments,
   onOpenInventory
 }) => {
-  const isNomeLimpo = serasa.score >= 500 && serasa.dividas.length === 0;
   const theme = getCountryTheme(character.currentCity);
   const { isDarkMode, toggleDarkMode } = useTheme();
 
@@ -100,7 +99,7 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({
           </div>
         </button>
 
-        {/* Serasa Capsule Badge & Action */}
+        {/* Top Right Action Buttons: Mochila (Inventário) e Lua (Tema) */}
         <div className="flex items-center gap-1 sm:gap-1.5 flex-shrink-0">
           {onOpenInventory && (
             <button
@@ -113,23 +112,6 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({
               <span className="hidden xs:inline">Mochila</span>
             </button>
           )}
-
-          <div
-            onClick={onOpenDocuments}
-            className={`flex items-center gap-1 rounded-full px-2 sm:px-2.5 py-0.5 sm:py-1 text-[10px] sm:text-[11px] font-heading font-bold tracking-tight shadow-sm border cursor-pointer hover:scale-105 transition-transform ${
-              isNomeLimpo
-                ? 'bg-[#E6F5ED] text-[#087F48] border-[#a2e6bd]'
-                : 'bg-[#FCEBE6] text-[#D9532F] border-[#f6c2b4]'
-            }`}
-            title={`Serasa Score: ${serasa.score} pontos. Clique para ver detalhes!`}
-          >
-            {isNomeLimpo ? (
-              <ShieldCheck className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
-            ) : (
-              <ShieldAlert className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
-            )}
-            <span>Score: {serasa.score}</span>
-          </div>
 
           <PWAInstallButton />
 

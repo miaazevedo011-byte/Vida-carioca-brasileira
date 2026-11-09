@@ -8,12 +8,7 @@ export const PWAInstallButton: React.FC = () => {
   const [showIOSGuide, setShowIOSGuide] = useState(false);
 
   if (isInstalled) {
-    return (
-      <div className="flex items-center gap-1 text-[10px] font-bold text-[#087F48] bg-[#e6f5ed] px-2 py-0.5 rounded-full border border-[#a2e6bd]">
-        <Check className="w-3 h-3" />
-        <span>App Instalado (Offline OK)</span>
-      </div>
-    );
+    return null;
   }
 
   return (

@@ -523,7 +523,14 @@ export const MoreTab: React.FC<MoreTabProps> = ({
 
       {/* Special Card: Smartphone Digital Module */}
       <section
-        onClick={() => { triggerClick(); setIsPhoneModalOpen(true); }}
+        onClick={() => {
+          triggerClick();
+          if (character.age < 15) {
+            showMsg({ success: false, message: '🚫 Menores de 15 anos não têm permissão para acessar o Smartphone Digital.' });
+            return;
+          }
+          setIsPhoneModalOpen(true);
+        }}
         className="rounded-2xl p-3.5 relative overflow-hidden transition active:translate-y-0.5 cursor-pointer"
         style={{
           background: 'linear-gradient(145deg, #093325 0%, #052319 100%)',
@@ -834,7 +841,14 @@ export const MoreTab: React.FC<MoreTabProps> = ({
 
         {/* 13. Crime & Malandragem */}
         <article
-          onClick={() => { triggerClick(); setActiveModal('crime'); }}
+          onClick={() => {
+            triggerClick();
+            if (character.age < 14) {
+              showMsg({ success: false, message: '🚫 Crime e malandragem estão disponíveis somente a partir dos 14 anos!' });
+              return;
+            }
+            setActiveModal('crime');
+          }}
           className="lego-card rounded-2xl p-3 flex flex-col justify-between cursor-pointer"
         >
           <div>
@@ -842,7 +856,7 @@ export const MoreTab: React.FC<MoreTabProps> = ({
               🎲
             </div>
             <h4 className="text-xs font-bold text-slate-800 leading-snug">Crime & Malandragem</h4>
-            <p className="text-[11px] text-slate-500 mt-1 leading-tight">Bilhete premiado, Racha & Golpes</p>
+            <p className="text-[11px] text-slate-500 mt-1 leading-tight">Bilhete premiado, Racha & Golpes (14+)</p>
           </div>
           <span className="inline-flex items-center gap-1 text-[11px] font-bold mt-2.5" style={{ color: '#64748b' }}>
             Arriscar Vida <span className="text-xs">→</span>
@@ -868,7 +882,15 @@ export const MoreTab: React.FC<MoreTabProps> = ({
 
         {/* 15. Jogo do Bicho */}
         <article
-          onClick={() => { triggerClick(); setCasinoTab('bicho'); setActiveModal('casino'); }}
+          onClick={() => {
+            triggerClick();
+            if (character.age < 15) {
+              showMsg({ success: false, message: '🚫 Menores de 15 anos não têm acesso a jogos de azar e Jogo do Bicho!' });
+              return;
+            }
+            setCasinoTab('bicho');
+            setActiveModal('casino');
+          }}
           className="lego-card rounded-2xl p-3 flex flex-col justify-between cursor-pointer"
         >
           <div>
@@ -876,7 +898,7 @@ export const MoreTab: React.FC<MoreTabProps> = ({
               🦩
             </div>
             <h4 className="text-xs font-bold text-slate-800 leading-snug">Jogo do Bicho</h4>
-            <p className="text-[11px] text-slate-500 mt-1 leading-tight">Aposte no bicho e ganhe 18x</p>
+            <p className="text-[11px] text-slate-500 mt-1 leading-tight">Aposte no bicho e ganhe 18x (15+)</p>
           </div>
           <span className="inline-flex items-center gap-1 text-[11px] font-bold mt-2.5" style={{ color: '#be185d' }}>
             Apostar Bicho <span className="text-xs">→</span>
@@ -885,7 +907,15 @@ export const MoreTab: React.FC<MoreTabProps> = ({
 
         {/* 16. Tigrinho da Sorte */}
         <article
-          onClick={() => { triggerClick(); setCasinoTab('tigre'); setActiveModal('casino'); }}
+          onClick={() => {
+            triggerClick();
+            if (character.age < 15) {
+              showMsg({ success: false, message: '🚫 Menores de 15 anos não têm acesso ao Tigrinho e jogos de cassino!' });
+              return;
+            }
+            setCasinoTab('tigre');
+            setActiveModal('casino');
+          }}
           className="lego-card rounded-2xl p-3 flex flex-col justify-between cursor-pointer"
         >
           <div>
@@ -893,7 +923,7 @@ export const MoreTab: React.FC<MoreTabProps> = ({
               🐯
             </div>
             <h4 className="text-xs font-bold text-slate-800 leading-snug">Tigrinho da Sorte</h4>
-            <p className="text-[11px] text-slate-500 mt-1 leading-tight">Gire a roleta e solte a carta</p>
+            <p className="text-[11px] text-slate-500 mt-1 leading-tight">Gire a roleta e solte a carta (15+)</p>
           </div>
           <span className="inline-flex items-center gap-1 text-[11px] font-bold mt-2.5" style={{ color: '#b45309' }}>
             Girar Roleta <span className="text-xs">→</span>
@@ -902,7 +932,14 @@ export const MoreTab: React.FC<MoreTabProps> = ({
 
         {/* 17. Redes Sociais */}
         <article
-          onClick={() => { triggerClick(); setActiveModal('social'); }}
+          onClick={() => {
+            triggerClick();
+            if (character.age < 15) {
+              showMsg({ success: false, message: '🚫 Menores de 15 anos não têm acesso a Redes Sociais!' });
+              return;
+            }
+            setActiveModal('social');
+          }}
           className="lego-card rounded-2xl p-3 flex flex-col justify-between cursor-pointer"
         >
           <div>
@@ -910,7 +947,7 @@ export const MoreTab: React.FC<MoreTabProps> = ({
               📸
             </div>
             <h4 className="text-xs font-bold text-slate-800 leading-snug">Redes Sociais</h4>
-            <p className="text-[11px] text-slate-500 mt-1 leading-tight">Influenciador ({influencer.followers.toLocaleString()} seg.)</p>
+            <p className="text-[11px] text-slate-500 mt-1 leading-tight">Influenciador ({influencer.followers.toLocaleString()} seg.) (15+)</p>
           </div>
           <span className="inline-flex items-center gap-1 text-[11px] font-bold mt-2.5" style={{ color: '#0284c7' }}>
             Ver Perfil <span className="text-xs">→</span>
@@ -934,24 +971,15 @@ export const MoreTab: React.FC<MoreTabProps> = ({
           </span>
         </article>
 
-        {/* 19. Configuração (Tempo ⚙️) & Saves (Card Ocupando 2 colunas) */}
+        {/* Barra de Ajustes & Avisos */}
         <article
-          className="lego-card col-span-2 rounded-2xl p-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-3"
+          className="lego-card col-span-2 rounded-2xl p-3 flex items-center justify-between flex-wrap gap-2"
         >
-          <div
-            onClick={() => { triggerClick(); setActiveModal('settings'); }}
-            className="flex items-center gap-3 cursor-pointer flex-1 min-w-0"
-          >
-            <div className="w-10 h-10 rounded-xl flex items-center justify-center text-xl flex-shrink-0" style={{ backgroundColor: '#f1f5f9', border: '1px solid #cbd5e1' }}>
-              ⚙️
-            </div>
-            <div className="min-w-0">
-              <h4 className="text-xs font-bold text-slate-800 truncate">Configuração (Tempo ⚙️) &amp; Saves</h4>
-              <p className="text-[11px] text-slate-500 mt-0.5 truncate">Ritmo do Tempo, Salvar Progresso &amp; Novidades</p>
-            </div>
+          <div className="flex items-center gap-1.5">
+            <span className="text-xs font-bold text-slate-600">Sistema &amp; Versão:</span>
           </div>
 
-          <div className="flex items-center gap-1.5 flex-wrap sm:flex-nowrap shrink-0">
+          <div className="flex items-center gap-1.5 flex-wrap shrink-0">
             <button
               type="button"
               onClick={(e) => {

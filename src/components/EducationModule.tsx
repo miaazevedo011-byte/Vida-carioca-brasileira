@@ -669,7 +669,7 @@ export const EducationModule: React.FC<EducationModuleProps> = ({
             }`}
           >
             <School className="w-3.5 h-3.5" />
-            <span>Fundamental ({educationSystem.fundamentalYearsDone}/6)</span>
+            <span>Fundamental (6-14a)</span>
             {isFundamentalCompleted && <CheckCircle2 className="w-3 h-3 text-[#93f7be]" />}
           </button>
 
@@ -683,7 +683,7 @@ export const EducationModule: React.FC<EducationModuleProps> = ({
             }`}
           >
             <BookOpen className="w-3.5 h-3.5" />
-            <span>Médio ({educationSystem.medioYearsDone}/6)</span>
+            <span>Médio (15-17a)</span>
             {isMedioCompleted && <CheckCircle2 className="w-3 h-3 text-[#93f7be]" />}
           </button>
 
@@ -696,8 +696,8 @@ export const EducationModule: React.FC<EducationModuleProps> = ({
                 : 'text-[#3e4941] hover:bg-[#f4fbf2]'
             }`}
           >
-            <GraduationCap className="w-3.5 h-3.5" />
-            <span>Graduação</span>
+            {character.age < 18 ? <Lock className="w-3.5 h-3.5 text-amber-500" /> : <GraduationCap className="w-3.5 h-3.5" />}
+            <span>Superior (18+)</span>
             {isCollegeCompleted && <CheckCircle2 className="w-3 h-3 text-[#93f7be]" />}
           </button>
 
@@ -734,7 +734,13 @@ export const EducationModule: React.FC<EducationModuleProps> = ({
           <div className="grid grid-cols-2 gap-2">
             <button
               type="button"
-              onClick={() => showMsg(onStudyDaily('fundamental'))}
+              onClick={() => {
+                if (character.age < 6) {
+                  showMsg({ success: false, message: 'O Ensino Fundamental é recomendado a partir dos 6 anos de idade.' });
+                  return;
+                }
+                showMsg(onStudyDaily('fundamental'));
+              }}
               className="p-3 rounded-xl bg-[#f4fbf2] hover:bg-[#e2ffe9] border border-[#bdcabf] text-left transition-all cursor-pointer"
             >
               <h5 className="font-heading font-bold text-xs text-[#161d18] mb-0.5">Estudar Lição</h5>
@@ -743,7 +749,13 @@ export const EducationModule: React.FC<EducationModuleProps> = ({
             <button
               type="button"
               disabled={isFundamentalCompleted}
-              onClick={() => showMsg(onAdvanceSchoolYear('fundamental'))}
+              onClick={() => {
+                if (character.age < 6) {
+                  showMsg({ success: false, message: 'Idade mínima para cursar o Ensino Fundamental é de 6 anos!' });
+                  return;
+                }
+                showMsg(onAdvanceSchoolYear('fundamental'));
+              }}
               className="p-3 rounded-xl bg-[#006740] text-white text-left transition-all cursor-pointer shadow-xs disabled:opacity-50"
             >
               <h5 className="font-heading font-bold text-xs mb-0.5">Fazer Prova Final</h5>
@@ -772,7 +784,13 @@ export const EducationModule: React.FC<EducationModuleProps> = ({
           <div className="grid grid-cols-2 gap-2">
             <button
               type="button"
-              onClick={() => showMsg(onStudyDaily('medio'))}
+              onClick={() => {
+                if (character.age < 14) {
+                  showMsg({ success: false, message: 'O Ensino Médio é destinado a jovens a partir dos 14/15 anos.' });
+                  return;
+                }
+                showMsg(onStudyDaily('medio'));
+              }}
               className="p-3 rounded-xl bg-[#f4fbf2] hover:bg-[#e2ffe9] border border-[#bdcabf] text-left transition-all cursor-pointer"
             >
               <h5 className="font-heading font-bold text-xs text-[#161d18] mb-0.5">Estudar para ENEM</h5>
@@ -781,7 +799,13 @@ export const EducationModule: React.FC<EducationModuleProps> = ({
             <button
               type="button"
               disabled={isMedioCompleted}
-              onClick={() => showMsg(onAdvanceSchoolYear('medio'))}
+              onClick={() => {
+                if (character.age < 14) {
+                  showMsg({ success: false, message: 'Idade mínima para cursar o Ensino Médio é de 14/15 anos!' });
+                  return;
+                }
+                showMsg(onAdvanceSchoolYear('medio'));
+              }}
               className="p-3 rounded-xl bg-[#006740] text-white text-left transition-all cursor-pointer shadow-xs disabled:opacity-50"
             >
               <h5 className="font-heading font-bold text-xs mb-0.5">Avançar Ano</h5>
@@ -804,7 +828,22 @@ export const EducationModule: React.FC<EducationModuleProps> = ({
             </div>
           </div>
 
-          {isCollegeEnrolled ? (
+          {character.age < 18 ? (
+            <div className="p-4 rounded-xl bg-amber-50 border-2 border-amber-400 text-amber-900 space-y-2">
+              <div className="flex items-center gap-2">
+                <Lock className="w-5 h-5 text-amber-600 shrink-0" />
+                <h5 className="font-heading font-black text-sm text-amber-900">
+                  Ensino Superior Bloqueado (Exclusivo 18+ anos)
+                </h5>
+              </div>
+              <p className="text-xs text-amber-800 leading-relaxed">
+                Você tem <strong>{character.age} anos</strong>. O ingresso na universidade, vestibulares e cursos superiores são permitidos apenas a partir dos <strong>18 anos de idade</strong>.
+              </p>
+              <div className="p-2.5 bg-amber-100/70 rounded-lg text-[11px] text-amber-900 font-medium">
+                💡 Foque nos estudos do <strong>Ensino Médio</strong> ou faça <strong>Cursos Livres do SENAI</strong> enquanto aguarda a maioridade!
+              </div>
+            </div>
+          ) : isCollegeEnrolled ? (
             <div className="p-3 rounded-xl bg-[#e2ffe9] border border-[#93f7be] flex items-center justify-between">
               <div>
                 <h5 className="font-heading font-black text-xs text-[#005232]">
@@ -866,7 +905,13 @@ export const EducationModule: React.FC<EducationModuleProps> = ({
                       </span>
                       <button
                         type="button"
-                        onClick={() => onStartCollegeEnrollment(m)}
+                        onClick={() => {
+                          if (character.age < 18) {
+                            showMsg({ success: false, message: 'Menores de 18 anos não podem prestar vestibular ou ingressar no Ensino Superior!' });
+                            return;
+                          }
+                          onStartCollegeEnrollment(m);
+                        }}
                         className="py-1 px-3 bg-[#005e91] hover:bg-[#0077b6] text-white font-heading font-bold text-[11px] rounded-lg cursor-pointer shadow-xs transition-all shrink-0 active:scale-95"
                       >
                         Vestibular 📝

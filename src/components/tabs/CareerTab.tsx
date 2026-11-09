@@ -162,6 +162,13 @@ export const CareerTab: React.FC<CareerTabProps> = ({
 
   const handleStartCollegeClick = (major: CollegeMajor) => {
     playClickSound();
+    if (character.age < 18) {
+      showMsg({
+        success: false,
+        message: '🚨 Requisito de Idade: Menores de 18 anos não podem cursar Ensino Superior! Complete 18 anos para prestar o vestibular.'
+      });
+      return;
+    }
     setExamModal({
       isOpen: true,
       type: 'faculdade',

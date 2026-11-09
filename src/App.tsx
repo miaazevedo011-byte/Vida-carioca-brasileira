@@ -5,7 +5,7 @@ import { Activity } from './data/activities';
 import { AVAILABLE_HOME_ITEMS, AVAILABLE_RENOVATIONS, VEHICLE_CUSTOMIZATIONS, VehicleCustomization } from './data/home_items';
 import { NeighborhoodConflict, ConflictOption } from './data/neighborhood_conflicts';
 import { BRAZILIAN_DILEMMAS, INITIAL_ACHIEVEMENTS } from './data/dilemmas';
-import { HomeWelcomeScreen } from './components/HomeWelcomeScreen';
+import { HomeWelcomeScreen, DEMO_STARTER_SLOTS } from './components/HomeWelcomeScreen';
 import { HeaderNav } from './components/HeaderNav';
 import { VitalStatsBars } from './components/VitalStatsBars';
 import { DilemmaCard } from './components/DilemmaCard';
@@ -305,9 +305,14 @@ export default function App() {
   const [savedSlots, setSavedSlots] = useState<SavedLifeSlot[]>(() => {
     try {
       const raw = localStorage.getItem(STORAGE_SAVES_KEY);
-      if (raw) return JSON.parse(raw);
+      if (raw !== null) {
+        return JSON.parse(raw);
+      }
     } catch (e) {}
-    return [];
+    try {
+      localStorage.setItem(STORAGE_SAVES_KEY, JSON.stringify(DEMO_STARTER_SLOTS));
+    } catch (e) {}
+    return DEMO_STARTER_SLOTS;
   });
 
   const [viewMode, setViewMode] = useState<'welcome' | 'game'>(() => {
@@ -1909,6 +1914,9 @@ export default function App() {
   };
 
   const handleEnrollCollege = (major: CollegeMajor): { success: boolean; message: string } => {
+    if (gameState.character.age < 18) {
+      return { success: false, message: 'Menores de 18 anos não podem ingressar no Ensino Superior! Aguarde completar 18 anos.' };
+    }
     playClickSound();
     playSuccessSound();
     confetti({ particleCount: 60, spread: 60 });
@@ -4778,6 +4786,12 @@ export default function App() {
 
   // Education System Handlers
   const handleAdvanceSchoolYear = (level: 'fundamental' | 'medio'): { success: boolean; message: string; graduated?: boolean } => {
+    if (level === 'fundamental' && gameState.character.age < 6) {
+      return { success: false, message: 'O Ensino Fundamental inicia a partir dos 6 anos de idade.' };
+    }
+    if (level === 'medio' && gameState.character.age < 14) {
+      return { success: false, message: 'O Ensino Médio inicia a partir dos 14/15 anos de idade.' };
+    }
     playClickSound();
     let graduated = false;
     let message = '';
@@ -5088,6 +5102,9 @@ export default function App() {
   const handleCrimeAction = (
     crimeType: 'furto_celular' | 'pendura' | 'bilhete' | 'racha' | 'phishing' | 'contrabando' | 'roubo_carga' | 'lavagem' | 'assalto_banco'
   ): { success: boolean; message: string } => {
+    if (gameState.character.age < 14) {
+      return { success: false, message: 'Crime e malandragem estão disponíveis somente a partir dos 14 anos de idade!' };
+    }
     playClickSound();
 
     interface CrimeConfig {
@@ -5621,6 +5638,9 @@ export default function App() {
   };
 
   const handlePlayJogoDoBicho = (bichoName: string, betAmount: number) => {
+    if (gameState.character.age < 15) {
+      return { success: false, message: 'Menores de 15 anos não têm acesso a jogos de azar e Jogo do Bicho!', won: false, payout: 0 };
+    }
     playClickSound();
     if (gameState.stats.grana < betAmount) return { success: false, message: 'Saldo insuficiente.', won: false, payout: 0 };
     const randomBicho = ['Cachorro', 'Gato', 'Jacaré', 'Leão', 'Vira-Lata', 'Borboleta', 'Galo', 'Touro'][Math.floor(Math.random() * 8)];
@@ -5639,6 +5659,9 @@ export default function App() {
   };
 
   const handlePlayTigrinho = (betAmount: number) => {
+    if (gameState.character.age < 15) {
+      return { success: false, message: 'Menores de 15 anos não têm acesso a jogos de cassino e apostas do Tigrinho!', won: false, payout: 0 };
+    }
     playClickSound();
     if (gameState.stats.grana < betAmount) return { success: false, message: 'Saldo insuficiente.', won: false, payout: 0 };
     const won = Math.random() < 0.45;
@@ -5939,6 +5962,7 @@ export default function App() {
                 housing={gameState.housing}
                 family={gameState.family}
                 pet={gameState.pet}
+                timeSubPeriod={gameState.timeSubPeriod || 1}
                 onUpdateAffection={handleUpdateAffection}
                 onDoFamilyAction={handleDoFamilyAction}
                 onAdoptPet={handleAdoptPet}
